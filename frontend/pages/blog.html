@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novidades do CEI | CEI Jardim Rosa Maria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Patrick+Hand+SC&family=Poppins:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+    <main id="main-content" class="page blog-page" aria-label="Novidades do CEI Jardim Rosa Maria">
+      <!-- Fundo e elementos de marca seguem a identidade visual já usada nas outras telas. -->
+      <img class="blog-bg" src="../assets/img-fundo-iii.png" alt="" aria-hidden="true" />
+      <img class="brand-flower" src="../assets/rosa.svg" alt="" aria-hidden="true" />
+
+      <nav class="nav-menu" aria-label="Navegação principal">
+        <a class="nav-pill" href="index.html">INÍCIO</a>
+        <a class="nav-pill" href="sobre.html">SOBRE</a>
+        <a class="nav-pill nav-pill-active" href="blog.html" aria-current="page">BLOG</a>
+        <a class="nav-pill" href="matricula.html">MATRÍCULA</a>
+        <a class="nav-pill nav-pill-login" href="login.html">LOGIN</a>
+      </nav>
+
+      <section class="blog-board" aria-labelledby="blog-title">
+        <header class="blog-header">
+          <p class="blog-kicker">Mural escolar</p>
+          <h1 id="blog-title">Novidades do CEI</h1>
+          <p>
+            Comunicados, eventos, projetos e recados importantes compartilhados pela direção do
+            CEI Jardim Rosa Maria.
+          </p>
+        </header>
+
+        <div class="blog-filters" aria-label="Filtros de publicações">
+          <!-- Filtros prontos para futura integração com o dashboard. -->
+          <button class="blog-filter blog-filter-active" type="button" aria-pressed="true" data-filter="todos">Todos</button>
+          <button class="blog-filter" type="button" aria-pressed="false" data-filter="comunicados">Comunicados</button>
+          <button class="blog-filter" type="button" aria-pressed="false" data-filter="eventos">Eventos</button>
+          <button class="blog-filter" type="button" aria-pressed="false" data-filter="projetos">Projetos</button>
+          <button class="blog-filter" type="button" aria-pressed="false" data-filter="familias">Famílias</button>
+        </div>
+
+        <section
+          id="post-reuniao-familias"
+          class="blog-featured"
+          data-category="comunicados familias"
+          aria-label="Último comunicado em destaque"
+        >
+          <div class="featured-copy">
+            <span class="post-category">Comunicado</span>
+            <time datetime="2026-08-21">21 ago 2026</time>
+            <h2>Reunião com as famílias</h2>
+            <p>
+              A direção convida os responsáveis para um encontro de acolhimento, escuta e partilha
+              sobre as próximas vivências das crianças.
+            </p>
+            <a href="#post-reuniao-familias" aria-label="Ler comunicado sobre reunião com as famílias">Ler comunicado</a>
+          </div>
+          <img src="../assets/familia.svg" alt="Família reunida com criança estudando" />
+        </section>
+
+        <section class="post-grid" aria-label="Publicações recentes">
+          <article class="post-card post-event" data-category="eventos">
+            <img src="../assets/meninos-brincando.svg" alt="Crianças brincando no quintal" />
+            <div>
+              <span class="post-category">Eventos</span>
+              <time datetime="2026-08-18">18 ago 2026</time>
+              <h2>Semana do brincar</h2>
+              <p>Vivências com movimento, imaginação e brincadeiras no quintal.</p>
+            </div>
+          </article>
+
+          <article class="post-card post-project" data-category="projetos">
+            <img src="../assets/criancas-horta.svg" alt="Crianças cuidando da horta" />
+            <div>
+              <span class="post-category">Projetos</span>
+              <time datetime="2026-08-12">12 ago 2026</time>
+              <h2>Plantio na horta</h2>
+              <p>As crianças cuidaram da terra e acompanharam novas descobertas.</p>
+            </div>
+          </article>
+
+          <article class="post-card post-note" data-category="comunicados familias">
+            <img src="../assets/nota.svg" alt="Ilustração de recado escolar" />
+            <div>
+              <span class="post-category">Recados</span>
+              <time datetime="2026-08-08">08 ago 2026</time>
+              <h2>Atualização cadastral</h2>
+              <p>Pedimos que as famílias mantenham contatos e autorizações atualizados.</p>
+            </div>
+          </article>
+
+          <article class="post-card post-photo" data-category="projetos">
+            <img src="../assets/atelie.svg" alt="Criança pintando no ateliê" />
+            <div>
+              <span class="post-category">Fotos</span>
+              <time datetime="2026-08-02">02 ago 2026</time>
+              <h2>Ateliê de cores</h2>
+              <p>Registros das explorações com tintas, pincéis e diferentes materiais.</p>
+            </div>
+          </article>
+        </section>
+
+        <!--
+          Estados prontos para integração: o backend deve remover/adicionar hidden
+          conforme carregamento, resposta vazia, erro, offline ou publicação.
+        -->
+        <section class="interface-states" aria-live="polite">
+          <div class="state-message state-loading" hidden>
+            <span class="state-spinner" aria-hidden="true"></span>
+            <p>Carregando novidades...</p>
+          </div>
+
+          <div class="state-message state-empty" hidden>
+            <img src="../assets/rosa-azul.svg" alt="" aria-hidden="true" />
+            <p>A direção ainda não publicou novidades. Volte em breve.</p>
+          </div>
+
+          <div class="state-message state-error" hidden>
+            <strong>Não foi possível carregar as novidades.</strong>
+            <p>Tente novamente em alguns instantes.</p>
+          </div>
+
+          <div class="state-message state-offline" hidden>
+            <strong>Você está sem conexão.</strong>
+            <p>Assim que a internet voltar, tente recarregar a página.</p>
+          </div>
+
+          <div class="state-message state-success" hidden>
+            <strong>Post publicado com sucesso.</strong>
+            <p>A novidade já pode aparecer no site público.</p>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="../js/microinteractions.js"></script>
+  </body>
+</html>

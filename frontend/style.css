@@ -1,0 +1,18 @@
+﻿/* -------------------------------------------------------------------------- */
+/* Manifesto de estilos                                                       */
+/* -------------------------------------------------------------------------- */
+
+/*
+  Este arquivo mantém compatibilidade com as páginas HTML existentes.
+  Os estilos foram separados por responsabilidade dentro da pasta css/.
+  Mantenha a ordem dos imports: ela preserva a cascata original do layout.
+*/
+@import url("css/base.css");
+@import url("css/components.css");
+@import url("css/home.css");
+@import url("css/matricula.css");
+@import url("css/login.css");
+@import url("css/blog.css");
+@import url("css/sobre.css");
+@import url("css/dashboard.css");
+@import url("css/microinteractions.css");

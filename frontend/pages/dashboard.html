@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Direção | CEI Jardim Rosa Maria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+    <main
+      id="main-content"
+      class="dashboard-page"
+      aria-label="Dashboard da direção do CEI Jardim Rosa Maria"
+    >
+      <img class="dashboard-bg" src="../assets/figma-dashboard/img-fundo-iii.png" alt="" aria-hidden="true" />
+
+      <aside class="dashboard-sidebar" aria-label="Menu da direção">
+        <div class="dashboard-brand">
+          <img class="dashboard-logo" src="../assets/figma-dashboard/rosa.png" alt="" aria-hidden="true" />
+          <div>
+            <strong>CEI</strong>
+            <span>Jardim Rosa Maria</span>
+          </div>
+        </div>
+
+        <!-- Menu da Direção conforme o frame do Figma. -->
+        <nav class="dashboard-menu" aria-label="Áreas administrativas">
+          <button class="dashboard-menu-item dashboard-menu-active" type="button" data-panel-target="visao-geral">Visão Geral</button>
+          <button class="dashboard-menu-item" type="button" data-panel-target="blog">Blog</button>
+          <button class="dashboard-menu-item" type="button" data-panel-target="agenda">Agenda</button>
+          <button class="dashboard-menu-item" type="button" data-panel-target="projetos">Projetos</button>
+          <button class="dashboard-menu-item" type="button" data-panel-target="documentos">Documentos</button>
+          <button class="dashboard-menu-item" type="button" data-panel-target="informacoes-cei">Informações do CEI</button>
+          <button class="dashboard-menu-item" type="button" data-panel-target="acessos">Acessos</button>
+        </nav>
+
+        <a class="dashboard-exit" href="login.html"><img src="../assets/figma-dashboard/exit.svg" alt="" aria-hidden="true" />Sair</a>
+      </aside>
+
+      <section class="dashboard-shell">
+        <header class="dashboard-topbar">
+          <h1 data-dashboard-greeting>Olá, Márcia!</h1>
+          <p class="dashboard-welcome">Que bom ter você por aqui!</p>
+          <p class="dashboard-subtitle">Aqui você gerencia o site do CEI de forma simples e rápida.</p>
+          <img class="dashboard-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
+
+          <div class="dashboard-user" aria-label="Usuário logado">
+            <span class="dashboard-user-avatar" aria-hidden="true"></span>
+            <div>
+              <strong data-dashboard-name>Márcia</strong>
+              <span data-dashboard-profile>Diretora</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="dashboard-panel dashboard-panel-active" data-panel="visao-geral" aria-label="Visão geral">
+          <div class="dashboard-stats" aria-label="Resumo da direção">
+            <article class="dashboard-stat-card">
+              <img src="../assets/figma-dashboard/pessoas.png" alt="" aria-hidden="true" />
+              <strong>342</strong>
+              <span>Acessos essa semana</span>
+              <em><img class="dashboard-stat-trend-icon" src="../assets/figma-dashboard/arrow-4.svg" alt="" aria-hidden="true" />18%</em>
+              <small>em relação à semana anterior</small>
+            </article>
+            <article class="dashboard-stat-card dashboard-stat-card-soft">
+              <img src="../assets/figma-dashboard/image-60.png" alt="" aria-hidden="true" />
+              <strong>5</strong>
+              <span>Publicações do blog</span>
+              <small>Ativas</small>
+            </article>
+            <article class="dashboard-stat-card">
+              <img src="../assets/figma-dashboard/image-55.png" alt="" aria-hidden="true" />
+              <strong>3</strong>
+              <span>Próximos eventos</span>
+              <small>No calendário</small>
+            </article>
+            <article class="dashboard-stat-card dashboard-stat-card-soft">
+              <img src="../assets/figma-dashboard/image-59.png" alt="" aria-hidden="true" />
+              <strong>4</strong>
+              <span>Documentos</span>
+              <small>Disponíveis.</small>
+            </article>
+          </div>
+
+          <div class="dashboard-overview-grid">
+            <article class="dashboard-overview-card dashboard-publications">
+              <img class="dashboard-card-icon dashboard-card-icon-large" src="../assets/figma-dashboard/image-60.png" alt="" aria-hidden="true" />
+              <h2>Publicações recentes</h2>
+              <a href="blog.html">Ver todas <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></a>
+
+              <div class="publication-list">
+                <div class="publication-item">
+                  <img src="../assets/figma-dashboard/calendario-ii.png" alt="" aria-hidden="true" />
+                  <div>
+                    <h3>Reunião com as famílias</h3>
+                    <span>Comunicados</span>
+                    <p>Publicado em 07/09/2026  -    87 visualizações</p>
+                  </div>
+                  <img class="publication-more" src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="publication-item">
+                  <img src="../assets/figma-dashboard/image-62.png" alt="" aria-hidden="true" />
+                  <div>
+                    <h3>Projeto horta no CEI</h3>
+                    <span>Projeto</span>
+                    <p>Publicado em 07/09/2026  -    64 visualizações</p>
+                  </div>
+                  <img class="publication-more" src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="publication-item">
+                  <img src="../assets/figma-dashboard/image-58.png" alt="" aria-hidden="true" />
+                  <div>
+                    <h3>Indicador de qualidade</h3>
+                    <span>Comunicados</span>
+                    <p>Publicado em 07/09/2026  -    52 visualizações</p>
+                  </div>
+                  <img class="publication-more" src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
+                </div>
+              </div>
+            </article>
+
+            <article class="dashboard-overview-card dashboard-dates">
+              <img class="dashboard-card-icon" src="../assets/figma-dashboard/calendario-iii.png" alt="" aria-hidden="true" />
+              <h2>Próximas datas</h2>
+              <button type="button" data-panel-jump="agenda">Ver calendário <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></button>
+
+              <div class="date-item date-item-soft">
+                <time><strong>15</strong><span>SET</span></time>
+                <div>
+                  <h3>Reunião com as famílias</h3>
+                  <p><img src="../assets/figma-dashboard/alarm.svg" alt="" aria-hidden="true" />8h00</p>
+                  <p><img src="../assets/figma-dashboard/location-pin.svg" alt="" aria-hidden="true" />CEI</p>
+                </div>
+              </div>
+              <div class="date-item">
+                <time><strong>20</strong><span>SET</span></time>
+                <div>
+                  <h3>Projeto horta</h3>
+                  <p><img src="../assets/figma-dashboard/alarm.svg" alt="" aria-hidden="true" />15h30</p>
+                  <p><img src="../assets/figma-dashboard/location-pin.svg" alt="" aria-hidden="true" />CEI</p>
+                </div>
+              </div>
+              <div class="date-item date-item-soft">
+                <time><strong>25</strong><span>SET</span></time>
+                <div>
+                  <h3>Reunião pedagógica</h3>
+                  <p><img src="../assets/figma-dashboard/alarm.svg" alt="" aria-hidden="true" />12h30</p>
+                  <p><img src="../assets/figma-dashboard/location-pin.svg" alt="" aria-hidden="true" />CEI</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="dashboard-overview-card dashboard-actions">
+              <span class="dashboard-action-bolt" aria-hidden="true"></span>
+              <h2>Ações rápidas</h2>
+              <button type="button">Nova publicação no blog</button>
+              <button type="button">Adicionar evento</button>
+              <button type="button">Adicionar documento</button>
+              <button type="button">Editar informações do CEI</button>
+            </article>
+
+            <article class="dashboard-overview-card dashboard-blank" aria-label="Acessos ao site">
+              <div class="dashboard-access-chart">
+                <h2>Acessos ao site</h2>
+                <div class="dashboard-access-canvas">
+                  <canvas id="siteAccessChart" aria-label="Gráfico de acessos ao site por dia da semana"></canvas>
+                </div>
+              </div>
+              <div class="dashboard-access-summary" aria-label="Resumo de acessos">
+                <p><strong>342</strong><span>acessos esta semana</span></p>
+                <p><strong>72</strong><span>hoje</span></p>
+                <p><strong>1.284</strong><span>este mês</span></p>
+              </div>
+            </article>
+
+            <article class="dashboard-overview-card dashboard-pages">
+              <h2>Páginas mais acessadas</h2>
+              <a href="#">Ver relatório completo <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></a>
+              <div class="dashboard-pages-list">
+                <p><span>1. Agenda</span><strong>126</strong></p>
+                <p><span>2. Blog</span><strong>96</strong></p>
+                <p><span>3. Início</span><strong>78</strong></p>
+                <p><span>4. Documentos</span><strong>31</strong></p>
+                <p><span>5. Sobre o CEI</span><strong>15</strong></p>
+              </div>
+            </article>
+
+            <img class="dashboard-sun" src="../assets/figma-dashboard/image-63.png" alt="" aria-hidden="true" />
+            <img class="dashboard-plant" src="../assets/figma-dashboard/image-64.png" alt="" aria-hidden="true" />
+          </div>
+        </section>
+
+        <section class="dashboard-panel dashboard-workspace" data-panel="turmas" aria-label="Dashboard de turmas" hidden>
+          <header class="workspace-header">
+            <span>Turmas</span>
+            <h2>Cadastrar e organizar turmas</h2>
+            <p>Crie turmas, defina turno, faixa etária e vincule professoras responsáveis.</p>
+          </header>
+          <div class="workspace-grid">
+            <form class="workspace-card workspace-form">
+              <!-- Formulário mockado para futura integração com cadastro de turmas. -->
+              <label>Nome da turma<input type="text" placeholder="Infantil II - Manhã" /></label>
+              <label>Turno<select><option>Manhã</option><option>Tarde</option><option>Integral</option></select></label>
+              <label>Professora responsável<select><option>Prof. Dani</option><option>Prof. Marta</option></select></label>
+              <button type="button">Cadastrar turma</button>
+            </form>
+            <article class="workspace-card">
+              <h3>Turmas cadastradas</h3>
+              <ul class="workspace-list">
+                <li><strong>Infantil I - manhã</strong><span>18 crianças · Prof. Dani</span></li>
+                <li><strong>Infantil II - tarde</strong><span>21 crianças · Prof. Marta</span></li>
+                <li><strong>Berçário</strong><span>12 crianças · Prof. Fábia</span></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="dashboard-panel dashboard-workspace" data-panel="criancas" aria-label="Dashboard de crianças" hidden>
+          <header class="workspace-header">
+            <span>Crianças</span>
+            <h2>Cadastrar crianças e vincular turmas</h2>
+            <p>Acesse dados administrativos, cadastre novas crianças e atribua cada criança à sua turma.</p>
+          </header>
+          <div class="workspace-grid">
+            <form class="workspace-card workspace-form">
+              <label>Nome da criança<input type="text" placeholder="Ana Clara Santos" /></label>
+              <label>Turma<select><option>Infantil II - Manhã</option><option>Infantil I - Tarde</option></select></label>
+              <label>Status<select><option>Matriculada</option><option>Documentação pendente</option></select></label>
+              <button type="button">Salvar criança</button>
+            </form>
+            <article class="workspace-card workspace-card-wide">
+              <h3>Crianças recentes</h3>
+              <div class="workspace-table">
+                <span>Nome</span><span>Turma</span><span>Responsável</span><span>Status</span>
+                <strong>Ana Clara</strong><strong>Infantil II</strong><strong>Renata</strong><strong>Ativa</strong>
+                <strong>Miguel</strong><strong>Berçário</strong><strong>Bruno</strong><strong>Pendente</strong>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="dashboard-panel dashboard-workspace" data-panel="professores" aria-label="Dashboard de professores" hidden>
+          <header class="workspace-header">
+            <span>Professores</span>
+            <h2>Cadastrar e vincular professores</h2>
+            <p>Gerencie professoras, dados de acesso e vínculo com as turmas cadastradas.</p>
+          </header>
+          <div class="workspace-grid">
+            <form class="workspace-card workspace-form">
+              <label>Nome do professor<input type="text" placeholder="Prof. Dani" /></label>
+              <label>E-mail<input type="email" placeholder="professora@cei.com" /></label>
+              <label>Turma vinculada<select><option>Infantil I - manhã</option><option>Infantil II - tarde</option></select></label>
+              <button type="button">Cadastrar professor</button>
+            </form>
+            <article class="workspace-card">
+              <h3>Vínculos ativos</h3>
+              <ul class="workspace-list">
+                <li><strong>Prof. Dani</strong><span>Infantil I - manhã</span></li>
+                <li><strong>Prof. Marta</strong><span>Infantil II - tarde</span></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="dashboard-panel dashboard-workspace" data-panel="responsaveis" aria-label="Dashboard de responsáveis" hidden>
+          <header class="workspace-header">
+            <span>Responsáveis</span>
+            <h2>Vincular família, criança, turma e professor</h2>
+            <p>Cadastre responsáveis e mantenha o vínculo administrativo com cada criança.</p>
+          </header>
+          <div class="workspace-grid">
+            <form class="workspace-card workspace-form">
+              <label>Responsável<input type="text" placeholder="Renata Santos" /></label>
+              <label>Criança<select><option>Ana Clara Santos</option><option>Miguel Oliveira</option></select></label>
+              <label>Grau de parentesco<select><option>Mãe</option><option>Pai</option><option>Avó/Avô</option></select></label>
+              <button type="button">Vincular responsável</button>
+            </form>
+            <article class="workspace-card workspace-card-wide">
+              <h3>Resumo do vínculo</h3>
+              <ul class="workspace-list">
+                <li><strong>Ana Clara Santos</strong><span>Responsável: Renata · Turma: Infantil II · Prof. Dani</span></li>
+                <li><strong>Miguel Oliveira</strong><span>Responsável: Bruno · Turma: Berçário · Prof. Fábia</span></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="dashboard-panel dashboard-acessos-panel" data-panel="acessos" aria-label="Dashboard de acessos" hidden>
+          <header class="acessos-header">
+            <div>
+              <h2>Acessos</h2>
+              <p>Acompanhe o alcance e engajamento do site do CEI.</p>
+            </div>
+            <img class="acessos-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
+            <button class="acessos-period" type="button" aria-label="Selecionar período">
+              <img src="../assets/image 55.svg" alt="" aria-hidden="true" />
+              <span>01/09/2026 - 30/09/2026</span>
+              <strong class="acessos-select-arrow" aria-hidden="true"></strong>
+            </button>
+            <div class="dashboard-user acessos-user" aria-label="Usuário logado">
+              <span class="dashboard-user-avatar" aria-hidden="true"></span>
+              <div>
+                <strong data-dashboard-name>Márcia</strong>
+                <span data-dashboard-profile>Diretora</span>
+              </div>
+            </div>
+          </header>
+
+          <section class="acessos-metrics" aria-label="Métricas de acesso">
+            <article class="acessos-metric-card">
+              <img src="../assets/users.svg" alt="" aria-hidden="true" />
+              <h3>Visitantes únicos</h3>
+              <div class="acessos-metric-value-row">
+                <strong>1.284</strong>
+                <em><img src="../assets/figma-dashboard/arrow-4.svg" alt="" aria-hidden="true" />12%</em>
+              </div>
+              <small>Em relação ao mês anterior.</small>
+            </article>
+            <article class="acessos-metric-card acessos-metric-soft">
+              <img src="../assets/figma-dashboard/eye.svg" alt="" aria-hidden="true" />
+              <h3>Visualizações de página</h3>
+              <div class="acessos-metric-value-row">
+                <strong>3.752</strong>
+                <em><img src="../assets/figma-dashboard/arrow-4.svg" alt="" aria-hidden="true" />8%</em>
+              </div>
+              <small>Em relação ao mês anterior.</small>
+            </article>
+            <article class="acessos-metric-card">
+              <img src="../assets/file-text.svg" alt="" aria-hidden="true" />
+              <h3>Páginas por visita</h3>
+              <div class="acessos-metric-value-row">
+                <strong>2,9</strong>
+                <em><img src="../assets/figma-dashboard/arrow-4.svg" alt="" aria-hidden="true" />5%</em>
+              </div>
+              <small>Em relação ao mês anterior.</small>
+            </article>
+            <article class="acessos-metric-card acessos-metric-soft">
+              <img src="../assets/clock.svg" alt="" aria-hidden="true" />
+              <h3>Tempo no site</h3>
+              <div class="acessos-metric-value-row">
+                <strong>2min 18 segundos</strong>
+                <em><img src="../assets/figma-dashboard/arrow-4.svg" alt="" aria-hidden="true" />10%</em>
+              </div>
+              <small>Em relação ao mês anterior.</small>
+            </article>
+          </section>
+
+          <section class="acessos-main-grid">
+            <article class="acessos-card acessos-time-card">
+              <div class="acessos-card-header">
+                <h3>Visitantes ao longo do tempo</h3>
+                <button type="button">Visitantes únicos <span class="acessos-select-arrow" aria-hidden="true"></span></button>
+              </div>
+              <div class="acessos-line-chart">
+                <canvas id="acessosLineChart" aria-label="Visitantes ao longo do tempo"></canvas>
+              </div>
+            </article>
+
+            <article class="acessos-card acessos-origin-card">
+              <h3>Origem dos acessos.</h3>
+              <div class="acessos-origin-layout">
+                <div class="acessos-donut-wrap">
+                  <canvas id="acessosOriginChart" aria-label="Origem dos acessos"></canvas>
+                  <div class="acessos-donut-center"><strong>1.284</strong><span>visitantes únicos</span></div>
+                </div>
+                <ul class="acessos-origin-list">
+                  <li><span class="acessos-dot acessos-dot-pink"></span><strong>Busca Orgânica</strong><em>42%</em></li>
+                  <li><span class="acessos-dot acessos-dot-blue"></span><strong>Acesso Rápido</strong><em>28%</em></li>
+                  <li><span class="acessos-dot acessos-dot-purple"></span><strong>Redes Sociais</strong><em>18%</em></li>
+                  <li><span class="acessos-dot acessos-dot-yellow"></span><strong>Sites de Referência</strong><em>8%</em></li>
+                  <li><span class="acessos-dot acessos-dot-green"></span><strong>Outros</strong><em>4%</em></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="acessos-card acessos-pages-card">
+              <h3>Páginas mais acessadas.</h3>
+              <div class="acessos-pages-table">
+                <div class="acessos-pages-head"><span>#</span><span>Páginas</span><span>Visualizações</span></div>
+                <ol class="acessos-pages-list">
+                  <li><span>Início</span><strong>1.200</strong></li>
+                  <li><span>Blog</span><strong>1.200</strong></li>
+                  <li><span>Projetos</span><strong>750</strong></li>
+                  <li><span>Agenda</span><strong>990</strong></li>
+                  <li><span>Documentos</span><strong>230</strong></li>
+                </ol>
+              </div>
+              <button class="acessos-pages-button" type="button">Ver todas as páginas</button>
+            </article>
+
+            <article class="acessos-card acessos-devices-card">
+              <h3>Dispositivos utilizados.</h3>
+              <div class="acessos-device-row">
+                <img src="../assets/notebook.svg" alt="" aria-hidden="true" />
+                <div><strong>Computador</strong><span><i style="width: 32%"></i></span></div>
+                <em>32%</em>
+              </div>
+              <div class="acessos-device-row">
+                <img src="../assets/celular.svg" alt="" aria-hidden="true" />
+                <div><strong>Celular</strong><span><i style="width: 62%"></i></span></div>
+                <em>62%</em>
+              </div>
+              <div class="acessos-device-row">
+                <img src="../assets/tablet.svg" alt="" aria-hidden="true" />
+                <div><strong>Tablet</strong><span><i style="width: 6%"></i></span></div>
+                <em>6%</em>
+              </div>
+            </article>
+
+            <article class="acessos-card acessos-location-card">
+              <h3>Localização dos acessos.</h3>
+              <div class="acessos-location-layout">
+                <img class="acessos-map" src="../assets/mapa.svg" alt="Mapa do Brasil com destaque em São Paulo" />
+                <ul class="acessos-location-list">
+                  <li><span class="acessos-dot acessos-dot-pink"></span><strong>São Paulo</strong><em>78%</em></li>
+                  <li><span class="acessos-dot acessos-dot-blue"></span><strong>Rio de Janeiro</strong><em>15%</em></li>
+                  <li><span class="acessos-dot acessos-dot-yellow"></span><strong>Outros estados</strong><em>6%</em></li>
+                </ul>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="dashboard-panel dashboard-blog-panel" data-panel="blog" aria-label="Dashboard do blog" hidden>
+          <header class="blog-dashboard-header">
+            <div>
+              <h2>Blog</h2>
+              <p>Gerencie as publicações que aparecem no site público!</p>
+            </div>
+            <a class="blog-new-button" href="nova-publicacao.html" data-blog-new-publication aria-label="Nova publicação">
+              <span aria-hidden="true">+</span>
+              Nova publicação
+            </a>
+            <img class="blog-dashboard-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
+            <div class="dashboard-user blog-dashboard-user" aria-label="Usuário logado">
+              <span class="dashboard-user-avatar" aria-hidden="true"></span>
+              <div>
+                <strong data-dashboard-name>Márcia</strong>
+                <span data-dashboard-profile>Diretora</span>
+              </div>
+            </div>
+          </header>
+
+          <div class="blog-summary-grid" aria-label="Resumo do blog">
+            <article class="blog-summary-card">
+              <img src="../assets/figma-dashboard/image-58.png" alt="" aria-hidden="true" />
+              <strong data-blog-summary="active">12</strong>
+              <span>Publicações ativas</span>
+            </article>
+            <article class="blog-summary-card blog-summary-card-soft">
+              <strong data-blog-summary="drafts">3</strong>
+              <span>Rascunhos</span>
+            </article>
+            <article class="blog-summary-card">
+              <img src="../assets/figma-dashboard/image-60.png" alt="" aria-hidden="true" />
+              <strong data-blog-summary="comunicados">4</strong>
+              <span>Comunicados</span>
+            </article>
+            <article class="blog-summary-card blog-summary-card-soft">
+              <img src="../assets/figma-dashboard/image-62.png" alt="" aria-hidden="true" />
+              <strong data-blog-summary="projetos">2</strong>
+              <span>Projetos</span>
+            </article>
+          </div>
+
+          <div class="blog-toolbar" aria-label="Filtros e busca do blog">
+            <div class="blog-filter-group" role="group" aria-label="Filtrar publicações">
+              <button class="blog-dashboard-filter blog-dashboard-filter-active" type="button" data-blog-filter="Todos">Todos</button>
+              <button class="blog-dashboard-filter" type="button" data-blog-filter="Comunicado">Comunicados</button>
+              <button class="blog-dashboard-filter" type="button" data-blog-filter="Projeto">Projetos</button>
+              <button class="blog-dashboard-filter" type="button" data-blog-filter="Evento">Eventos</button>
+              <button class="blog-dashboard-filter" type="button" data-blog-filter="Novidade">Novidades</button>
+            </div>
+            <label class="blog-search-field">
+              <img src="../assets/figma-dashboard/search.svg" alt="" aria-hidden="true" />
+              <input type="search" data-blog-search placeholder="Buscar informações..." aria-label="Buscar informações" />
+            </label>
+          </div>
+
+          <article class="blog-table-card" aria-label="Lista de publicações do blog">
+            <div class="blog-table-head" role="row">
+              <span>Título da publicação</span>
+              <span>Categoria</span>
+              <span>Data</span>
+              <span>Visualizações</span>
+              <span>Status</span>
+              <span>Ações</span>
+            </div>
+            <div class="blog-table-body" data-blog-list>
+              <article class="blog-post-row" data-blog-row data-title="Reunião com as famílias" data-category="Comunicado" data-status="Publicado">
+                <div class="blog-post-title">
+                  <span class="blog-post-thumb" aria-hidden="true"></span>
+                  <div>
+                    <h3>Reunião com as famílias</h3>
+                    <p>Contamos com a presença de todos para conversarmos sobre o desenvolvimento...</p>
+                  </div>
+                </div>
+                <span class="blog-badge blog-badge-comunicado">Comunicado</span>
+                <time>28/08/2026</time>
+                <span class="blog-views"><img src="../assets/figma-dashboard/eye.svg" alt="" aria-hidden="true" />100</span>
+                <span class="blog-status blog-status-published">Publicado</span>
+                <button class="blog-row-actions" type="button" data-blog-actions aria-label="Ações da publicação Reunião com as famílias">
+                  <img src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
+                </button>
+              </article>
+              <article class="blog-post-row" data-blog-row data-title="Projeto no CEI" data-category="Projeto" data-status="Publicado">
+                <div class="blog-post-title">
+                  <span class="blog-post-thumb" aria-hidden="true"></span>
+                  <div>
+                    <h3>Projeto no CEI</h3>
+                    <p>Nossas crianças estão aprendendo sobre natureza e alimentação saudável...</p>
+                  </div>
+                </div>
+                <span class="blog-badge blog-badge-projeto">Projeto</span>
+                <time>28/08/2026</time>
+                <span class="blog-views"><img src="../assets/figma-dashboard/eye.svg" alt="" aria-hidden="true" />82</span>
+                <span class="blog-status blog-status-published">Publicado</span>
+                <button class="blog-row-actions" type="button" data-blog-actions aria-label="Ações da publicação Projeto no CEI">
+                  <img src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
+                </button>
+              </article>
+              <article class="blog-post-row" data-blog-row data-title="Semana da criança" data-category="Evento" data-status="Rascunho">
+                <div class="blog-post-title">
+                  <span class="blog-post-thumb" aria-hidden="true"></span>
+                  <div>
+                    <h3>Semana da criança</h3>
+                    <p>Uma semana inteira de atividades e brincadeiras especiais para celebrar o dia...</p>
+                  </div>
+                </div>
+                <span class="blog-badge blog-badge-evento">Evento</span>
+                <time>28/08/2026</time>
+                <span class="blog-views"><img src="../assets/figma-dashboard/eye.svg" alt="" aria-hidden="true" />0</span>
+                <span class="blog-status blog-status-draft">Rascunho</span>
+                <button class="blog-row-actions" type="button" data-blog-actions aria-label="Ações da publicação Semana da criança">
+                  <img src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
+                </button>
+              </article>
+              <article class="blog-post-row" data-blog-row data-title="Dicas de leitura infantil" data-category="Novidade" data-status="Publicado">
+                <div class="blog-post-title">
+                  <span class="blog-post-thumb" aria-hidden="true"></span>
+                  <div>
+                    <h3>Dicas de leitura infantil</h3>
+                    <p>Selecionamos algumas sugestões de livros para essa fase...</p>
+                  </div>
+                </div>
+                <span class="blog-badge blog-badge-novidade">Novidade</span>
+                <time>28/08/2026</time>
+                <span class="blog-views"><img src="../assets/figma-dashboard/eye.svg" alt="" aria-hidden="true" />23</span>
+                <span class="blog-status blog-status-published">Publicado</span>
+                <button class="blog-row-actions" type="button" data-blog-actions aria-label="Ações da publicação Dicas de leitura infantil">
+                  <img src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
+                </button>
+              </article>
+              <article class="blog-post-row" data-blog-row data-title="Nosso espaço, nossa história" data-category="Institucional" data-status="Rascunho">
+                <div class="blog-post-title">
+                  <span class="blog-post-thumb" aria-hidden="true"></span>
+                  <div>
+                    <h3>Nosso espaço, nossa história</h3>
+                    <p>Conheça um pouco mais sobre o CEI Jardim Rosa Maria...</p>
+                  </div>
+                </div>
+                <span class="blog-badge blog-badge-institucional">Institucional</span>
+                <time>28/08/2026</time>
+                <span class="blog-views"><img src="../assets/figma-dashboard/eye.svg" alt="" aria-hidden="true" />0</span>
+                <span class="blog-status blog-status-draft">Rascunho</span>
+                <button class="blog-row-actions" type="button" data-blog-actions aria-label="Ações da publicação Nosso espaço, nossa história">
+                  <img src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
+                </button>
+              </article>
+              <p class="blog-empty-state" data-blog-empty hidden>Nenhuma publicação encontrada.</p>
+            </div>
+          </article>
+
+          <div class="blog-actions-menu" data-blog-menu hidden>
+            <button type="button" data-action="editar">Editar</button>
+            <button type="button" data-action="ver">Ver no site</button>
+            <button type="button" data-action="duplicar">Duplicar</button>
+            <button type="button" data-action="despublicar">Despublicar</button>
+            <button type="button" data-action="excluir">Excluir</button>
+          </div>
+        </section>
+
+        <section class="dashboard-panel dashboard-agenda-panel" data-panel="agenda" aria-label="Dashboard da agenda" hidden>
+          <header class="agenda-dashboard-header">
+            <h2>Agenda</h2>
+            <img class="agenda-dashboard-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
+            <button class="agenda-new-event" type="button" data-agenda-new-event><span aria-hidden="true">+</span>Novo evento</button>
+            <div class="dashboard-user agenda-dashboard-user" aria-label="Usuário logado">
+              <span class="dashboard-user-avatar" aria-hidden="true"></span>
+              <div>
+                <strong data-dashboard-name>Márcia</strong>
+                <span data-dashboard-profile>Diretora</span>
+              </div>
+            </div>
+          </header>
+
+          <div class="agenda-summary-grid" aria-label="Resumo da agenda">
+            <article class="agenda-summary-card agenda-summary-blue"><img src="../assets/figma-dashboard/agenda-icon-calendar.svg" alt="" aria-hidden="true" /><strong>4</strong><small>Eventos neste mês</small></article>
+            <article class="agenda-summary-card agenda-summary-pink"><img src="../assets/figma-dashboard/agenda-icon-reunioes.png" alt="" aria-hidden="true" /><strong>1</strong><small>Reuniões</small></article>
+            <article class="agenda-summary-card agenda-summary-purple"><img src="../assets/figma-dashboard/agenda-icon-especiais.png" alt="" aria-hidden="true" /><strong>1</strong><small>Eventos especiais</small></article>
+            <article class="agenda-summary-card agenda-summary-soft"><img src="../assets/figma-dashboard/agenda-icon-outras.png" alt="" aria-hidden="true" /><strong>2</strong><small>Outras atividades</small></article>
+          </div>
+
+          <section class="agenda-calendar-card" aria-label="Calendário mensal">
+            <header class="agenda-calendar-toolbar">
+              <button type="button" data-agenda-prev aria-label="Mês anterior"><img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></button>
+              <h3 data-agenda-title>Setembro de 2026</h3>
+              <button type="button" data-agenda-next aria-label="Próximo mês"><img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></button>
+              <button class="agenda-today" type="button" data-agenda-today>Hoje</button>
+              <div class="agenda-view-toggle" role="group" aria-label="Visualização da agenda">
+                <button class="agenda-view-active" type="button" data-agenda-view="month">Mês</button>
+                <button type="button" data-agenda-view="week">Semana</button>
+                <button type="button" data-agenda-view="list">Lista</button>
+              </div>
+            </header>
+            <div class="agenda-calendar-grid" data-agenda-calendar></div>
+            <div class="agenda-alt-view" data-agenda-alt-view hidden></div>
+          </section>
+
+          <aside class="agenda-next-card" aria-label="Eventos em destaque">
+            <div class="agenda-next-list" data-agenda-next-list></div>
+          </aside>
+
+          <div class="agenda-actions-menu" data-agenda-menu hidden>
+            <button type="button">Editar</button>
+            <button type="button">Visualizar</button>
+            <button type="button">Excluir</button>
+          </div>
+          <div class="agenda-modal" data-agenda-modal hidden>
+            <div class="agenda-modal-card">
+              <h3>Novo evento</h3>
+              <p>Interface reservada para o futuro cadastro de eventos.</p>
+              <button type="button" data-agenda-modal-close>Fechar</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="dashboard-panel dashboard-projetos-panel" data-panel="projetos" aria-label="Dashboard de projetos" hidden>
+          <header class="projetos-dashboard-header">
+            <h2>Projetos</h2>
+            <p>Acompanhe e gerencie os projetos do CEI.</p>
+            <img class="projetos-dashboard-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
+            <div class="dashboard-user projetos-dashboard-user" aria-label="Usuário logado">
+              <span class="dashboard-user-avatar" aria-hidden="true"></span>
+              <div>
+                <strong data-dashboard-name>Márcia</strong>
+                <span data-dashboard-profile>Diretora</span>
+              </div>
+            </div>
+          </header>
+
+          <section class="projetos-board" aria-label="Gerenciamento de projetos">
+            <div class="projetos-toolbar">
+              <label class="projetos-search">
+                <img src="../assets/figma-dashboard/search.svg" alt="" aria-hidden="true" />
+                <input type="search" placeholder="Buscar projetos..." data-projetos-search />
+              </label>
+              <label class="projetos-select">
+                <span class="sr-only">Categoria</span>
+                <select data-projetos-category>
+                  <option>Todas as categorias</option>
+                  <option>Meio ambiente</option>
+                  <option>Educação</option>
+                  <option>Cultura</option>
+                  <option>Comunidade</option>
+                  <option>Cultura e comunidade</option>
+                  <option>Outros</option>
+                </select>
+              </label>
+              <label class="projetos-select">
+                <span class="sr-only">Status</span>
+                <select data-projetos-status>
+                  <option>Todos os status</option>
+                  <option>Em andamento</option>
+                  <option>Planejamento</option>
+                  <option>Concluído</option>
+                </select>
+              </label>
+              <label class="projetos-select projetos-sort">
+                <span class="sr-only">Ordenação</span>
+                <select data-projetos-sort>
+                  <option>Mais recentes</option>
+                  <option>Mais antigos</option>
+                  <option>A-Z</option>
+                  <option>Z-A</option>
+                </select>
+              </label>
+            </div>
+
+            <article class="projetos-table-card">
+              <div class="projetos-table-head" role="row">
+                <span>Título do Projeto</span>
+                <span>Categoria</span>
+                <span>Status</span>
+                <span>Andamento</span>
+                <span>Responsável</span>
+                <span>Ações</span>
+              </div>
+              <div class="projetos-table-body" data-projetos-list></div>
+              <div class="projetos-empty-state" data-projetos-empty hidden>
+                <strong>Nenhum projeto encontrado.</strong>
+                <span>Tente alterar os filtros ou realizar outra busca.</span>
+              </div>
+            </article>
+
+            <aside class="projetos-categories-card" aria-label="Categorias dos projetos">
+              <h3>Categorias</h3>
+              <ul>
+                <li><span class="projeto-dot projeto-dot-meio"></span>Meio ambiente</li>
+                <li><span class="projeto-dot projeto-dot-educacao"></span>Educação</li>
+                <li><span class="projeto-dot projeto-dot-cultura"></span>Cultura</li>
+                <li><span class="projeto-dot projeto-dot-comunidade"></span>Comunidade</li>
+                <li><span class="projeto-dot projeto-dot-cultura-comunidade"></span>Cultura e comunidade</li>
+                <li><span class="projeto-dot projeto-dot-outros"></span>Outros</li>
+              </ul>
+            </aside>
+
+            <img class="projetos-decor" src="../assets/figma-dashboard/educacao-decor.png" alt="" aria-hidden="true" />
+          </section>
+
+          <div class="projetos-actions-menu" data-projetos-menu hidden></div>
+        </section>
+
+        <section class="dashboard-panel dashboard-documentos-panel" data-panel="documentos" aria-label="Dashboard de documentos" hidden>
+          <header class="documentos-dashboard-header">
+            <h2>Documentos</h2>
+            <p>Consulte e organize os documentos do CEI.</p>
+            <img class="documentos-dashboard-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
+            <button class="documentos-new-button" type="button" data-documentos-new><span aria-hidden="true">+</span>Novo Documento</button>
+            <div class="dashboard-user documentos-dashboard-user" aria-label="Usuário logado">
+              <span class="dashboard-user-avatar" aria-hidden="true"></span>
+              <div>
+                <strong data-dashboard-name>Márcia</strong>
+                <span data-dashboard-profile>Diretora</span>
+              </div>
+            </div>
+          </header>
+
+          <section class="documentos-board" aria-label="Gerenciamento de documentos">
+            <div class="documentos-toolbar">
+              <label class="documentos-search">
+                <span class="sr-only">Buscar documentos</span>
+                <img src="../assets/figma-dashboard/search.svg" alt="" aria-hidden="true" />
+                <input type="search" placeholder="Buscar documentos" data-documentos-search />
+              </label>
+
+              <label class="documentos-select documentos-category-filter">
+                <span class="sr-only">Categoria</span>
+                <select data-documentos-category>
+                  <option value="todos">Todas as categorias</option>
+                  <option value="Institucional">Institucional</option>
+                  <option value="Pedagógico">Pedagógico</option>
+                  <option value="Formulários">Formulários</option>
+                  <option value="Calendário">Calendário</option>
+                  <option value="Alimentação">Alimentação</option>
+                  <option value="Saúde">Saúde</option>
+                  <option value="Financeiro">Financeiro</option>
+                  <option value="Outros">Outros</option>
+                </select>
+              </label>
+
+              <label class="documentos-select documentos-status-filter">
+                <span class="sr-only">Status</span>
+                <select data-documentos-status>
+                  <option value="todos">Todos os status</option>
+                  <option value="Publicado">Publicado</option>
+                  <option value="Rascunho">Rascunho</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="documentos-table-card">
+              <div class="documentos-table-head" role="row">
+                <span>Nome do documento</span>
+                <span>Categoria</span>
+                <span>Data de envio</span>
+                <span>Tamanho</span>
+                <span>Ações</span>
+              </div>
+              <div class="documentos-table-body" data-documentos-list></div>
+              <div class="documentos-empty-state" data-documentos-empty hidden>
+                <strong>Nenhum documento encontrado</strong>
+                <span>Revise a busca ou os filtros selecionados.</span>
+              </div>
+            </div>
+
+            <aside class="documentos-categories-card" aria-label="Categorias de documentos">
+              <h3>Categorias</h3>
+              <ul>
+                <li><span class="documentos-dot documentos-dot-institucional"></span>Institucional</li>
+                <li><span class="documentos-dot documentos-dot-pedagogico"></span>Pedagógico</li>
+                <li><span class="documentos-dot documentos-dot-formularios"></span>Formulários</li>
+                <li><span class="documentos-dot documentos-dot-calendario"></span>Calendário</li>
+                <li><span class="documentos-dot documentos-dot-alimentacao"></span>Alimentação</li>
+                <li><span class="documentos-dot documentos-dot-saude"></span>Saúde</li>
+                <li><span class="documentos-dot documentos-dot-financeiro"></span>Financeiro</li>
+                <li><span class="documentos-dot documentos-dot-outros"></span>Outros</li>
+              </ul>
+            </aside>
+
+            <img class="documentos-decor" src="../assets/figma-dashboard/educacao-decor.png" alt="" aria-hidden="true" />
+          </section>
+
+          <div class="documentos-actions-menu" data-documentos-menu hidden></div>
+        </section>
+
+        <section class="dashboard-panel dashboard-info-cei-panel" data-panel="informacoes-cei" aria-label="Informações do CEI" hidden>
+          <header class="info-cei-header">
+            <h2>Informações do CEI.</h2>
+            <p>Gerencie as informações institucionais exibidas no site público.</p>
+            <img class="info-cei-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
+            <div class="dashboard-user info-cei-user" aria-label="Usuário logado">
+              <span class="dashboard-user-avatar" aria-hidden="true"></span>
+              <div>
+                <strong data-dashboard-name>Márcia</strong>
+                <span data-dashboard-profile>Diretora</span>
+              </div>
+            </div>
+          </header>
+
+          <section class="info-cei-board" aria-label="Informações institucionais">
+            <article class="info-card info-card-unidade" data-info-card="Dados da Unidade">
+              <button class="info-edit-button" type="button" data-info-edit="Dados da Unidade">Editar Informações</button>
+              <div class="info-card-title"><span aria-hidden="true"><img src="../assets/Home-2--Streamline-Flex.svg" alt="" /></span><h3>Dados da Unidade</h3></div>
+              <div class="info-unit-details">
+                <div class="info-unit-row">
+                  <img src="../assets/Home-2--rosaclaroFlex.svg" alt="" aria-hidden="true" />
+                  <strong>CEI Jardim Rosa Maria</strong>
+                </div>
+                <div class="info-unit-row">
+                  <img src="../assets/map-pin.svg" alt="" aria-hidden="true" />
+                  <p>R. Adelino Branco de Andrade, 37 -<br />Jardim Rosa Maria, São Paulo - SP, 04930-070</p>
+                </div>
+                <div class="info-unit-row">
+                  <img src="../assets/Vector.svg" alt="" aria-hidden="true" />
+                  <p><a href="tel:+551158930232">(11) 5893-0232</a></p>
+                </div>
+                <div class="info-unit-row">
+                  <img src="../assets/mail.svg" alt="" aria-hidden="true" />
+                  <p><a href="mailto:ceijrmaria@sme.prefeitura.sp.gov.br">ceijrmaria@sme.prefeitura.sp.gov.br</a></p>
+                </div>
+              </div>
+            </article>
+
+            <article class="info-card info-card-horario" data-info-card="Horário de Atendimento">
+              <button class="info-edit-button" type="button" data-info-edit="Horário de Atendimento">Editar Informações</button>
+              <div class="info-card-title"><span aria-hidden="true"><img src="../assets/clock.svg" alt="" /></span><h3>Horário de Atendimento</h3></div>
+              <div class="info-card-body">
+                <strong>Segunda à sexta-feira</strong>
+                <p>07h00 às 16h30</p>
+                <p>Atendimento às famílias e responsáveis<br />das 08h às 16h</p>
+              </div>
+            </article>
+
+            <article class="info-card info-card-objetivos" data-info-card="Objetivos & Metas">
+              <button class="info-edit-button" type="button" data-info-edit="Objetivos & Metas">Editar Informações</button>
+              <div class="info-card-title"><span aria-hidden="true"><img src="../assets/image 80.svg" alt="" /></span><h3>Objetivos & Metas</h3></div>
+              <p>Promover o desenvolvimento integral das crianças por meio de educação de qualidade, inclusiva e afetiva, valorizando o brincar, a convivência e o respeito às diversidades.</p>
+              <button class="info-link-button" type="button">Ver Mais <span aria-hidden="true">→</span></button>
+            </article>
+
+            <article class="info-card info-card-equipe" data-info-card="Equipe & Turmas">
+              <button class="info-edit-button" type="button" data-info-edit="Equipe & Turmas">Editar Informações</button>
+              <div class="info-card-title"><span aria-hidden="true"><img src="../assets/users.svg" alt="" /></span><h3>Equipe & Turmas</h3></div>
+              <div class="info-turmas-list">
+                <span>Berçário I</span><span>3 meses a 1 ano</span>
+                <span>Berçário II</span><span>2 anos a 3</span>
+                <span>Mini Grupo I</span><span>3 anos a 4 anos</span>
+                <span>Mini Grupo II</span><span>4 anos a 5 anos</span>
+              </div>
+              <button class="info-link-button" type="button">Ver todas as turmas. <span aria-hidden="true">→</span></button>
+            </article>
+
+            <article class="info-card info-card-organizacao" data-info-card="Organização da Unidade">
+              <button class="info-edit-button" type="button" data-info-edit="Organização da Unidade">Editar Informações</button>
+              <div class="info-card-title"><span aria-hidden="true"><img src="../assets/Pessoas.svg" alt="" /></span><h3>Organização da<br />Unidade</h3></div>
+              <p>O CEI Jardim Rosa Maria funciona com uma proposta pedagógica que valoriza o acolhimento, o respeito, a participação das famílias e o desenvolvimento das crianças em um ambiente seguro e estimulante.</p>
+              <button class="info-link-button" type="button">Ver Mais <span aria-hidden="true">→</span></button>
+            </article>
+
+            <article class="info-card info-card-sobre" data-info-card="Sobre o CEI">
+              <button class="info-edit-button" type="button" data-info-edit="Sobre o CEI">Editar Informações</button>
+              <div class="info-card-title"><span aria-hidden="true"><img src="../assets/file-text.svg" alt="" /></span><h3>Sobre o CEI</h3></div>
+              <p>O CEI Jardim Rosa Maria é uma instituição de educação infantil pública, comprometida com o cuidado, a educação e o desenvolvimento integral das crianças de 0 a 5 anos. Nosso trabalho é pautado pelo afeto, pela inclusão e pelo respeito à infância.</p>
+              <button class="info-link-button" type="button">Ver Mais <span aria-hidden="true">→</span></button>
+            </article>
+
+            <article class="info-card info-card-contato" data-info-card="Contato">
+              <button class="info-edit-button" type="button" data-info-edit="Contato">Editar Informações</button>
+              <div class="info-card-title"><span aria-hidden="true"><img src="../assets/mail.svg" alt="" /></span><h3>Contato</h3></div>
+              <div class="info-card-body">
+                <p>Telefone: <a href="tel:+551158930232">(11) 5893-0232</a></p>
+                <p>Whatsapp: (11) 98827-1621</p>
+                <p>E-mail: <a href="mailto:ceijrmaria@sme.prefeitura.sp.gov.br">ceijrmaria@sme.prefeitura.sp.gov.br</a></p>
+                <strong>Estamos à disposição para atende-los.</strong>
+              </div>
+            </article>
+          </section>
+
+          <div class="info-cei-modal" data-info-modal hidden>
+            <div class="info-cei-modal-card" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+              <h3 id="infoModalTitle" data-info-modal-title>Editar Informações</h3>
+              <p>Interface mockada para edição visual desta seção. Nenhuma informação será salva em banco.</p>
+              <div>
+                <button type="button" data-info-modal-cancel>Cancelar</button>
+                <button type="button" data-info-modal-close>Concluir</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="../vendor/chart.umd.min.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/acessos-dashboard.js"></script>
+    <script src="../js/blog-dashboard.js"></script>
+    <script src="../js/agenda-dashboard.js"></script>
+    <script src="../js/projetos-dashboard.js"></script>
+    <script src="../js/documentos-dashboard.js"></script>
+    <script src="../js/informacoes-cei-dashboard.js"></script>
+    <script src="../js/microinteractions.js"></script>
+  </body>
+</html>

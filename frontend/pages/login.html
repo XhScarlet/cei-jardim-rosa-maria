@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | CEI Jardim Rosa Maria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+    <main id="main-content" class="page login-page" aria-label="Página de login do CEI Jardim Rosa Maria">
+      <!-- Assets decorativos compartilhados com a tela de matrícula. -->
+      <img class="brand-flower" src="../assets/rosa.svg" alt="" aria-hidden="true" />
+      <img class="login-wave login-wave-left" src="../assets/muldura-organica-esquerda.svg" alt="" aria-hidden="true" />
+      <img class="login-wave login-wave-right" src="../assets/muldura-organica-direita.svg" alt="" aria-hidden="true" />
+
+      <!-- Imagem principal do CEI usada como apoio visual da tela de login. -->
+      <img class="login-school-image" src="../assets/img-CEI.svg" alt="Fachada ilustrada do CEI" />
+
+      <nav class="nav-menu" aria-label="Navegação principal">
+        <a class="nav-pill" href="index.html">INÍCIO</a>
+        <a class="nav-pill" href="sobre.html">SOBRE</a>
+        <a class="nav-pill" href="blog.html">BLOG</a>
+        <a class="nav-pill" href="matricula.html">MATRÍCULA</a>
+        <a class="nav-pill nav-pill-login nav-pill-active" href="login.html" aria-current="page">LOGIN</a>
+      </nav>
+
+      <span class="login-small-line" aria-hidden="true"></span>
+
+      <section class="login-card" aria-labelledby="login-title">
+        <div class="login-welcome" id="login-title">Bem vindo(a)</div>
+
+        <div class="login-copy">
+          <p class="login-heading"><span>Acesse</span> sua Conta!</p>
+          <p>Faça login para acessar a área da direção</p>
+          <p>e gerenciar as informações do CEI.</p>
+        </div>
+
+        <form class="login-form" data-login-form>
+          <!-- Inputs reais para permitir integração posterior com autenticação. -->
+          <label class="login-field" for="login-email">
+            <span>E-mail</span>
+            <input
+              id="login-email"
+              type="email"
+              name="email"
+              autocomplete="email"
+              placeholder="seuemail@exemplo.com"
+              required
+              aria-describedby="login-status"
+            />
+          </label>
+
+          <label class="login-field" for="login-password">
+            <span>Senha</span>
+            <input
+              id="login-password"
+              type="password"
+              name="senha"
+              autocomplete="current-password"
+              placeholder="Digite sua senha"
+              required
+              aria-describedby="login-status"
+            />
+          </label>
+          <a class="forgot-password" href="#">Esqueceu sua senha?</a>
+          <button class="login-submit" type="submit">Entrar</button>
+          <!-- Mensagem reutilizável para retorno de autenticação inválida. -->
+          <p id="login-status" class="form-message form-message-error" role="alert" hidden>
+            Login inválido. Verifique e-mail e senha.
+          </p>
+        </form>
+
+        <p class="login-account-note">
+          Acesso exclusivo da direção do CEI.
+        </p>
+
+        <img class="login-blue-flower" src="../assets/rosa-azul.svg" alt="" aria-hidden="true" />
+      </section>
+
+      <p class="login-footer-text">cuidado | <span>amor</span> | carinho</p>
+      <img class="login-heart-line" src="../assets/linha-de-coraçao.svg" alt="" aria-hidden="true" />
+    </main>
+
+    <script>
+      const loginForm = document.querySelector("[data-login-form]");
+      const loginStatus = document.querySelector("#login-status");
+
+      loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(loginForm);
+        const email = String(formData.get("email")).trim().toLowerCase();
+        const senha = String(formData.get("senha"));
+
+        loginStatus.hidden = true;
+
+        try {
+          const response = await fetch("http://localhost:8080/api/auth/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, senha })
+          });
+
+          if (!response.ok) {
+            loginStatus.hidden = false;
+            return;
+          }
+
+          const userData = await response.json();
+
+          // Salva os dados retornados do banco no localStorage para o Dashboard usar
+          localStorage.setItem("ceiDashboardUser", JSON.stringify(userData));
+
+          // Redireciona para a página principal da gestão
+          window.location.href = "dashboard.html";
+
+        } catch (error) {
+          console.error("Erro na comunicação com a API:", error);
+          loginStatus.textContent = "Erro ao conectar com o servidor. Tente novamente mais tarde.";
+          loginStatus.hidden = false;
+        }
+      });
+    </script>
+
+<!--    <script>-->
+<!--      /*-->
+<!--        Logins de teste da direção para o protótipo.-->
+<!--        Na versão com backend, estas credenciais devem sair do front-end e a API-->
+<!--        deve devolver o perfil identificado da pessoa autenticada.-->
+<!--      */-->
+<!--      const prototypeUsers = {-->
+<!--        "marcia@cei.com": {-->
+<!--          password: "123456",-->
+<!--          name: "Márcia",-->
+<!--          initials: "MR",-->
+<!--          profile: "Diretora",-->
+<!--          dashboard: "dashboard.html",-->
+<!--        },-->
+<!--        "fabia@cei.com": {-->
+<!--          password: "123456",-->
+<!--          name: "Fábia",-->
+<!--          initials: "FB",-->
+<!--          profile: "Diretora",-->
+<!--          dashboard: "dashboard.html",-->
+<!--        },-->
+<!--        "marta@cei.com": {-->
+<!--          password: "123456",-->
+<!--          name: "Marta",-->
+<!--          initials: "MT",-->
+<!--          profile: "Diretora",-->
+<!--          dashboard: "dashboard.html",-->
+<!--        },-->
+<!--        "daiane@cei.com": {-->
+<!--          password: "123456",-->
+<!--          name: "Daiane",-->
+<!--          initials: "DN",-->
+<!--          profile: "Diretora",-->
+<!--          dashboard: "dashboard.html",-->
+<!--        },-->
+<!--      };-->
+
+<!--      const loginForm = document.querySelector("[data-login-form]");-->
+<!--      const loginStatus = document.querySelector("#login-status");-->
+
+<!--      loginForm.addEventListener("submit", (event) => {-->
+<!--        const formData = new FormData(loginForm);-->
+<!--        const email = String(formData.get("email")).trim().toLowerCase();-->
+<!--        const password = String(formData.get("senha"));-->
+<!--        const user = prototypeUsers[email];-->
+
+<!--        if (!user || user.password !== password) {-->
+<!--          event.preventDefault();-->
+<!--          loginStatus.hidden = false;-->
+<!--          return;-->
+<!--        }-->
+
+<!--        event.preventDefault();-->
+<!--        localStorage.setItem(-->
+<!--          "ceiDashboardUser",-->
+<!--          JSON.stringify({-->
+<!--            name: user.name,-->
+<!--            initials: user.initials,-->
+<!--            profile: user.profile,-->
+<!--          })-->
+<!--        );-->
+<!--        window.location.href = user.dashboard;-->
+<!--      });-->
+<!--    </script>-->
+  </body>
+</html>

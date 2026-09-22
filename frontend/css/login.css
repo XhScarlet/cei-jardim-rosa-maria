@@ -1,0 +1,248 @@
+﻿/* -------------------------------------------------------------------------- */
+/* Página de login: painel de acesso, formulário e feedback visual. */
+/* Mantido separado para facilitar manutenção pelos próximos devs. */
+/* -------------------------------------------------------------------------- */
+
+/* Página Login                                                               */
+/* -------------------------------------------------------------------------- */
+
+.login-page {
+  background: #ffe3e2;
+  overflow: hidden;
+}
+
+.login-wave {
+  position: absolute;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.login-wave-left {
+  left: 0;
+  bottom: 0;
+  width: 52vw;
+  height: 42vh;
+  object-position: left bottom;
+}
+
+.login-wave-right {
+  right: 0;
+  bottom: 0;
+  width: 34vw;
+  height: 34vh;
+  object-position: right bottom;
+}
+
+.login-small-line {
+  position: absolute;
+  left: calc(191 * var(--ux));
+  top: calc(598 * var(--uy));
+  width: calc(69 * var(--ux));
+  height: calc(2 * var(--uy));
+  background: #e3a0a9;
+  z-index: 2;
+}
+
+/* Imagem local img-CEI.svg, posicionada no espaço esquerdo do frame de login. */
+.login-school-image {
+  position: absolute;
+  left: calc(188 * var(--ux));
+  top: calc(159 * var(--uy));
+  width: calc(920 * var(--ux));
+  height: calc(552 * var(--uy));
+  object-fit: cover;
+  border-radius: calc(90 * var(--u));
+  z-index: 2;
+  animation: image-enter 850ms 220ms ease-out both;
+  transition:
+    transform 500ms ease,
+    box-shadow 500ms ease;
+}
+
+.login-school-image:hover {
+  transform: scale(1.01);
+  box-shadow: 0 calc(18 * var(--u)) calc(34 * var(--u)) rgba(34, 76, 100, 0.12);
+}
+
+/* Card azul do login posicionado exatamente no bloco direito do Figma. */
+.login-card {
+  position: absolute;
+  left: calc(1212 * var(--ux));
+  top: calc(159 * var(--uy));
+  width: calc(587 * var(--ux));
+  height: calc(688 * var(--uy));
+  border-radius: calc(80 * var(--u));
+  background: #d6e5f0;
+  z-index: 2;
+  animation: image-enter 720ms 120ms ease-out both;
+}
+
+.login-welcome {
+  position: absolute;
+  left: calc(132 * var(--ux));
+  top: calc(42 * var(--uy));
+  width: calc(324 * var(--ux));
+  height: calc(44 * var(--uy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(80 * var(--u));
+  background: #f0ced3;
+  color: #d48690;
+  font-size: calc(16 * var(--u));
+  font-weight: 800;
+}
+
+.login-copy {
+  position: absolute;
+  left: calc(68 * var(--ux));
+  top: calc(102 * var(--uy));
+  width: calc(463 * var(--ux));
+  color: #2b5c7d;
+  font-size: calc(16 * var(--u));
+  line-height: 1.35;
+  text-align: center;
+}
+
+.login-copy p {
+  margin: 0;
+}
+
+.login-heading {
+  margin-bottom: calc(12 * var(--uy)) !important;
+  color: #d48690;
+  font-weight: 800;
+}
+
+.login-heading span {
+  color: #2b5c7d;
+}
+
+.login-form {
+  position: absolute;
+  left: calc(51 * var(--ux));
+  top: calc(260 * var(--uy));
+  width: calc(480 * var(--ux));
+}
+
+.login-field {
+  display: block;
+  margin: 0 0 calc(18 * var(--uy));
+  color: #2b5c7d;
+  font-size: calc(15 * var(--u));
+  font-weight: 700;
+}
+
+.login-field span {
+  display: block;
+  margin: 0 0 calc(8 * var(--uy));
+}
+
+.login-form input {
+  display: block;
+  width: 100%;
+  height: calc(52 * var(--uy));
+  margin-bottom: 0;
+  padding: 0 calc(22 * var(--ux));
+  border: calc(1 * var(--u)) solid #e3a0a9;
+  border-radius: calc(80 * var(--u));
+  background: rgba(255, 255, 255, 0.9);
+  color: #2b5c7d;
+  font: 400 calc(16 * var(--u)) / 1 "Poppins", Arial, sans-serif;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.login-form input:focus {
+  border-color: #5c95be;
+  box-shadow: 0 0 0 calc(4 * var(--u)) rgba(92, 149, 190, 0.16);
+}
+
+.forgot-password {
+  display: block;
+  margin-top: calc(-2 * var(--uy));
+  margin-bottom: calc(24 * var(--uy));
+  color: #2b5c7d;
+  font-size: calc(16 * var(--u));
+  text-align: right;
+}
+
+.login-submit {
+  width: 100%;
+  height: calc(52 * var(--uy));
+  border: calc(1 * var(--u)) solid #e3a0a9;
+  border-radius: calc(80 * var(--u));
+  background: #2b5c7d;
+  color: #fff;
+  font: 700 calc(16 * var(--u)) / 1 "Poppins", Arial, sans-serif;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.login-submit:hover {
+  transform: translateY(calc(-2 * var(--uy)));
+  filter: brightness(1.05);
+  box-shadow: 0 calc(12 * var(--uy)) calc(22 * var(--ux)) rgba(43, 92, 125, 0.18);
+}
+
+.login-account-note {
+  position: absolute;
+  left: calc(86 * var(--ux));
+  top: calc(574 * var(--uy));
+  width: calc(416 * var(--ux));
+  margin: 0;
+  color: #2b5c7d;
+  font-size: calc(16 * var(--u));
+  line-height: 1.3;
+  text-align: center;
+}
+
+.login-account-note span,
+.login-footer-text span {
+  color: #d48690;
+}
+
+.login-blue-flower {
+  position: absolute;
+  left: 50%;
+  top: calc(592 * var(--uy));
+  width: calc(85 * var(--u));
+  height: calc(81 * var(--u));
+  object-fit: contain;
+  transform: translateX(-50%);
+  animation: flower-pop 700ms 520ms ease-out both;
+}
+
+.login-footer-text {
+  position: absolute;
+  left: 50%;
+  top: calc(973 * var(--uy));
+  width: calc(222 * var(--ux));
+  margin: 0;
+  color: #2b5c7d;
+  font-size: calc(16 * var(--u));
+  line-height: 1.3;
+  text-align: center;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.login-heart-line {
+  position: absolute;
+  left: 50%;
+  top: calc(955 * var(--uy));
+  width: calc(239 * var(--u));
+  height: calc(158 * var(--u));
+  object-fit: contain;
+  pointer-events: none;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* -------------------------------------------------------------------------- */

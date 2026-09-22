@@ -1,0 +1,1138 @@
+﻿/* -------------------------------------------------------------------------- */
+/* Página Sobre: seções institucionais, cards ilustrados e ajustes responsivos. */
+/* Mantido separado para facilitar manutenção pelos próximos devs. */
+/* -------------------------------------------------------------------------- */
+
+/* Página Sobre                                                               */
+/* -------------------------------------------------------------------------- */
+
+/* A página Sobre é longa; diferente das homes, ela precisa rolar. */
+body:has(.sobre-page) {
+  overflow: auto;
+}
+
+.sobre-page {
+  position: relative;
+  inset: auto;
+  width: 100vw;
+  min-height: calc(3551 * var(--ux));
+  height: auto;
+  overflow: visible;
+  background: #ffe3e2;
+}
+
+.sobre-canvas {
+  position: relative;
+  width: 100vw;
+  height: calc(3551 * var(--ux));
+  min-height: 100vh;
+  --s: var(--ux);
+  overflow: hidden;
+}
+
+.sobre-bg {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: calc(1153 * var(--s));
+  object-fit: cover;
+  opacity: 0.5;
+  z-index: 0;
+  animation: soft-reveal 800ms ease-out both;
+}
+
+.sobre-bg-1 {
+  top: 0;
+}
+
+.sobre-bg-2 {
+  top: calc(1153 * var(--s));
+}
+
+.sobre-bg-3 {
+  top: calc(2306 * var(--s));
+  height: calc(1220 * var(--s));
+}
+
+.sobre-page .brand-flower,
+.sobre-page .nav-menu {
+  z-index: 5;
+}
+
+.sobre-page .brand-flower {
+  top: calc(10 * var(--s));
+  width: calc(108 * var(--s));
+  z-index: 6;
+}
+
+.sobre-page .nav-menu {
+  animation: slide-down 650ms 180ms ease-out both;
+}
+
+.sobre-page .nav-pill {
+  color: #fff;
+  opacity: 1;
+  filter: none;
+}
+
+.sobre-hero {
+  position: absolute;
+  left: calc(40 * var(--s));
+  top: calc(130 * var(--s));
+  width: calc(1840 * var(--s));
+  height: calc(925 * var(--s));
+  z-index: 2;
+  animation: panel-enter 760ms 120ms ease-out both;
+}
+
+.sobre-hero > img:first-child {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Texto da hero separado da imagem para ficar nítido e editável. */
+.sobre-hero-copy {
+  position: absolute;
+  left: 5.45%;
+  top: 26.4%;
+  width: 40%;
+  color: #184868;
+  font-family: "Patrick Hand", cursive;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.sobre-hero-copy h1 {
+  margin: 0 0 calc(30 * var(--s));
+  color: #184868;
+  font-family: "Patrick Hand", cursive;
+  font-size: calc(52 * var(--s));
+  font-weight: 400;
+  line-height: 1.23;
+  letter-spacing: 0;
+}
+
+.sobre-hero-copy h1 span {
+  color: #ae5864;
+}
+
+.sobre-hero-copy p {
+  margin: 0;
+  color: #184868;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: calc(24 * var(--s));
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: 0;
+}
+
+.about-intro img,
+.right-card img,
+.project-card img,
+.family-section img,
+.team-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.scroll-badge {
+  position: absolute;
+  left: 15.5%;
+  top: 60.6%;
+  width: 14.35%;
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+
+/* Base clara para o badge animado não duplicar com a versão raster da hero. */
+.scroll-badge::before {
+  content: "";
+  position: absolute;
+  inset: 19%;
+  border-radius: 50%;
+  background: rgba(255, 250, 238, 0.82);
+  filter: blur(calc(2 * var(--s)));
+}
+
+.scroll-badge-text {
+  position: absolute;
+  inset: 0;
+  animation: scroll-badge-spin 10s linear infinite;
+  z-index: 2;
+  overflow: visible;
+}
+
+.scroll-badge-text text {
+  color: #184868;
+  fill: currentColor;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 8px;
+  text-rendering: geometricPrecision;
+}
+
+/*
+  O arquivo role-a-pagina.svg inclui texto e mochila juntos. Aqui fazemos um
+  crop visual para usar só a mochila no centro, deixando o texto girar em HTML.
+*/
+.scroll-backpack {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 37.2%;
+  height: 40.3%;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.scroll-backpack img {
+  position: absolute;
+  left: -87.7%;
+  top: -73.6%;
+  width: 269.4%;
+  height: 248.1%;
+  max-width: none;
+}
+
+.about-intro {
+  position: absolute;
+  left: calc(73 * var(--s));
+  top: calc(1186 * var(--s));
+  width: calc(1774 * var(--s));
+  height: calc(431 * var(--s));
+  border: calc(1 * var(--s)) solid #ae5864;
+  border-radius: calc(90 * var(--s));
+  background: #d9d9d9;
+  z-index: 2;
+}
+
+.intro-cei {
+  position: absolute;
+  left: calc(44 * var(--s));
+  top: calc(51 * var(--s));
+  width: calc(495 * var(--s)) !important;
+  height: calc(330 * var(--s)) !important;
+}
+
+.intro-copy {
+  position: absolute;
+  left: calc(596 * var(--s));
+  top: calc(65 * var(--s));
+  width: calc(603 * var(--s));
+  color: #ae5864;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.intro-copy h2 {
+  margin: 0;
+  color: #ae5864;
+  font-size: calc(24 * var(--s));
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.sobre-underline {
+  display: block;
+  width: calc(61 * var(--s));
+  height: calc(6 * var(--s));
+  margin: calc(5 * var(--s)) 0 calc(29 * var(--s));
+  border-radius: 999px;
+  background: #ae5864;
+}
+
+.intro-copy p {
+  margin: 0;
+  font-size: calc(24 * var(--s));
+  line-height: 1.42;
+}
+
+.intro-note {
+  position: absolute;
+  left: calc(1290 * var(--s));
+  top: calc(17 * var(--s));
+  width: calc(343 * var(--s));
+  height: calc(343 * var(--s));
+}
+
+.intro-note p {
+  position: absolute;
+  left: calc(73 * var(--s));
+  top: calc(60 * var(--s));
+  width: calc(205 * var(--s));
+  margin: 0;
+  color: #000;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: calc(20 * var(--s));
+  font-weight: 400;
+  line-height: 2.05;
+}
+
+.rights-section,
+.projects-section,
+.family-section,
+.team-section {
+  position: absolute;
+  z-index: 2;
+  font-family: "Patrick Hand", cursive;
+  color: #8c0c0c;
+}
+
+.rights-section {
+  left: calc(73 * var(--s));
+  top: calc(1617 * var(--s));
+  width: calc(1774 * var(--s));
+  height: calc(360 * var(--s));
+}
+
+.rights-section h2,
+.projects-section h2,
+.family-section h2,
+.team-section h2 {
+  margin: 0;
+  font-family: "Patrick Hand SC", "Patrick Hand", cursive;
+  font-size: calc(60 * var(--s));
+  line-height: 1;
+  font-weight: 400;
+}
+
+.rights-section h2 {
+  position: absolute;
+  left: calc(657 * var(--s));
+  top: 0;
+}
+
+.right-card {
+  position: absolute;
+  border: calc(1 * var(--s)) solid #ae5864;
+  color: #8c0c0c;
+}
+
+.right-card img {
+  position: absolute;
+}
+
+.right-card h3,
+.project-card h3 {
+  position: absolute;
+  margin: 0;
+  font-size: calc(16 * var(--s));
+  line-height: 1;
+  font-weight: 400;
+}
+
+.right-card p,
+.project-card p {
+  position: absolute;
+  margin: 0;
+  font-size: calc(18 * var(--s));
+  line-height: 1.25;
+}
+
+.explorar {
+  left: calc(26 * var(--s));
+  top: calc(84 * var(--s));
+  width: calc(440 * var(--s));
+  height: calc(267 * var(--s));
+  border-radius: calc(80 * var(--s));
+  background: #e697a2;
+}
+
+.explorar img {
+  left: calc(20 * var(--s));
+  top: calc(28 * var(--s));
+  width: calc(220 * var(--s));
+  height: calc(208 * var(--s));
+}
+
+.explorar h3 {
+  left: calc(285 * var(--s));
+  top: calc(52 * var(--s));
+}
+
+.explorar p {
+  left: calc(266 * var(--s));
+  top: calc(110 * var(--s));
+  width: calc(140 * var(--s));
+}
+
+.expressar {
+  left: calc(486 * var(--s));
+  top: calc(98 * var(--s));
+  width: calc(380 * var(--s));
+  height: calc(253 * var(--s));
+  border-radius: calc(25 * var(--s));
+  background: #97c1de;
+}
+
+.expressar img {
+  left: calc(34 * var(--s));
+  top: calc(20 * var(--s));
+  width: calc(190 * var(--s));
+  height: calc(190 * var(--s));
+}
+
+.expressar h3 {
+  left: calc(240 * var(--s));
+  top: calc(46 * var(--s));
+}
+
+.expressar p {
+  left: calc(213 * var(--s));
+  top: calc(90 * var(--s));
+  width: calc(150 * var(--s));
+  font-size: calc(17 * var(--s));
+}
+
+.conviver {
+  left: calc(898 * var(--s));
+  top: calc(107 * var(--s));
+  width: calc(379 * var(--s));
+  height: calc(241 * var(--s));
+  border-radius: calc(75 * var(--s));
+  background: #fee393;
+}
+
+.conviver img {
+  left: calc(16 * var(--s));
+  top: calc(26 * var(--s));
+  width: calc(183 * var(--s));
+  height: calc(190 * var(--s));
+}
+
+.conviver h3 {
+  left: calc(235 * var(--s));
+  top: calc(52 * var(--s));
+}
+
+.conviver p {
+  left: calc(198 * var(--s));
+  top: calc(95 * var(--s));
+  width: calc(165 * var(--s));
+}
+
+.brincar {
+  left: calc(1309 * var(--s));
+  top: calc(107 * var(--s));
+  width: calc(425 * var(--s));
+  height: calc(241 * var(--s));
+  border-radius: calc(90 * var(--s));
+  background: #c2d89e;
+}
+
+.brincar img {
+  left: calc(25 * var(--s));
+  top: calc(45 * var(--s));
+  width: calc(227 * var(--s));
+  height: calc(151 * var(--s));
+}
+
+.brincar h3 {
+  left: calc(293 * var(--s));
+  top: calc(51 * var(--s));
+}
+
+.brincar p {
+  left: calc(238 * var(--s));
+  top: calc(92 * var(--s));
+  width: calc(170 * var(--s));
+}
+
+.projects-section {
+  left: calc(73 * var(--s));
+  top: calc(2049 * var(--s));
+  width: calc(1810 * var(--s));
+  height: calc(467 * var(--s));
+  border: calc(1 * var(--s)) solid #ae5864;
+  border-radius: calc(90 * var(--s));
+  background: #dfbab9;
+}
+
+.projects-section h2 {
+  position: absolute;
+  left: calc(643 * var(--s));
+  top: calc(-43 * var(--s));
+}
+
+.project-card {
+  position: absolute;
+  top: calc(44 * var(--s));
+  width: calc(331 * var(--s));
+  height: calc(267 * var(--s));
+  border: calc(1 * var(--s)) solid #ae5864;
+  border-radius: calc(25 * var(--s));
+  background: #ebdadd;
+}
+
+.project-card img {
+  position: absolute;
+  left: calc(9 * var(--s));
+  top: calc(12 * var(--s));
+  width: calc(313 * var(--s));
+  height: calc(209 * var(--s));
+}
+
+.project-card h3 {
+  top: calc(229 * var(--s));
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: "Patrick Hand SC", "Patrick Hand", cursive;
+  font-size: calc(24 * var(--s));
+}
+
+.project-card p {
+  top: calc(279 * var(--s));
+  left: calc(9 * var(--s));
+  width: calc(322 * var(--s));
+  height: calc(99 * var(--s));
+  padding: calc(8 * var(--s)) calc(14 * var(--s));
+  border: calc(1 * var(--s)) solid #ae5864;
+  border-radius: calc(25 * var(--s));
+  background: #ebdadd;
+  font-family: "Patrick Hand SC", "Patrick Hand", cursive;
+  font-size: calc(22 * var(--s));
+  line-height: 1.15;
+}
+
+.horta {
+  left: calc(46 * var(--s));
+}
+
+.leitura {
+  left: calc(395 * var(--s));
+}
+
+.atelie {
+  left: calc(744 * var(--s));
+}
+
+.cozinha {
+  left: calc(1090 * var(--s));
+}
+
+.quintal {
+  left: calc(1439 * var(--s));
+}
+
+.family-section {
+  left: calc(82 * var(--s));
+  top: calc(2552 * var(--s));
+  width: calc(1781 * var(--s));
+  height: calc(431 * var(--s));
+  border: calc(1 * var(--s)) solid #ae5864;
+  border-radius: calc(90 * var(--s));
+  background: #f2e1b0;
+}
+
+.family-section > img {
+  position: absolute;
+  left: calc(37 * var(--s));
+  top: calc(-55 * var(--s));
+  width: calc(606 * var(--s));
+  height: calc(492 * var(--s));
+}
+
+.family-section h2 {
+  position: absolute;
+  left: calc(768 * var(--s));
+  top: calc(32 * var(--s));
+}
+
+.family-section p {
+  position: absolute;
+  left: calc(646 * var(--s));
+  top: calc(157 * var(--s));
+  width: calc(717 * var(--s));
+  margin: 0;
+  font-family: "Patrick Hand SC", "Patrick Hand", cursive;
+  font-size: calc(32 * var(--s));
+  line-height: 1.3;
+}
+
+.family-quote {
+  position: absolute;
+  left: calc(1338 * var(--s));
+  top: calc(68 * var(--s));
+  width: calc(345 * var(--s));
+  height: calc(345 * var(--s));
+  color: #8c0c0c;
+}
+
+.family-quote img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.family-quote span {
+  position: absolute;
+  left: calc(45 * var(--s));
+  top: calc(143 * var(--s));
+  width: calc(270 * var(--s));
+  height: calc(82 * var(--s));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: "Patrick Hand SC", "Patrick Hand", cursive;
+  font-size: calc(18 * var(--s));
+  line-height: 1.55;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.team-section {
+  left: calc(73 * var(--s));
+  top: calc(3055 * var(--s));
+  width: calc(1774 * var(--s));
+  height: calc(431 * var(--s));
+  border: calc(1 * var(--s)) solid #ae5864;
+  border-radius: calc(90 * var(--s));
+  background: #c2d89e;
+}
+
+.team-section h2 {
+  position: absolute;
+  left: calc(168 * var(--s));
+  top: calc(15 * var(--s));
+  font-size: calc(60 * var(--s));
+  line-height: 1;
+}
+
+.team-section p {
+  position: absolute;
+  left: calc(93 * var(--s));
+  top: calc(140 * var(--s));
+  width: calc(717 * var(--s));
+  margin: 0;
+  font-family: "Patrick Hand SC", "Patrick Hand", cursive;
+  font-size: calc(28 * var(--s));
+  line-height: 1.55;
+}
+
+.team-section img {
+  position: absolute;
+  right: calc(235 * var(--s));
+  bottom: 0;
+  width: calc(674 * var(--s));
+  height: calc(540 * var(--s));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsividade global                                                      */
+/* -------------------------------------------------------------------------- */
+
+/* Notebook/tablet largo: mantém a identidade desktop, mas reduz densidade. */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .post-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .blog-board {
+    width: min(92vw, 1050px);
+  }
+}
+
+/* Celular/tablet estreito: troca o canvas fixo do Figma por fluxo legível. */
+@media (max-width: 900px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-y: auto;
+  }
+
+  .page {
+    position: relative;
+    inset: auto;
+    width: 100vw;
+    min-height: 100svh;
+    height: auto;
+    padding: 18px 14px 34px;
+    overflow: visible;
+    --u: 1px;
+    --ux: 1px;
+    --uy: 1px;
+  }
+
+  .background-illustration,
+  .blog-bg {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100svh;
+    object-fit: cover;
+  }
+
+  .brand-flower,
+  .sobre-page .brand-flower,
+  .blog-page .brand-flower {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: block;
+    width: 82px;
+    margin: 0 0 -42px 4px;
+  }
+
+  .nav-menu,
+  .sobre-page .nav-menu,
+  .blog-page .nav-menu {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin: 0 auto 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 9px;
+  }
+
+  .nav-pill {
+    min-width: 68px;
+    height: 42px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
+  .nav-pill[href="matricula.html"] {
+    min-width: 102px;
+  }
+
+  /* Home mobile: remove o clip fixo e empilha chamada + imagem. */
+  .hero-shape {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    margin-top: 22px;
+    padding: 28px 18px 32px;
+    border-radius: 38px;
+    clip-path: none;
+  }
+
+  .shape-content {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .hero-copy,
+  .school-image,
+  .blue-flower {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+  }
+
+  .hero-copy {
+    text-align: left;
+  }
+
+  .eyebrow,
+  h1 {
+    font-size: clamp(42px, 14vw, 64px);
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .primary-button {
+    min-width: 210px;
+    height: 50px;
+    font-size: 14px;
+  }
+
+  .location-button {
+    width: 98px;
+    height: 66px;
+  }
+
+  .school-image {
+    height: auto;
+    aspect-ratio: 1.35;
+    border-radius: 34px;
+  }
+
+  .blue-flower {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto;
+  }
+
+  /* Matrícula e login mobile: cards viram painéis em coluna, com formulário legível. */
+  .matricula-page,
+  .login-page {
+    overflow: visible;
+  }
+
+  .matricula-wave,
+  .login-wave {
+    position: fixed;
+    opacity: 0.72;
+  }
+
+  .matricula-small-line,
+  .login-small-line,
+  .heart-line,
+  .login-heart-line {
+    display: none;
+  }
+
+  .matricula-card,
+  .login-card {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin: 26px auto 18px;
+    padding: 26px 18px 30px;
+    border-radius: 34px;
+  }
+
+  .welcome-pill,
+  .login-welcome {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: min(100%, 330px);
+    height: 48px;
+    margin: 0 auto 24px;
+    font-size: 16px;
+  }
+
+  .post-it-wrap {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: min(100%, 360px);
+    height: auto;
+    aspect-ratio: 489 / 458;
+    margin: 0 auto 22px;
+  }
+
+  .post-it-text {
+    left: 19%;
+    top: 22%;
+    width: 62%;
+    font-size: clamp(11px, 3.3vw, 15px);
+  }
+
+  .secretaria,
+  .horario {
+    font-size: clamp(10px, 3vw, 13px);
+  }
+
+  .matricula-form,
+  .login-form,
+  .login-copy,
+  .login-account-note {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .field-group,
+  .form-intro,
+  .login-copy,
+  .forgot-password,
+  .login-account-note {
+    font-size: 15px;
+  }
+
+  .field-group input,
+  .login-form input,
+  .submit-button,
+  .login-submit {
+    height: 48px;
+    font-size: 15px;
+  }
+
+  .login-school-image {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    aspect-ratio: 1.55;
+    margin: 24px auto 0;
+    border-radius: 34px;
+  }
+
+  .login-blue-flower,
+  .matricula-blue-flower,
+  .matricula-footer-text,
+  .login-footer-text {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: block;
+    transform: none;
+    margin: 18px auto 0;
+    text-align: center;
+  }
+
+  .login-blue-flower,
+  .matricula-blue-flower {
+    width: 58px;
+    height: 58px;
+  }
+
+  /* Sobre mobile: seções longas deixam de ser absolutas e viram blocos empilhados. */
+  .sobre-page {
+    min-height: 100svh;
+    padding: 18px 14px 34px;
+  }
+
+  .sobre-canvas {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    --s: 1px;
+    overflow: visible;
+  }
+
+  .sobre-bg {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100svh;
+    object-fit: cover;
+  }
+
+  .sobre-bg-2,
+  .sobre-bg-3 {
+    display: none;
+  }
+
+  .sobre-hero,
+  .about-intro,
+  .rights-section,
+  .projects-section,
+  .family-section,
+  .team-section {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    margin: 22px auto;
+    border-radius: 34px;
+  }
+
+  .sobre-hero {
+    overflow: hidden;
+  }
+
+  .sobre-hero > img:first-child {
+    height: auto;
+    border-radius: 34px;
+  }
+
+  .sobre-hero-copy {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    margin-top: 18px;
+    padding: 22px;
+    border-radius: 28px;
+    background: rgba(255, 250, 238, 0.82);
+    pointer-events: auto;
+  }
+
+  .sobre-hero-copy h1 {
+    font-size: clamp(36px, 11vw, 52px);
+  }
+
+  .sobre-hero-copy p {
+    font-size: 16px;
+  }
+
+  .scroll-badge {
+    left: 11%;
+    top: 58%;
+    width: 24%;
+  }
+
+  .about-intro,
+  .projects-section,
+  .family-section,
+  .team-section {
+    padding: 24px 18px;
+  }
+
+  .intro-cei,
+  .intro-copy,
+  .intro-note,
+  .family-section > img,
+  .family-section h2,
+  .family-section p,
+  .family-quote,
+  .team-section h2,
+  .team-section p,
+  .team-section img {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .intro-cei,
+  .family-section > img,
+  .team-section img {
+    max-height: 340px;
+    object-fit: contain;
+  }
+
+  .intro-copy,
+  .intro-note,
+  .family-section p,
+  .team-section p {
+    margin-top: 18px;
+  }
+
+  .intro-copy h2,
+  .rights-section h2,
+  .projects-section h2,
+  .family-section h2,
+  .team-section h2 {
+    position: relative;
+    left: auto;
+    top: auto;
+    text-align: center;
+    font-size: clamp(34px, 9vw, 52px);
+  }
+
+  .intro-copy p,
+  .family-section p,
+  .team-section p {
+    font-size: 22px;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .intro-note {
+    max-width: 260px;
+    margin: 18px auto 0;
+  }
+
+  .intro-note p {
+    position: absolute;
+    left: 22%;
+    top: 18%;
+    width: 58%;
+    font-size: 14px;
+    line-height: 1.65;
+    text-align: left;
+  }
+
+  .rights-section {
+    display: grid;
+    gap: 16px;
+  }
+
+  .right-card,
+  .project-card {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 18px;
+    border-radius: 28px;
+  }
+
+  .right-card img,
+  .project-card img {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: block;
+    width: 100% !important;
+    max-height: 190px;
+    height: auto !important;
+    margin: 0 auto 12px;
+  }
+
+  .right-card h3,
+  .right-card p,
+  .project-card h3,
+  .project-card p {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    text-align: center;
+  }
+
+  .right-card h3,
+  .project-card h3 {
+    font-size: 28px;
+  }
+
+  .right-card p,
+  .project-card p {
+    margin-top: 8px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
+  .projects-section {
+    display: grid;
+    gap: 16px;
+  }
+
+  .projects-section h2 {
+    margin-bottom: 4px;
+  }
+
+  .family-quote {
+    max-width: 320px;
+    margin: 18px auto 0;
+  }
+
+  .family-quote span {
+    left: 13%;
+    top: 41%;
+    width: 74%;
+    height: 24%;
+    font-size: clamp(15px, 4vw, 18px);
+  }
+}
+
+/* -------------------------------------------------------------------------- */

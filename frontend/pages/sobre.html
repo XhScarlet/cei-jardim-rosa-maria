@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre | CEI Jardim Rosa Maria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Patrick+Hand+SC&family=Poppins:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+    <main id="main-content" class="page sobre-page" aria-label="Página sobre o CEI Jardim Rosa Maria">
+      <div class="sobre-canvas">
+        <!-- Fundo repetido como no Figma para preencher toda a página longa. -->
+        <img class="sobre-bg sobre-bg-1" src="../assets/img-fundo-iii.png" alt="" aria-hidden="true" />
+        <img class="sobre-bg sobre-bg-2" src="../assets/img-fundo-iii.png" alt="" aria-hidden="true" />
+        <img class="sobre-bg sobre-bg-3" src="../assets/img-fundo-iii.png" alt="" aria-hidden="true" />
+
+        <img class="brand-flower" src="../assets/rosa.svg" alt="" aria-hidden="true" />
+
+        <nav class="nav-menu" aria-label="Navegação principal">
+          <a class="nav-pill" href="index.html">INÍCIO</a>
+          <a class="nav-pill nav-pill-active" href="sobre.html" aria-current="page">SOBRE</a>
+          <a class="nav-pill" href="blog.html">BLOG</a>
+          <a class="nav-pill" href="matricula.html">MATRÍCULA</a>
+          <a class="nav-pill nav-pill-login" href="login.html">LOGIN</a>
+        </nav>
+
+        <!-- Hero principal já exportado com a arte do Figma. -->
+        <section class="sobre-hero">
+          <img src="../assets/um-lugar-pra-ser-criança-page.svg" alt="Um lugar para ser criança" />
+          <div class="sobre-hero-copy" aria-label="Um lugar para ser criança">
+            <!-- Texto refeito em HTML para garantir nitidez e posição fiel ao Figma. -->
+            <h1>
+              Um lugar<br />
+              para ser<br />
+              <span>criança.</span>
+            </h1>
+            <p>
+              brincar, descobrir, explorar, conviver e crescer<br />
+              sendo respeitado em cada forma de se expressar.
+            </p>
+          </div>
+          <!-- Mochila estática + texto circular animado, como convite para rolar a página. -->
+          <div class="scroll-badge" aria-label="Role a página">
+            <svg class="scroll-badge-text" viewBox="0 0 240 240" aria-hidden="true">
+              <!-- TextPath mantém a frase no arco, reproduzindo o selo circular do Figma. -->
+              <defs>
+                <path
+                  id="scroll-badge-circle"
+                  d="M 120 120 m -84 0 a 84 84 0 1 1 168 0 a 84 84 0 1 1 -168 0"
+                />
+              </defs>
+              <text>
+                <textPath href="#scroll-badge-circle" startOffset="1%">
+                  ROLE A PÁGINA | ROLE A PÁGINA |
+                </textPath>
+              </text>
+            </svg>
+            <div class="scroll-backpack">
+              <img src="../assets/role-a-pagina.svg" alt="" aria-hidden="true" />
+            </div>
+          </div>
+        </section>
+
+        <section class="about-intro">
+          <img class="intro-cei" src="../assets/cei-nuvem.png" alt="Ilustração do CEI Jardim Rosa Maria" />
+          <div class="intro-copy">
+            <h2>Sobre o CEI Jardim Rosa Maria</h2>
+            <span class="sobre-underline" aria-hidden="true"></span>
+            <p>
+              Somos parte da Rede Municipal de Ensino de São Paulo e estamos no coração do bairro
+              Jardim Rosa Maria. Desde 2001, acolhemos crianças com carinho, respeito e compromisso
+              com a educação pública de qualidade
+            </p>
+          </div>
+          <div class="intro-note">
+            <img src="../assets/nota.svg" alt="" aria-hidden="true" />
+            <p>
+              Aqui cada<br />
+              criança é única,<br />
+              curiosa, potente<br />
+              e capaz de<br />
+              transformar o<br />
+              mundo.
+            </p>
+          </div>
+        </section>
+
+        <section class="rights-section" aria-labelledby="rights-title">
+          <h2 id="rights-title">Aqui, a criança é criança</h2>
+          <div class="right-card explorar">
+            <img src="../assets/menino-explorando.svg" alt="" aria-hidden="true" />
+            <h3>Explorar</h3>
+            <p>A criança investiga, experimenta e descobre o mundo ao seu redor</p>
+          </div>
+          <div class="right-card expressar">
+            <img src="../assets/menina-pintando.svg" alt="" aria-hidden="true" />
+            <h3>Expressar</h3>
+            <p>Diferentes linguagens para contar o que sente, pensa e imagina.</p>
+          </div>
+          <div class="right-card conviver">
+            <img src="../assets/meninos-abraçando.svg" alt="" aria-hidden="true" />
+            <h3>Conviver</h3>
+            <p>Respeito, empatia e parceria para construir relações saudáveis</p>
+          </div>
+          <div class="right-card brincar">
+            <img src="../assets/meninos-brincando.svg" alt="" aria-hidden="true" />
+            <h3>Brincar</h3>
+            <p>O brincar é a linguagem base da infância e a base da aprendizagem</p>
+          </div>
+        </section>
+
+        <section class="projects-section" aria-labelledby="projects-title">
+          <h2 id="projects-title">Projetos e Vivências</h2>
+          <article class="project-card horta">
+            <img src="../assets/criancas-horta.svg" alt="" aria-hidden="true" />
+            <h3>Horta</h3>
+            <p>Cuidar da terra, plantar, colher e aprender sobre alimentação saudável.</p>
+          </article>
+          <article class="project-card leitura">
+            <img src="../assets/roda-leitura.svg" alt="" aria-hidden="true" />
+            <h3>Leitura</h3>
+            <p>Histórias que encantam e desenvolvem a imaginação.</p>
+          </article>
+          <article class="project-card atelie">
+            <img src="../assets/atelie.svg" alt="" aria-hidden="true" />
+            <h3>Ateliê</h3>
+            <p>Arte, cores e criatividade em diferentes materiais e linguagens.</p>
+          </article>
+          <article class="project-card cozinha">
+            <img src="../assets/cozinha-quintal.png" alt="" aria-hidden="true" />
+            <h3>Cozinhando no Quintal</h3>
+            <p>Receitas, descobertas e sabores que aproximam e ensinam.</p>
+          </article>
+          <article class="project-card quintal">
+            <img src="../assets/brincando-quintal.svg" alt="" aria-hidden="true" />
+            <h3>Desemparedamento</h3>
+            <p>Aprender também fora das salas, em contato com o mundo real.</p>
+          </article>
+        </section>
+
+        <section class="family-section">
+          <img src="../assets/familia.svg" alt="" aria-hidden="true" />
+          <h2>Família + CEI, juntos.</h2>
+          <p>
+            A parceria entre a família e a escola é essencial para o desenvolvimento das crianças.
+            Acreditamos na escuta, no diálogo e na participação ativa das famílias na vida escolar.
+          </p>
+          <div class="family-quote">
+            <img src="../assets/post-ite.svg" alt="" aria-hidden="true" />
+            <span>“Educar é uma construção<br />feita em parceria.”</span>
+          </div>
+        </section>
+
+        <section class="team-section">
+          <h2>Quem cuida de tudo isso?</h2>
+          <p>
+            Nossa equipe trabalha com dedicação e amor para garantir um ambiente acolhedor, seguro
+            e cheio de possibilidade para as crianças.
+          </p>
+          <img src="../assets/diretoras.svg" alt="Equipe diretora do CEI" />
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,388 @@
+﻿/* -------------------------------------------------------------------------- */
+/* Página inicial: hero, navegação, shape clipado e responsividade da home. */
+/* Mantido separado para facilitar manutenção pelos próximos devs. */
+/* -------------------------------------------------------------------------- */
+
+.page {
+  position: fixed;
+  inset: 0;
+  --u: min(0.052083333vw, 0.092592593vh);
+  --ux: calc(100vw / 1920);
+  --uy: calc(100vh / 1080);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #ffe3e2;
+}
+
+.background-illustration {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 106.76%;
+  object-fit: cover;
+  opacity: 0.5;
+  animation: soft-reveal 800ms ease-out both;
+}
+
+.brand-flower {
+  position: absolute;
+  top: 1.111%;
+  left: 2.708%;
+  width: 6.146%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  z-index: 3;
+  animation: float-in 750ms 120ms ease-out both;
+}
+
+/*
+  A div inteira é clipada pelo path normalizado, reproduzindo o
+  shape-bordas-arredondadas-internas do Figma de forma responsiva.
+*/
+.hero-shape {
+  position: absolute;
+  top: 3.114%;
+  left: 1.25%;
+  width: 96.667%;
+  height: 92.5%;
+  background: #ffe3e2;
+  clip-path: url("#shape-bordas-internas");
+  z-index: 2;
+}
+
+.shape-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-menu {
+  position: absolute;
+  top: calc(43 * var(--uy));
+  left: calc(1289 * var(--ux));
+  display: flex;
+  align-items: center;
+  gap: calc(26 * var(--ux));
+  z-index: 5;
+  pointer-events: auto;
+  animation: slide-down 650ms 180ms ease-out both;
+}
+
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(86 * var(--ux));
+  height: calc(56 * var(--uy));
+  padding: 0 calc(20 * var(--ux));
+  border-radius: 999px;
+  background: #97c1de;
+  color: #fff;
+  font-size: calc(16 * var(--u));
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 calc(8 * var(--uy)) calc(14 * var(--ux)) rgba(34, 76, 100, 0.08);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.nav-pill-active {
+  background: #e3a0a9;
+  font-weight: 700;
+  box-shadow:
+    inset 0 0 0 calc(2 * var(--u)) rgba(255, 255, 255, 0.22),
+    0 calc(8 * var(--uy)) calc(14 * var(--ux)) rgba(227, 160, 169, 0.22);
+}
+
+.nav-pill-login {
+  background: #2b5c7d;
+  font-weight: 700;
+}
+
+/* Quando LOGIN for a página atual, o estado ativo deve prevalecer visualmente. */
+.nav-pill-login.nav-pill-active {
+  background: #e3a0a9;
+}
+
+/* Microinteração dos botões superiores: reforça clique sem mudar o desenho. */
+.nav-pill:hover {
+  transform: translateY(calc(-2 * var(--uy)));
+  filter: brightness(1.04);
+  box-shadow: 0 calc(12 * var(--uy)) calc(22 * var(--ux)) rgba(34, 76, 100, 0.16);
+}
+
+.hero-copy {
+  position: absolute;
+  top: 18.55%;
+  left: 8.836%;
+  width: 22.2%;
+  animation: copy-enter 750ms 250ms ease-out both;
+}
+
+.eyebrow {
+  margin: 0 0 2.8%;
+  color: #224c64;
+  font-size: calc(64 * var(--u));
+  line-height: 1;
+  font-weight: 800;
+}
+
+h1 {
+  margin: 0;
+  color: #e697a2;
+  font-size: calc(64 * var(--u));
+  line-height: 1.18;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.title-line {
+  display: block;
+  width: 18.27%;
+  height: 2px;
+  margin: 2.6% 0 4.3%;
+  background: #e697a2;
+}
+
+.hero-description {
+  margin: 0;
+  color: #224c64;
+  font-size: calc(18 * var(--u));
+  line-height: 1.46;
+}
+
+.hero-description strong {
+  display: block;
+  font-weight: 700;
+}
+
+.hero-description span {
+  color: #e697a2;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 5.1%;
+  margin-top: 15.6%;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(227 * var(--u));
+  height: calc(56 * var(--u));
+  padding: 0 calc(20 * var(--u));
+  border-radius: 999px;
+  background: #5c95be;
+  color: #fff;
+  font-size: calc(16 * var(--u));
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 calc(10 * var(--u)) calc(18 * var(--u)) rgba(92, 149, 190, 0.2);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.location-button {
+  display: inline-flex;
+  width: calc(160 * var(--u));
+  height: calc(107 * var(--u));
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.location-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 220ms ease;
+}
+
+/* Botões principais com feedback tátil: pequeno lift e destaque suave. */
+.primary-button:hover,
+.location-button:hover {
+  transform: translateY(calc(-2 * var(--u)));
+  filter: brightness(1.04);
+}
+
+.primary-button:hover {
+  box-shadow: 0 calc(14 * var(--u)) calc(26 * var(--u)) rgba(92, 149, 190, 0.28);
+}
+
+.location-button:hover img {
+  transform: scale(1.045);
+}
+
+.school-image {
+  position: absolute;
+  top: 16.453%;
+  left: 36.746%;
+  width: 60.237%;
+  height: 67.167%;
+  object-fit: cover;
+  border-radius: calc(90 * var(--u));
+  animation: image-enter 850ms 280ms ease-out both;
+  transition:
+    transform 500ms ease,
+    box-shadow 500ms ease;
+  transform-origin: center;
+}
+
+/* A imagem ganha vida no hover sem sair da posição do Figma. */
+.school-image:hover {
+  transform: scale(1.015);
+  box-shadow: 0 calc(18 * var(--u)) calc(34 * var(--u)) rgba(34, 76, 100, 0.12);
+}
+
+.blue-flower {
+  position: absolute;
+  left: 47.899%;
+  top: 87.725%;
+  width: 5.065%;
+  height: 9.009%;
+  object-fit: contain;
+  animation: flower-pop 700ms 720ms ease-out both;
+}
+
+/* Animações de entrada discretas para preservar a estética do layout. */
+@keyframes soft-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-18 * var(--u))) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-14 * var(--uy)));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes copy-enter {
+  from {
+    opacity: 0;
+    transform: translateX(calc(-22 * var(--u)));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes image-enter {
+  from {
+    opacity: 0;
+    transform: translateX(calc(24 * var(--u))) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(calc(18 * var(--u, 1px))) scale(0.992);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes flower-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(10 * var(--u))) scale(0.8);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scroll-badge-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes state-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Respeita usuários que preferem reduzir movimento no sistema operacional. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/*
+  Animações desligadas a pedido do projeto:
+  as páginas devem aparecer imediatamente, sem entrada, fade ou slide.
+*/
+*,
+*::before,
+*::after {
+  animation: none !important;
+}
+
+/* Exceção intencional: o texto "ROLE A PÁGINA" deve continuar girando ao redor da mochila. */
+.scroll-badge-text {
+  animation: scroll-badge-spin 10s linear infinite !important;
+}
+
+@media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+}
+
+/* -------------------------------------------------------------------------- */

@@ -1,0 +1,167 @@
+﻿/* -------------------------------------------------------------------------- */
+/* Componentes compartilhados: botões, cards, inputs, tags e estados de interface. */
+/* Mantido separado para facilitar manutenção pelos próximos devs. */
+/* -------------------------------------------------------------------------- */
+
+/* Componentes reutilizáveis                                                  */
+/* -------------------------------------------------------------------------- */
+
+/*
+  Esta camada cria um vocabulário visual único para futuras telas do dashboard.
+  As classes atuais entram nos grupos abaixo para preservar os layouts do Figma.
+*/
+.ui-button,
+:is(.nav-pill, .primary-button, .submit-button, .login-submit, .blog-filter, .blog-featured a, .location-button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(44 * var(--u, 1px));
+  min-height: calc(44 * var(--u, 1px));
+  border-radius: 999px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease,
+    border-color 180ms ease;
+}
+
+.ui-button:hover,
+:is(.nav-pill, .primary-button, .submit-button, .login-submit, .blog-filter, .blog-featured a, .location-button):hover {
+  filter: brightness(1.04);
+}
+
+.ui-card,
+:is(.matricula-card, .login-card, .blog-board, .blog-featured, .post-card, .right-card, .project-card, .family-section, .team-section) {
+  border-color: var(--color-rose-strong);
+}
+
+.ui-input,
+:is(.field-group input, .login-form input) {
+  border: calc(1 * var(--u, 1px)) solid var(--color-rose);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-ink-strong);
+  outline: none;
+}
+
+.ui-input:focus,
+:is(.field-group input, .login-form input):focus {
+  border-color: var(--color-blue-strong);
+  box-shadow: 0 0 0 calc(4 * var(--u, 1px)) rgba(92, 149, 190, 0.16);
+}
+
+.ui-title {
+  margin: 0;
+  color: var(--color-ink);
+  letter-spacing: 0;
+}
+
+.ui-tag,
+:is(.post-category, .blog-kicker) {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.state-message,
+.form-message {
+  border-radius: calc(28 * var(--u, 1px));
+  font-weight: 800;
+}
+
+.form-message {
+  margin: calc(14 * var(--uy, 1px)) 0 0;
+  padding: calc(12 * var(--u, 1px)) calc(16 * var(--u, 1px));
+  font-size: calc(14 * var(--u, 1px));
+  line-height: 1.35;
+  text-align: center;
+}
+
+.form-message-success {
+  border: calc(1 * var(--u, 1px)) solid rgba(67, 128, 87, 0.35);
+  background: rgba(194, 216, 158, 0.45);
+  color: #346748;
+}
+
+.form-message-error {
+  border: calc(1 * var(--u, 1px)) solid rgba(174, 88, 100, 0.35);
+  background: rgba(227, 160, 169, 0.35);
+  color: #8c0c0c;
+}
+
+.interface-states {
+  margin-top: calc(30 * var(--ux, 1px));
+}
+
+.state-message {
+  min-height: calc(190 * var(--ux, 1px));
+  padding: calc(28 * var(--ux, 1px));
+  border: calc(1 * var(--ux, 1px)) solid rgba(174, 88, 100, 0.38);
+  background: rgba(255, 255, 255, 0.62);
+  color: var(--color-ink);
+  text-align: center;
+}
+
+.state-message[hidden],
+.form-message[hidden] {
+  display: none !important;
+}
+
+.state-message img {
+  width: calc(72 * var(--ux, 1px));
+  height: calc(72 * var(--ux, 1px));
+  object-fit: contain;
+}
+
+.state-message strong,
+.state-message p {
+  margin: 0;
+}
+
+.state-message p {
+  margin-top: calc(10 * var(--ux, 1px));
+  font-size: calc(18 * var(--u, 1px));
+  line-height: 1.45;
+}
+
+.state-loading,
+.state-empty,
+.state-error,
+.state-offline,
+.state-success {
+  display: grid;
+  place-items: center;
+  align-content: center;
+}
+
+.state-spinner {
+  width: calc(48 * var(--ux, 1px));
+  height: calc(48 * var(--ux, 1px));
+  border: calc(5 * var(--ux, 1px)) solid rgba(151, 193, 222, 0.45);
+  border-top-color: var(--color-ink-strong);
+  border-radius: 50%;
+  animation: state-spin 900ms linear infinite;
+}
+
+.state-error {
+  border-color: rgba(174, 88, 100, 0.6);
+  background: rgba(227, 160, 169, 0.32);
+  color: #8c0c0c;
+}
+
+.state-offline {
+  border-color: rgba(43, 92, 125, 0.38);
+  background: rgba(214, 229, 240, 0.72);
+  color: var(--color-ink-strong);
+}
+
+.state-success {
+  border-color: rgba(67, 128, 87, 0.45);
+  background: rgba(194, 216, 158, 0.52);
+  color: #346748;
+}

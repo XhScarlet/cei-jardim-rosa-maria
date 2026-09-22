@@ -1,0 +1,255 @@
+﻿/* -------------------------------------------------------------------------- */
+/* Página de matrícula: painel, formulário, post-it e ornamentos. */
+/* Mantido separado para facilitar manutenção pelos próximos devs. */
+/* -------------------------------------------------------------------------- */
+
+/* Página Matrícula                                                           */
+/* -------------------------------------------------------------------------- */
+
+.matricula-page {
+  background: #ffe3e2;
+  overflow: hidden;
+}
+
+.matricula-wave {
+  position: absolute;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.matricula-wave-left {
+  left: 0;
+  right: auto;
+  top: auto;
+  bottom: 0;
+  width: 52vw;
+  height: 42vh;
+  object-position: left bottom;
+}
+
+.matricula-wave-right {
+  left: auto;
+  right: 0;
+  top: auto;
+  bottom: 0;
+  width: 34vw;
+  height: 34vh;
+  object-position: right bottom;
+}
+
+.matricula-small-line {
+  position: absolute;
+  left: calc(191 * var(--ux));
+  top: calc(598 * var(--uy));
+  width: calc(69 * var(--ux));
+  height: calc(2 * var(--uy));
+  background: #e3a0a9;
+  z-index: 2;
+}
+
+/*
+  Bloco azul central: usa coordenadas exatas do frame 1920x1080 para
+  manter a mesma composição do Figma em telas cheias.
+*/
+.matricula-card {
+  position: absolute;
+  left: calc(154 * var(--ux));
+  top: calc(202 * var(--uy));
+  width: calc(1612 * var(--ux));
+  height: calc(688 * var(--uy));
+  border-radius: calc(80 * var(--u));
+  background: #d6e5f0;
+  z-index: 2;
+  animation: image-enter 720ms 120ms ease-out both;
+}
+
+.welcome-pill {
+  position: absolute;
+  left: calc(583 * var(--ux));
+  top: calc(19 * var(--uy));
+  width: calc(413 * var(--ux));
+  height: calc(60 * var(--uy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(80 * var(--u));
+  background: #edc4cc;
+  color: #d48690;
+  font-size: calc(18 * var(--u));
+  font-weight: 800;
+}
+
+.post-it-wrap {
+  position: absolute;
+  left: calc(110 * var(--ux));
+  top: calc(115 * var(--uy));
+  width: calc(489 * var(--u));
+  height: calc(458 * var(--u));
+}
+
+.post-it {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.post-it-text {
+  position: absolute;
+  left: calc(92 * var(--u));
+  top: calc(100 * var(--u));
+  width: calc(306 * var(--u));
+  color: #d48690;
+  font-size: calc(15.4 * var(--u));
+  font-weight: 800;
+  line-height: 1.28;
+  transform: rotate(-3.93deg);
+}
+
+.post-it-text p {
+  margin: 0 0 calc(3 * var(--u));
+}
+
+.post-title {
+  margin-bottom: calc(21 * var(--u)) !important;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.post-title span,
+.secretaria,
+.horario {
+  color: #2b5c7d;
+}
+
+.secretaria {
+  margin-top: calc(16 * var(--u)) !important;
+  font-size: calc(13 * var(--u));
+  white-space: nowrap;
+}
+
+.horario {
+  font-size: calc(13 * var(--u));
+  text-align: center;
+}
+
+.matricula-form {
+  position: absolute;
+  left: calc(1039 * var(--ux));
+  top: calc(61 * var(--uy));
+  width: calc(480 * var(--ux));
+}
+
+.form-intro {
+  margin: 0 0 calc(41 * var(--uy));
+  color: #d48690;
+  font-size: calc(16 * var(--u));
+  font-weight: 800;
+  text-align: center;
+}
+
+.form-intro span {
+  color: #2b5c7d;
+}
+
+.field-group {
+  display: block;
+  margin-bottom: calc(24 * var(--uy));
+  color: #2b5c7d;
+  font-size: calc(16 * var(--u));
+  font-weight: 400;
+}
+
+.field-group strong {
+  color: #d48690;
+  font-weight: 400;
+}
+
+.field-group input {
+  display: block;
+  width: 100%;
+  height: calc(52 * var(--uy));
+  margin-top: calc(9 * var(--uy));
+  padding: 0 calc(22 * var(--ux));
+  border: calc(1 * var(--u)) solid #e3a0a9;
+  border-radius: calc(80 * var(--u));
+  background: rgba(255, 255, 255, 0.9);
+  color: #2b5c7d;
+  font: 400 calc(16 * var(--u)) / 1 "Poppins", Arial, sans-serif;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+/* Campos reais recebem feedback visual sem alterar o layout do Figma. */
+.field-group input:focus {
+  border-color: #5c95be;
+  box-shadow: 0 0 0 calc(4 * var(--u)) rgba(92, 149, 190, 0.16);
+}
+
+.submit-button {
+  width: 100%;
+  height: calc(52 * var(--uy));
+  margin-top: calc(1 * var(--uy));
+  border: calc(1 * var(--u)) solid #e3a0a9;
+  border-radius: calc(80 * var(--u));
+  background: #2b5c7d;
+  color: #fff;
+  font: 700 calc(16 * var(--u)) / 1 "Poppins", Arial, sans-serif;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.submit-button:hover {
+  transform: translateY(calc(-2 * var(--uy)));
+  filter: brightness(1.05);
+  box-shadow: 0 calc(12 * var(--uy)) calc(22 * var(--ux)) rgba(43, 92, 125, 0.18);
+}
+
+.matricula-blue-flower {
+  position: absolute;
+  left: 50%;
+  top: calc(562 * var(--uy));
+  width: calc(85 * var(--u));
+  height: calc(81 * var(--u));
+  object-fit: contain;
+  transform: translateX(-50%);
+  animation: flower-pop 700ms 520ms ease-out both;
+}
+
+.matricula-footer-text {
+  position: absolute;
+  left: 50%;
+  top: calc(950 * var(--uy));
+  width: calc(222 * var(--ux));
+  margin: 0;
+  color: #2b5c7d;
+  font-size: calc(16 * var(--u));
+  line-height: 1.3;
+  text-align: center;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.matricula-footer-text span {
+  color: #d48690;
+}
+
+.heart-line {
+  position: absolute;
+  left: 50%;
+  top: calc(922 * var(--uy));
+  width: calc(239 * var(--u));
+  height: calc(158 * var(--u));
+  object-fit: contain;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* -------------------------------------------------------------------------- */

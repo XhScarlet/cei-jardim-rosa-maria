@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrícula | CEI Jardim Rosa Maria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+    <main id="main-content" class="page matricula-page" aria-label="Página de matrícula do CEI Jardim Rosa Maria">
+      <!-- Flores e ondas orgânicas posicionadas conforme o frame de matrícula no Figma. -->
+      <img class="brand-flower" src="../assets/rosa.svg" alt="" aria-hidden="true" />
+      <img class="matricula-wave matricula-wave-left" src="../assets/muldura-organica-esquerda.svg" alt="" aria-hidden="true" />
+      <img class="matricula-wave matricula-wave-right" src="../assets/muldura-organica-direita.svg" alt="" aria-hidden="true" />
+
+      <nav class="nav-menu" aria-label="Navegação principal">
+        <a class="nav-pill" href="index.html">INÍCIO</a>
+        <a class="nav-pill" href="sobre.html">SOBRE</a>
+        <a class="nav-pill" href="blog.html">BLOG</a>
+        <a class="nav-pill nav-pill-active" href="matricula.html" aria-current="page">MATRÍCULA</a>
+        <a class="nav-pill nav-pill-login" href="login.html">LOGIN</a>
+      </nav>
+
+      <span class="matricula-small-line" aria-hidden="true"></span>
+
+      <section class="matricula-card" aria-labelledby="matricula-title">
+        <!-- Cabeçalho reproduz o pill rosa central do Figma. -->
+        <div class="welcome-pill" id="matricula-title">Bem vindo(a)</div>
+
+        <div class="post-it-wrap">
+          <img class="post-it" src="../assets/post-it.svg" alt="" aria-hidden="true" />
+
+          <!-- Textos separados do SVG para facilitar edição de conteúdo pelos próximos devs. -->
+          <div class="post-it-text">
+            <p class="post-title"><span>Documentos</span> Necessários</p>
+            <p>Rg e CPF do responsável</p>
+            <p>Certidão de nascimento da criança</p>
+            <p>Comprovante de residência atualizado</p>
+            <p>Cardeneta de vacinação</p>
+            <p class="secretaria">Horário de atendimento da Secretaria</p>
+            <p class="horario">08h30 às 17h00</p>
+          </div>
+        </div>
+
+        <form class="matricula-form" action="#" method="post">
+          <p class="form-intro">
+            <span>Preencha o formulário</span> de matrícula
+          </p>
+
+          <label class="field-group">
+            <span>Nome <strong>Responsável</strong></span>
+            <input
+              id="matricula-responsavel"
+              type="text"
+              name="responsavel"
+              autocomplete="name"
+              placeholder="Nome completo"
+              required
+              aria-describedby="matricula-status"
+            />
+          </label>
+
+          <label class="field-group">
+            <span>Nome <strong>Criança</strong></span>
+            <input
+              id="matricula-crianca"
+              type="text"
+              name="crianca"
+              autocomplete="off"
+              placeholder="Nome completo da criança"
+              required
+              aria-describedby="matricula-status"
+            />
+          </label>
+
+          <label class="field-group">
+            <span>Data de Nascimento <strong>da Criança</strong></span>
+            <input
+              id="matricula-nascimento"
+              type="date"
+              name="nascimento"
+              required
+              aria-describedby="matricula-status"
+            />
+          </label>
+
+          <label class="field-group">
+            <span>Tel. para <strong>contato</strong></span>
+            <input
+              id="matricula-telefone"
+              type="tel"
+              name="telefone"
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="(11) 99999-9999"
+              required
+              aria-describedby="matricula-status"
+            />
+          </label>
+
+          <button class="submit-button" type="submit">Enviar</button>
+          <!-- Mensagem pronta para integração com o backend após envio da matrícula. -->
+          <p id="matricula-status" class="form-message form-message-success" hidden>
+            Formulário enviado com sucesso. A secretaria entrará em contato.
+          </p>
+        </form>
+
+        <img class="matricula-blue-flower" src="../assets/rosa-azul.svg" alt="" aria-hidden="true" />
+      </section>
+
+      <p class="matricula-footer-text">
+        cuidado | <span>amor</span> | carinho
+      </p>
+      <img class="heart-line" src="../assets/linha-de-coraçao.svg" alt="" aria-hidden="true" />
+    </main>
+    <script src="../js/microinteractions.js"></script>
+  </body>
+</html>

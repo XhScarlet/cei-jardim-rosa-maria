@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nova publicação | CEI Jardim Rosa Maria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/nova-publicacao.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+    <main id="main-content" class="dashboard-page new-post-page" aria-label="Nova publicação do blog">
+      <img class="dashboard-bg" src="../assets/figma-dashboard/img-fundo-iii.png" alt="" aria-hidden="true" />
+
+      <aside class="dashboard-sidebar" aria-label="Menu da direção">
+        <div class="dashboard-brand">
+          <img class="dashboard-logo" src="../assets/figma-dashboard/rosa.png" alt="" aria-hidden="true" />
+          <div>
+            <strong>CEI</strong>
+            <span>Jardim Rosa Maria</span>
+          </div>
+        </div>
+
+        <nav class="dashboard-menu" aria-label="Áreas administrativas">
+          <a class="dashboard-menu-item" href="dashboard.html?panel=visao-geral">Visão Geral</a>
+          <a class="dashboard-menu-item dashboard-menu-active" href="dashboard.html?panel=blog">Blog</a>
+          <a class="dashboard-menu-item" href="dashboard.html?panel=agenda">Agenda</a>
+          <a class="dashboard-menu-item" href="dashboard.html?panel=projetos">Projetos</a>
+          <a class="dashboard-menu-item" href="dashboard.html?panel=documentos">Documentos</a>
+          <a class="dashboard-menu-item" href="dashboard.html?panel=informacoes-cei">Informações do CEI</a>
+          <a class="dashboard-menu-item" href="dashboard.html?panel=acessos">Acessos</a>
+        </nav>
+
+        <a class="dashboard-exit" href="login.html"><img src="../assets/figma-dashboard/exit.svg" alt="" aria-hidden="true" />Sair</a>
+      </aside>
+
+      <section class="dashboard-shell new-post-shell">
+        <header class="new-post-header">
+          <h1>Blog</h1>
+          <span class="new-post-kicker"><span aria-hidden="true">+</span>Nova publicação</span>
+          <p>Crie uma nova publicação para o blog do CEI.</p>
+          <img class="new-post-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
+
+          <div class="dashboard-user new-post-user" aria-label="Usuário logado">
+            <span class="dashboard-user-avatar" aria-hidden="true"></span>
+            <div>
+              <strong data-dashboard-name>Márcia</strong>
+              <span data-dashboard-profile>Diretora</span>
+            </div>
+          </div>
+        </header>
+
+        <form class="new-post-form" data-new-post-form novalidate>
+          <div class="new-post-field new-post-field-title">
+            <label for="postTitle">Título da publicação</label>
+            <input id="postTitle" name="title" type="text" placeholder="Ex.: Reunião com as famílias" data-preview-title required />
+            <small class="new-post-error" data-error-for="title"></small>
+          </div>
+
+          <div class="new-post-field new-post-field-category">
+            <label for="postCategory">Categoria</label>
+            <div class="new-post-select-control">
+              <select id="postCategory" name="category" data-preview-category required>
+                <option value="">Selecione uma categoria</option>
+                <option>Comunicado</option>
+                <option>Projeto</option>
+                <option>Evento</option>
+                <option>Novidade</option>
+                <option>Institucional</option>
+              </select>
+              <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" />
+            </div>
+            <small class="new-post-error" data-error-for="category"></small>
+          </div>
+
+          <div class="new-post-field new-post-field-date">
+            <label for="postDate">Data da publicação</label>
+            <div class="new-post-date-control">
+              <img src="../assets/figma-dashboard/calendar-form.svg" alt="" aria-hidden="true" />
+              <input id="postDate" name="date" type="date" value="2026-09-11" data-preview-date />
+            </div>
+          </div>
+
+          <div class="new-post-field new-post-field-upload">
+            <label for="postImage">Imagem de capa</label>
+            <label class="new-post-upload" for="postImage">
+              <input id="postImage" name="image" type="file" accept="image/png,image/jpeg,image/webp" data-preview-image />
+              <img class="new-post-upload-icon" src="../assets/upload.svg" alt="" aria-hidden="true" />
+              <span class="new-post-upload-copy">
+                <strong>Clique para adicionar uma imagem</strong>
+                <span>PNG, JPG ou WEBP (máx. 5mb)</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="new-post-field new-post-field-summary">
+            <label for="postSummary">Resumo da publicação</label>
+            <textarea id="postSummary" name="summary" maxlength="200" placeholder="Escreva um breve resumo que será exibido na listagem do blog" data-preview-summary required></textarea>
+            <small class="new-post-error" data-error-for="summary"></small>
+            <span class="new-post-counter" data-summary-counter>0/200</span>
+          </div>
+
+          <div class="new-post-field new-post-field-content">
+            <label for="postContent">Conteúdo da publicação</label>
+            <div class="new-post-editor">
+              <div class="new-post-editor-toolbar" aria-label="Ferramentas do editor">
+                <button type="button" data-editor-command="bold" aria-label="Negrito">B</button>
+                <button type="button" data-editor-command="italic" aria-label="Itálico"><em>I</em></button>
+                <button type="button" data-editor-command="insertUnorderedList" aria-label="Lista">
+                  <img src="../assets/figma-dashboard/list-editor.svg" alt="" aria-hidden="true" />
+                </button>
+                <button type="button" data-editor-command="justifyLeft" aria-label="Alinhar à esquerda">≡</button>
+                <button type="button" data-editor-link aria-label="Link">Link</button>
+                <span class="new-post-editor-select-control">
+                  <select aria-label="Tipografia" data-editor-style>
+                    <option>Tipografia</option>
+                    <option>Título</option>
+                    <option>Texto</option>
+                  </select>
+                  <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" />
+                </span>
+              </div>
+              <textarea id="postContent" name="content" maxlength="5000" placeholder="Escreva o conteúdo da sua publicação aqui..." data-content-field required></textarea>
+            </div>
+            <small class="new-post-error" data-error-for="content"></small>
+            <span class="new-post-counter" data-content-counter>0/5000</span>
+          </div>
+
+          <fieldset class="new-post-status">
+            <legend>Status</legend>
+            <label>
+              <input type="radio" name="status" value="Publicado" data-status-radio checked required />
+              <span aria-hidden="true"></span>
+              <strong>Publicar agora</strong>
+              <small>A publicação ficará visível no site público.</small>
+            </label>
+            <label>
+              <input type="radio" name="status" value="Rascunho" data-status-radio />
+              <span aria-hidden="true"></span>
+              <strong>Salvar como rascunho</strong>
+              <small>A publicação será salva, mas não ficará visível ainda.</small>
+            </label>
+            <small class="new-post-error" data-error-for="status"></small>
+          </fieldset>
+
+          <div class="new-post-form-feedback" data-form-feedback hidden></div>
+
+          <footer class="new-post-footer">
+            <a class="new-post-cancel" href="dashboard.html?panel=blog">Cancelar</a>
+            <button class="new-post-draft" type="button" data-save-draft>Salvar Rascunho</button>
+            <button class="new-post-publish" type="submit">Publicar</button>
+          </footer>
+        </form>
+
+        <aside class="new-post-preview-card" aria-label="Prévia da publicação">
+          <header>
+            <img src="../assets/figma-dashboard/eye.svg" alt="" aria-hidden="true" />
+            <div>
+              <h2>Prévia da publicação</h2>
+              <p>Veja como sua publicação aparecerá no site público</p>
+            </div>
+          </header>
+          <article class="new-post-preview">
+            <img class="new-post-preview-image" src="../assets/figma-dashboard/nova-preview.png" alt="" data-preview-cover />
+            <h3 data-preview-title-output>Título da sua publicação</h3>
+            <p class="new-post-preview-date"><img src="../assets/figma-dashboard/calendar-form.svg" alt="" aria-hidden="true" /><span data-preview-date-output>11 de setembro de 2026</span></p>
+            <p class="new-post-preview-summary" data-preview-summary-output>Aqui aparecerá o resumo da sua publicação. Ele deve ser curto e atrativo para que as famílias se interessem em ler mais.</p>
+            <span class="new-post-preview-category" data-preview-category-output hidden>Categoria</span>
+            <button type="button">Ler mais <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></button>
+          </article>
+        </aside>
+
+        <img class="new-post-decor" src="../assets/figma-dashboard/educacao-decor.png" alt="" aria-hidden="true" />
+      </section>
+    </main>
+
+    <script src="../js/nova-publicacao.js"></script>
+    <script src="../js/microinteractions.js"></script>
+  </body>
+</html>

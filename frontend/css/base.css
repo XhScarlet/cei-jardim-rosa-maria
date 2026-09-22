@@ -1,0 +1,74 @@
+﻿/* -------------------------------------------------------------------------- */
+/* Base: reset, tokens, acessibilidade global e SVG helpers. */
+/* Mantido separado para facilitar manutenção pelos próximos devs. */
+/* -------------------------------------------------------------------------- */
+
+/* Base da página: o frame do Figma tem 1920x1080, então mantemos 16:9. */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #ffe3e2;
+  font-family: "Poppins", Arial, sans-serif;
+  --color-ink: #224c64;
+  --color-ink-strong: #2b5c7d;
+  --color-rose: #e3a0a9;
+  --color-rose-strong: #ae5864;
+  --color-blue: #97c1de;
+  --color-blue-strong: #5c95be;
+  --color-yellow: #f2e1b0;
+  --color-green: #c2d89e;
+  --color-paper: #ffe3e2;
+  --color-panel-blue: #d6e5f0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Foco forte e consistente para navegação por teclado em links, botões e campos. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: calc(4 * var(--u, 1px)) solid #2b5c7d;
+  outline-offset: calc(4 * var(--u, 1px));
+  box-shadow: 0 0 0 calc(7 * var(--u, 1px)) rgba(255, 255, 255, 0.72);
+}
+
+/* Link acessível para pular o menu quando a pessoa navega por teclado. */
+.skip-link {
+  position: fixed;
+  left: calc(24 * var(--u, 1px));
+  top: calc(18 * var(--u, 1px));
+  z-index: 1000;
+  padding: calc(12 * var(--u, 1px)) calc(18 * var(--u, 1px));
+  border-radius: 999px;
+  background: #2b5c7d;
+  color: #fff;
+  font-weight: 800;
+  transform: translateY(-180%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* O SVG só existe para declarar o clipPath usado no shape. */
+.clip-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------- */

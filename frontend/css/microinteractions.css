@@ -1,0 +1,326 @@
+﻿/* -------------------------------------------------------------------------- */
+/* Microinterações: hover, feedback, sucesso e rolagem suave. */
+/* Mantido separado para facilitar manutenção pelos próximos devs. */
+/* -------------------------------------------------------------------------- */
+
+/* Microinterações                                                            */
+/* -------------------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+  Usamos transições, não animações de entrada. Assim preservamos o pedido de
+  manter as páginas sem entrada animada, mas com resposta clara ao toque/clique.
+*/
+:is(
+  .nav-pill,
+  .primary-button,
+  .submit-button,
+  .login-submit,
+  .blog-filter,
+  .blog-featured a,
+  .dashboard-menu-item,
+  .dashboard-exit,
+  .dashboard-stat-card,
+  .dashboard-overview-card,
+  .dashboard-actions button,
+  .dashboard-overview-card a,
+  .dashboard-overview-card > button[data-panel-jump],
+  .blog-new-button,
+  .blog-dashboard-filter,
+  .blog-row-actions,
+  .blog-actions-menu button,
+  .agenda-new-event,
+  .agenda-calendar-toolbar button,
+  .agenda-view-toggle button,
+  .agenda-calendar-event,
+  .agenda-next-actions,
+  .agenda-actions-menu button,
+  .agenda-modal-card button,
+  .workspace-card button,
+  .workspace-form button,
+  .workspace-action,
+  .card-heading button
+) {
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    filter 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.dashboard-menu-item {
+  box-shadow: none;
+}
+
+.dashboard-menu-item:hover {
+  background: #dce9f1;
+  color: #ae5864;
+  box-shadow: 0 calc(6 * var(--uy, 1px)) calc(14 * var(--u, 1px)) rgba(34, 76, 100, 0.1);
+  transform: translateY(calc(-1 * var(--uy, 1px)));
+}
+
+.dashboard-menu-active {
+  background: #ae5864;
+  border-color: #ae5864;
+  color: #fff;
+  box-shadow:
+    0 calc(8 * var(--uy, 1px)) calc(16 * var(--u, 1px)) rgba(174, 88, 100, 0.22),
+    inset 0 0 0 calc(2 * var(--u, 1px)) rgba(255, 255, 255, 0.24);
+}
+
+.dashboard-menu-active:hover {
+  background: #ae5864;
+  color: #fff;
+}
+
+.dashboard-overview-card {
+  transition:
+    transform 190ms ease,
+    box-shadow 190ms ease,
+    border-color 190ms ease,
+    background-color 190ms ease;
+}
+
+.dashboard-overview-card:hover {
+  border-color: #ae5864;
+  box-shadow: 0 calc(8 * var(--uy, 1px)) calc(18 * var(--u, 1px)) rgba(34, 76, 100, 0.1);
+  transform: translateY(calc(-2 * var(--uy, 1px)));
+}
+
+.dashboard-stat-card:hover {
+  background: #d8e6ef !important;
+  border-color: #ae5864;
+  box-shadow: 0 calc(10 * var(--uy, 1px)) calc(20 * var(--u, 1px)) rgba(34, 76, 100, 0.13);
+}
+
+.dashboard-stat-card-soft:hover {
+  background: #ffeceb !important;
+}
+
+:is(
+  .dashboard-actions button,
+  .dashboard-overview-card a,
+  .dashboard-overview-card > button[data-panel-jump],
+  .blog-new-button,
+  .blog-dashboard-filter,
+  .blog-row-actions,
+  .blog-actions-menu button,
+  .agenda-new-event,
+  .agenda-calendar-toolbar button,
+  .agenda-view-toggle button,
+  .agenda-calendar-event,
+  .agenda-next-actions,
+  .agenda-actions-menu button,
+  .agenda-modal-card button,
+  .dashboard-exit,
+  .workspace-card button,
+  .workspace-form button,
+  .card-heading button
+):hover {
+  filter: brightness(1.02);
+  box-shadow: 0 calc(5 * var(--uy, 1px)) calc(12 * var(--u, 1px)) rgba(34, 76, 100, 0.11);
+  transform: translateY(calc(-1 * var(--uy, 1px)));
+}
+
+.dashboard-actions button:hover {
+  background: #dce9f1;
+  border-color: #ae5864;
+}
+
+.blog-new-button:hover,
+.blog-dashboard-filter:hover,
+.blog-row-actions:hover,
+.blog-actions-menu button:hover {
+  filter: brightness(1.03);
+  box-shadow: 0 calc(5 * var(--uy, 1px)) calc(12 * var(--u, 1px)) rgba(34, 76, 100, 0.11);
+  transform: translateY(calc(-1 * var(--uy, 1px)));
+}
+
+.blog-dashboard-filter-active:hover,
+.blog-dashboard-filter-active {
+  background: #cfdee8;
+}
+
+.blog-post-row {
+  transition:
+    background-color 170ms ease,
+    filter 170ms ease;
+}
+
+.blog-post-row:hover {
+  background: rgba(207, 222, 232, 0.32);
+}
+
+.agenda-summary-card,
+.agenda-next-item {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.agenda-summary-card:hover,
+.agenda-next-item:hover {
+  transform: translateY(calc(-2 * var(--uy, 1px)));
+  box-shadow: 0 calc(7 * var(--uy, 1px)) calc(16 * var(--u, 1px)) rgba(34, 76, 100, 0.12);
+}
+
+.agenda-new-event:hover,
+.agenda-calendar-toolbar button:hover,
+.agenda-view-toggle button:hover,
+.agenda-calendar-event:hover,
+.agenda-next-actions:hover,
+.agenda-actions-menu button:hover,
+.agenda-modal-card button:hover {
+  filter: brightness(1.03);
+  box-shadow: 0 calc(5 * var(--uy, 1px)) calc(12 * var(--u, 1px)) rgba(34, 76, 100, 0.11);
+  transform: translateY(calc(-1 * var(--uy, 1px)));
+}
+
+.publication-item,
+.date-item,
+.dashboard-pages-list p {
+  transition:
+    color 170ms ease,
+    filter 170ms ease,
+    transform 170ms ease;
+}
+
+.publication-item:hover,
+.date-item:hover,
+.dashboard-pages-list p:hover {
+  filter: brightness(1.03);
+  transform: translateX(calc(2 * var(--ux, 1px)));
+}
+
+:is(
+  .nav-pill,
+  .primary-button,
+  .submit-button,
+  .login-submit,
+  .blog-filter,
+  .blog-featured a,
+  .dashboard-menu-item,
+  .dashboard-exit,
+  .dashboard-stat-card,
+  .dashboard-actions button,
+  .dashboard-overview-card a,
+  .dashboard-overview-card > button[data-panel-jump],
+  .blog-new-button,
+  .blog-dashboard-filter,
+  .blog-row-actions,
+  .blog-actions-menu button,
+  .agenda-new-event,
+  .agenda-calendar-toolbar button,
+  .agenda-view-toggle button,
+  .agenda-calendar-event,
+  .agenda-next-actions,
+  .agenda-actions-menu button,
+  .agenda-modal-card button,
+  .workspace-card button,
+  .workspace-form button,
+  .workspace-action,
+  .card-heading button
+):active {
+  transform: translateY(1px) scale(0.985);
+}
+
+:is(
+  .dashboard-menu-item,
+  .dashboard-exit,
+  .dashboard-actions button,
+  .dashboard-overview-card a,
+  .dashboard-overview-card > button[data-panel-jump],
+  .blog-new-button,
+  .blog-dashboard-filter,
+  .blog-row-actions,
+  .blog-actions-menu button,
+  .blog-search-field input,
+  .agenda-new-event,
+  .agenda-calendar-toolbar button,
+  .agenda-view-toggle button,
+  .agenda-calendar-event,
+  .agenda-next-actions,
+  .agenda-actions-menu button,
+  .agenda-modal-card button,
+  .workspace-card button,
+  .workspace-form button,
+  .card-heading button
+):focus-visible {
+  outline: calc(3 * var(--u, 1px)) solid rgba(174, 88, 100, 0.55);
+  outline-offset: calc(3 * var(--u, 1px));
+}
+
+.blog-featured {
+  box-shadow:
+    0 calc(18 * var(--ux)) calc(34 * var(--ux)) rgba(43, 92, 125, 0.13),
+    inset 0 0 0 calc(3 * var(--ux)) rgba(255, 255, 255, 0.5);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.blog-featured:hover {
+  transform: translateY(calc(-3 * var(--ux)));
+  border-color: #8c0c0c;
+  box-shadow:
+    0 calc(24 * var(--ux)) calc(42 * var(--ux)) rgba(43, 92, 125, 0.18),
+    inset 0 0 0 calc(3 * var(--ux)) rgba(255, 255, 255, 0.64);
+}
+
+.blog-featured img,
+.post-card img {
+  transition: transform 220ms ease;
+}
+
+.blog-featured:hover img,
+.post-card:hover img {
+  transform: scale(1.018);
+}
+
+.post-card {
+  cursor: pointer;
+}
+
+.post-card:hover {
+  border-color: #8c0c0c;
+}
+
+.blog-filter {
+  border: calc(1 * var(--ux)) solid transparent;
+}
+
+.blog-filter[aria-pressed="true"] {
+  border-color: #ae5864;
+  background: #e3a0a9;
+  box-shadow:
+    0 calc(12 * var(--ux)) calc(22 * var(--ux)) rgba(174, 88, 100, 0.16),
+    inset 0 0 0 calc(2 * var(--ux)) rgba(255, 255, 255, 0.25);
+}
+
+.blog-filter:active {
+  filter: brightness(0.98);
+}
+
+.micro-feedback {
+  margin: calc(12 * var(--uy, 1px)) 0 0;
+  padding: calc(11 * var(--u, 1px)) calc(15 * var(--u, 1px));
+  border: calc(1 * var(--u, 1px)) solid rgba(67, 128, 87, 0.35);
+  border-radius: 999px;
+  background: rgba(194, 216, 158, 0.5);
+  color: #346748;
+  font-size: calc(14 * var(--u, 1px));
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.micro-feedback[hidden],
+[data-category][hidden] {
+  display: none !important;
+}
