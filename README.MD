@@ -59,7 +59,7 @@ CEI-JD-ROSA-MARIA/
   - Responsabilidade: Backend
 
 - **João Paulo Vitalino**
-  - GitHub: Não informado [Preencher...]
+  - GitHub: [JuaumPz](https://github.com/JuaumPz)
   - Responsabilidade: Backend
 
 ### Banco de Dados
