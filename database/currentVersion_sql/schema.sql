@@ -245,3 +245,34 @@ INDEX TB_VIEWER_FKIndex1(TB_POST_Id_Post),
 
 
 
+-- Insert na tabela principal
+INSERT INTO TB_UNIDADE (Id_Unidade, Nome_Unidade, Ender_Unidade, Bairro_Unidade, Cidade_Unidade, Estado_Unidade, Cep_Unidade)
+VALUES (1, 'CEI Jardim Rosa Maria', 'R. Adelino Branco de Andrade, 37', 'Jardim Rosa Maria', 'São Paulo', 'SP', '04930-070');
+
+-- Contato
+INSERT INTO TB_CONTATO (TB_UNIDADE_Id_Unidade, Fone_Contato, Whatsapp_Contato, Email_Contato, Status_Contato)
+VALUES (1, '1158930232', '11988271621', 'ceijrmaria@sme.prefeitura.sp.gov.br', 'A');
+
+-- Horário
+INSERT INTO TB_HORARIO (TB_UNIDADE_Id_Unidade, Dia_Semana_Horario, Hr_Abertura_Horario, Hr_Fechamento_Horario, Atendimento_Inicio_Horario, Atendimento_Fim_Horario, Desc_Horario, Status_Horario)
+VALUES (1, 'Segunda à sexta-feira', '07:00:00', '16:30:00', '08:00:00', '16:00:00', 'Atendimento às famílias e responsáveis das 08h às 16h', 'A');
+
+-- Objetivos & Metas
+INSERT INTO TB_OBJETIVO_METAS (TB_UNIDADE_Id_Unidade, Titulo_Objetivo_Metas, Desc_Objetivo_Metas, Status_Objetivo_Metas)
+VALUES (1, 'Objetivos & Metas', 'Promover o desenvolvimento integral das crianças por meio de educação de qualidade, inclusiva e afetiva, valorizando o brincar, a convivência e o respeito às diversidades.', 'A');
+
+-- Sobre o CEI
+INSERT INTO TB_SOBRE (TB_UNIDADE_Id_Unidade, Titulo_Sobre, Desc_Sobre, Status_Sobre)
+VALUES (1, 'Sobre o CEI', 'O CEI Jardim Rosa Maria é uma instituição de educação infantil pública, comprometida com o cuidado, a educação e o desenvolvimento integral das crianças de 0 a 5 anos. Nosso trabalho é pautado pelo afeto, pela inclusão e pelo respeito à infância.', 'A');
+
+-- Organização da Unidade
+INSERT INTO TB_ORGANIZACAO (TB_UNIDADE_Id_Unidade, Titulo_Organizacao, Desc_Organizacao, Status_Organizacao)
+VALUES (1, 'Organização da Unidade', 'O CEI Jardim Rosa Maria funciona com uma proposta pedagógica que valoriza o acolhimento, o respeito, a participação das famílias e o desenvolvimento das crianças em um ambiente seguro e estimulante.', 'A');
+
+-- Inserir as turmas padrão vinculadas à unidade 1 na TB_TURMA
+INSERT INTO TB_TURMA (TB_UNIDADE_Id_Unidade, Nome_Turma, Faixa_Etaria_Turma, Idade_Min_Turma, Idade_Max_Turma, Status_Turma)
+VALUES
+    (1, 'Berçário I', '3 meses a 1 ano', 0, 1, 'A'),
+    (1, 'Berçário II', '2 anos a 3', 2, 3, 'A'),
+    (1, 'Mini Grupo I', '3 anos a 4 anos', 3, 4, 'A'),
+    (1, 'Mini Grupo II', '4 anos a 5 anos', 4, 5, 'A');
