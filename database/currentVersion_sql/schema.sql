@@ -184,18 +184,12 @@ INDEX TB_HORARIO_FKIndex1(TB_UNIDADE_Id_Unidade),
 CREATE TABLE TB_AGENDA (
   Id_Agenda INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
   TB_DIRECAO_Id_Direcao INTEGER UNSIGNED  NOT NULL  ,
-  TB_RESPONSAVEL_Id_Responsavel INTEGER UNSIGNED  NOT NULL  ,
   Data_Agenda DATE  NOT NULL  ,
   Recado_Agenda VARCHAR(255)  NOT NULL  ,
   Tipo_Agenda VARCHAR(50)  NOT NULL  ,
   Status_Agenda VARCHAR(30)  NOT NULL    ,
 PRIMARY KEY(Id_Agenda)  ,
-INDEX TB_AGENDA_FKIndex3(TB_RESPONSAVEL_Id_Responsavel)  ,
 INDEX TB_AGENDA_FKIndex4(TB_DIRECAO_Id_Direcao),
-  FOREIGN KEY(TB_RESPONSAVEL_Id_Responsavel)
-    REFERENCES TB_RESPONSAVEL(Id_Responsavel)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION,
   FOREIGN KEY(TB_DIRECAO_Id_Direcao)
     REFERENCES TB_DIRECAO(Id_Direcao)
       ON DELETE NO ACTION
@@ -243,6 +237,11 @@ INDEX TB_VIEWER_FKIndex1(TB_POST_Id_Post),
       ON UPDATE NO ACTION);
 
 
+-- Remove o vínculo incorreto entre a agenda e TB_RESPONSAVEL.
+-- Preserva os eventos existentes e mantém o vínculo com TB_DIRECAO.
+ALTER TABLE TB_AGENDA
+  DROP FOREIGN KEY tb_agenda_ibfk_1,
+  DROP COLUMN TB_RESPONSAVEL_Id_Responsavel;
 
 
 -- Insert na tabela principal

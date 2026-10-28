@@ -4,7 +4,6 @@ import br.gov.cei.jdrosamaria.dto.LoginRequest;
 import br.gov.cei.jdrosamaria.dto.LoginResponse;
 import br.gov.cei.jdrosamaria.model.Usuario;
 import br.gov.cei.jdrosamaria.repository.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,8 +11,11 @@ import java.util.Optional;
 @Service
 public class UsuarioService {
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
+
+    public UsuarioService(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+    }
 
     public LoginResponse autenticar(LoginRequest request) {
         Optional<Usuario> usuarioOpt = usuarioRepository.findByEmailUsuarioAndSenhaUsuario(
@@ -27,7 +29,11 @@ public class UsuarioService {
             // Verifica se o usuário está ativo (Status 'A')
             if ("A".equalsIgnoreCase(user.getStatusUsuario())) {
                 String initials = gerarIniciais(user.getNomeUsuario());
-                return new LoginResponse(user.getNomeUsuario(), initials, user.getTipoUsuario());
+                return new LoginResponse(
+                        user.getNomeUsuario(),
+                        initials,
+                        user.getTipoUsuario(),
+                        user.getIdDirecao());
             }
         }
         return null;

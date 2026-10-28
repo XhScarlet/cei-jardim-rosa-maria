@@ -11,6 +11,9 @@ public class Usuario {
     @Column(name = "Id_Usuario")
     private Integer idUsuario;
 
+    @Column(name = "TB_DIRECAO_Id_Direcao", nullable = false)
+    private Long idDirecao;
+
     @Column(name = "Nome_Usuario", nullable = false, length = 100)
     private String nomeUsuario;
 
@@ -31,6 +34,9 @@ public class Usuario {
     // Getters e Setters
     public Integer getIdUsuario() { return idUsuario; }
     public void setIdUsuario(Integer idUsuario) { this.idUsuario = idUsuario; }
+
+    public Long getIdDirecao() { return idDirecao; }
+    public void setIdDirecao(Long idDirecao) { this.idDirecao = idDirecao; }
 
     public String getNomeUsuario() { return nomeUsuario; }
     public void setNomeUsuario(String nomeUsuario) { this.nomeUsuario = nomeUsuario; }

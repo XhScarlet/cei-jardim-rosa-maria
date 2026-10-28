@@ -6,14 +6,16 @@ public class LoginResponse {
     private String name;
     private String initials;
     private String profile;
+    private Long idDirecao;
 
-    //Retorna para o frontend -> usuário nome, iniciais e perfil
-    public LoginResponse(String name, String initials, String profile) {
+    public LoginResponse(String name, String initials, String profile, Long idDirecao) {
         this.name = name;
         this.initials = initials;
         this.profile = profile;
+        this.idDirecao = idDirecao;
     }
     public String getName() { return name; }
     public String getInitials() { return initials; }
     public String getProfile() { return profile; }
+    public Long getIdDirecao() { return idDirecao; }
 }

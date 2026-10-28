@@ -603,11 +603,13 @@
           </header>
 
           <div class="agenda-summary-grid" aria-label="Resumo da agenda">
-            <article class="agenda-summary-card agenda-summary-blue"><img src="../assets/figma-dashboard/agenda-icon-calendar.svg" alt="" aria-hidden="true" /><strong>4</strong><small>Eventos neste mês</small></article>
-            <article class="agenda-summary-card agenda-summary-pink"><img src="../assets/figma-dashboard/agenda-icon-reunioes.png" alt="" aria-hidden="true" /><strong>1</strong><small>Reuniões</small></article>
-            <article class="agenda-summary-card agenda-summary-purple"><img src="../assets/figma-dashboard/agenda-icon-especiais.png" alt="" aria-hidden="true" /><strong>1</strong><small>Eventos especiais</small></article>
-            <article class="agenda-summary-card agenda-summary-soft"><img src="../assets/figma-dashboard/agenda-icon-outras.png" alt="" aria-hidden="true" /><strong>2</strong><small>Outras atividades</small></article>
+            <article class="agenda-summary-card agenda-summary-blue"><img src="../assets/figma-dashboard/agenda-icon-calendar.svg" alt="" aria-hidden="true" /><strong data-agenda-count="month">0</strong><small>Eventos neste mês</small></article>
+            <article class="agenda-summary-card agenda-summary-pink"><img src="../assets/figma-dashboard/agenda-icon-reunioes.png" alt="" aria-hidden="true" /><strong data-agenda-count="meetings">0</strong><small>Reuniões</small></article>
+            <article class="agenda-summary-card agenda-summary-purple"><img src="../assets/figma-dashboard/agenda-icon-especiais.png" alt="" aria-hidden="true" /><strong data-agenda-count="special">0</strong><small>Eventos especiais</small></article>
+            <article class="agenda-summary-card agenda-summary-soft"><img src="../assets/figma-dashboard/agenda-icon-outras.png" alt="" aria-hidden="true" /><strong data-agenda-count="other">0</strong><small>Outras atividades</small></article>
           </div>
+
+          <p class="agenda-feedback" data-agenda-feedback role="status" aria-live="polite" hidden></p>
 
           <section class="agenda-calendar-card" aria-label="Calendário mensal">
             <header class="agenda-calendar-toolbar">
@@ -630,16 +632,46 @@
           </aside>
 
           <div class="agenda-actions-menu" data-agenda-menu hidden>
-            <button type="button">Editar</button>
-            <button type="button">Visualizar</button>
-            <button type="button">Excluir</button>
+            <button type="button" data-agenda-action="editar">Editar</button>
+            <button type="button" data-agenda-action="excluir">Excluir</button>
           </div>
-          <div class="agenda-modal" data-agenda-modal hidden>
-            <div class="agenda-modal-card">
-              <h3>Novo evento</h3>
-              <p>Interface reservada para o futuro cadastro de eventos.</p>
-              <button type="button" data-agenda-modal-close>Fechar</button>
-            </div>
+          <div class="agenda-modal" data-agenda-modal role="dialog" aria-modal="true" aria-labelledby="agenda-modal-title" hidden>
+            <form class="agenda-modal-card" data-agenda-form>
+              <h3 id="agenda-modal-title" data-agenda-modal-title>Novo evento</h3>
+              <label>
+                <span>Nome do evento</span>
+                <input name="recadoAgenda" type="text" maxlength="255" required />
+              </label>
+              <label>
+                <span>Data</span>
+                <input name="dataAgenda" type="date" required />
+              </label>
+              <label>
+                <span>Categoria</span>
+                <select name="tipoAgenda" required>
+                  <option>Reunião</option>
+                  <option>Projeto</option>
+                  <option>Evento especial</option>
+                  <option>Formação</option>
+                  <option>Pedagógica</option>
+                  <option>Outros</option>
+                </select>
+              </label>
+              <input name="idDirecao" data-agenda-direcao type="hidden" />
+              <label>
+                <span>Status</span>
+                <select name="statusAgenda" required>
+                  <option>Ativo</option>
+                  <option>Concluído</option>
+                  <option>Cancelado</option>
+                </select>
+              </label>
+              <p class="agenda-form-feedback" data-agenda-user-feedback role="alert" hidden></p>
+              <div class="agenda-modal-actions">
+                <button type="button" data-agenda-modal-close>Cancelar</button>
+                <button type="submit" data-agenda-submit>Salvar evento</button>
+              </div>
+            </form>
           </div>
         </section>
 
