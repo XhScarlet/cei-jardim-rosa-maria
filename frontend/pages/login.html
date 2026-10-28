@@ -117,9 +117,15 @@
           }
 
           const userData = await response.json();
+          const idUsuario = Number(userData?.idUsuario);
+          if (!Number.isInteger(idUsuario) || idUsuario <= 0) {
+            localStorage.removeItem("ceiDashboardUser");
+            loginStatus.textContent = "O servidor autenticou, mas não retornou o ID do usuário. Reinicie o backend atualizado e tente novamente.";
+            loginStatus.hidden = false;
+            return;
+          }
 
-          // Salva os dados retornados do banco no localStorage para o Dashboard usar
-          localStorage.setItem("ceiDashboardUser", JSON.stringify(userData));
+          localStorage.setItem("ceiDashboardUser", JSON.stringify({ ...userData, idUsuario }));
 
           // Redireciona para a página principal da gestão
           window.location.href = "dashboard.html";

@@ -33,7 +33,8 @@ public class UsuarioService {
                         user.getNomeUsuario(),
                         initials,
                         user.getTipoUsuario(),
-                        user.getIdDirecao());
+                        user.getIdDirecao(),
+                        user.getIdUsuario());
             }
         }
         return null;

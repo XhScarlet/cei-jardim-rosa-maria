@@ -823,6 +823,7 @@
                 <span>Revise a busca ou os filtros selecionados.</span>
               </div>
             </div>
+            <p class="documentos-feedback" data-documentos-feedback role="status" aria-live="polite" hidden></p>
 
             <aside class="documentos-categories-card" aria-label="Categorias de documentos">
               <h3>Categorias</h3>
@@ -842,6 +843,54 @@
           </section>
 
           <div class="documentos-actions-menu" data-documentos-menu hidden></div>
+          <div class="documentos-modal" data-documentos-modal role="dialog" aria-modal="true" aria-labelledby="documentos-modal-title" hidden>
+            <form class="documentos-modal-card" data-documentos-form>
+              <h3 id="documentos-modal-title">Novo Documento</h3>
+
+              <label>
+                <span>Nome do documento</span>
+                <input name="nomeDocumento" type="text" maxlength="100" required />
+              </label>
+
+              <label>
+                <span>Descrição</span>
+                <input name="descDocumento" type="text" maxlength="255" required />
+              </label>
+
+              <label>
+                <span>Categoria</span>
+                <select name="tipoDocumento" required>
+                  <option value="Institucional">Institucional</option>
+                  <option value="Pedagógico">Pedagógico</option>
+                  <option value="Formulários">Formulários</option>
+                  <option value="Calendário">Calendário</option>
+                  <option value="Alimentação">Alimentação</option>
+                  <option value="Saúde">Saúde</option>
+                  <option value="Financeiro">Financeiro</option>
+                  <option value="Outros">Outros</option>
+                </select>
+              </label>
+
+              <label data-documentos-file-field>
+                <span>Arquivo (PDF, DOC, DOCX, XLS ou XLSX; até 20 MB)</span>
+                <input name="arquivo" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx" required />
+              </label>
+
+              <label>
+                <span>Status</span>
+                <select name="statusDocumento" required>
+                  <option value="A">Publicado</option>
+                  <option value="I">Rascunho</option>
+                </select>
+              </label>
+
+              <p class="documentos-modal-feedback" data-documentos-modal-feedback role="alert" hidden></p>
+              <div class="documentos-modal-actions">
+                <button type="button" data-documentos-modal-close>Cancelar</button>
+                <button type="submit" data-documentos-submit>Salvar Documento</button>
+              </div>
+            </form>
+          </div>
         </section>
 
         <section class="dashboard-panel dashboard-info-cei-panel" data-panel="informacoes-cei" aria-label="Informações do CEI" hidden>
