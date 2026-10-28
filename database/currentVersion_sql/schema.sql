@@ -236,13 +236,11 @@ INDEX TB_VIEWER_FKIndex1(TB_POST_Id_Post),
       ON DELETE NO ACTION
       ON UPDATE NO ACTION);
 
-
 -- Remove o vínculo incorreto entre a agenda e TB_RESPONSAVEL.
 -- Preserva os eventos existentes e mantém o vínculo com TB_DIRECAO.
 ALTER TABLE TB_AGENDA
   DROP FOREIGN KEY tb_agenda_ibfk_1,
   DROP COLUMN TB_RESPONSAVEL_Id_Responsavel;
-
 
 -- Insert na tabela principal
 INSERT INTO TB_UNIDADE (Id_Unidade, Nome_Unidade, Ender_Unidade, Bairro_Unidade, Cidade_Unidade, Estado_Unidade, Cep_Unidade)
