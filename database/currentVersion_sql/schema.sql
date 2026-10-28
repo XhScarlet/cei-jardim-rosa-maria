@@ -262,7 +262,7 @@ VALUES (1, 'Objetivos & Metas', 'Promover o desenvolvimento integral das crianç
 
 -- Sobre o CEI
 INSERT INTO TB_SOBRE (TB_UNIDADE_Id_Unidade, Titulo_Sobre, Desc_Sobre, Status_Sobre)
-VALUES (1, 'Sobre o CEI', 'O CEI Jardim Rosa Maria é uma instituição de educação infantil pública, comprometida com o cuidado, a educação e o desenvolvimento integral das crianças de 0 a 5 anos. Nosso trabalho é pautado pelo afeto, pela inclusão e pelo respeito à infância.', 'A');
+VALUES (1, 'Sobre o CEI', 'Somos parte da Rede Municipal de Ensino de São Paulo e estamos no coração do bairro Jardim Rosa Maria. Desde 2001, acolhemos crianças com carinho, respeito e compromisso com a educação pública de qualidade.', 'A');
 
 -- Organização da Unidade
 INSERT INTO TB_ORGANIZACAO (TB_UNIDADE_Id_Unidade, Titulo_Organizacao, Desc_Organizacao, Status_Organizacao)

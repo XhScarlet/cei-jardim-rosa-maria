@@ -262,6 +262,12 @@ documentosForm?.addEventListener("submit", async (event) => {
     return;
   }
 
+  const selectedFile = documentosForm.elements.arquivo.files?.[0];
+  if (!editingId && selectedFile && selectedFile.size > 20 * 1024 * 1024) {
+    showDocumentosFeedback("O arquivo selecionado ultrapassa o limite de 20 MB.", true, true);
+    return;
+  }
+
   documentosSubmitButton.disabled = true;
   showDocumentosFeedback("");
   const formData = editingId ? {
@@ -280,8 +286,15 @@ documentosForm?.addEventListener("submit", async (event) => {
         : { body: formData }),
     });
     if (!response.ok) {
-      const errorBody = await response.json().catch(() => null);
-      throw new Error(errorBody?.detail || errorBody?.message || `Não foi possível enviar o documento (HTTP ${response.status}).`);
+      const errorText = await response.text();
+      let errorMessage = errorText;
+      try {
+        const errorBody = JSON.parse(errorText);
+        errorMessage = errorBody.detail || errorBody.message || errorText;
+      } catch {
+        errorMessage = errorText;
+      }
+      throw new Error(errorMessage || `Não foi possível enviar o documento (HTTP ${response.status}).`);
     }
 
     documentosModal.hidden = true;
@@ -293,7 +306,11 @@ documentosForm?.addEventListener("submit", async (event) => {
       showDocumentosFeedback(editingId ? "Documento atualizado com sucesso." : "Documento enviado com sucesso.");
     }
   } catch (error) {
-    showDocumentosFeedback(error.message, true, true);
+    console.error("Falha no envio do documento:", error);
+    const message = error instanceof TypeError && error.message === "Failed to fetch"
+      ? "O navegador não conseguiu conectar ao backend. Verifique se o servidor continua ativo em localhost:8080 e tente novamente."
+      : error.message;
+    showDocumentosFeedback(message, true, true);
   } finally {
     documentosSubmitButton.disabled = !documentosForm.dataset.editingId
       && (!Number.isInteger(Number(documentosUser?.idUsuario)) || Number(documentosUser.idUsuario) <= 0);

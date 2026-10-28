@@ -6,6 +6,7 @@ import br.gov.cei.jdrosamaria.model.Usuario;
 import br.gov.cei.jdrosamaria.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -18,16 +19,17 @@ public class UsuarioService {
     }
 
     public LoginResponse autenticar(LoginRequest request) {
-        Optional<Usuario> usuarioOpt = usuarioRepository.findByEmailUsuarioAndSenhaUsuario(
-                request.getEmail().trim().toLowerCase(),
-                request.getSenha()
-        );
+        if (request == null || request.getEmail() == null || request.getSenha() == null
+                || request.getEmail().isBlank()) {
+            return null;
+        }
 
+        Optional<Usuario> usuarioOpt = usuarioRepository.findByEmailUsuarioIgnoreCase(request.getEmail().trim());
         if (usuarioOpt.isPresent()) {
             Usuario user = usuarioOpt.get();
 
-            // Verifica se o usuário está ativo (Status 'A')
-            if ("A".equalsIgnoreCase(user.getStatusUsuario())) {
+            if ("A".equalsIgnoreCase(user.getStatusUsuario())
+                    && Objects.equals(user.getSenhaUsuario(), request.getSenha())) {
                 String initials = gerarIniciais(user.getNomeUsuario());
                 return new LoginResponse(
                         user.getNomeUsuario(),

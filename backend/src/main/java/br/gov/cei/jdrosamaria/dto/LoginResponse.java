@@ -1,5 +1,7 @@
 package br.gov.cei.jdrosamaria.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class LoginResponse {
 
     //Variáveis
@@ -20,5 +22,6 @@ public class LoginResponse {
     public String getInitials() { return initials; }
     public String getProfile() { return profile; }
     public Long getIdDirecao() { return idDirecao; }
+    @JsonProperty("idUsuario")
     public Integer getIdUsuario() { return idUsuario; }
 }

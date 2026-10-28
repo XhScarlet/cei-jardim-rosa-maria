@@ -118,14 +118,18 @@
 
           const userData = await response.json();
           const idUsuario = Number(userData?.idUsuario);
-          if (!Number.isInteger(idUsuario) || idUsuario <= 0) {
-            localStorage.removeItem("ceiDashboardUser");
-            loginStatus.textContent = "O servidor autenticou, mas não retornou o ID do usuário. Reinicie o backend atualizado e tente novamente.";
+          if (!userData || typeof userData !== "object") {
+            loginStatus.textContent = "O servidor não retornou os dados da sessão. Tente novamente.";
             loginStatus.hidden = false;
             return;
           }
 
-          localStorage.setItem("ceiDashboardUser", JSON.stringify({ ...userData, idUsuario }));
+          localStorage.setItem(
+            "ceiDashboardUser",
+            JSON.stringify(Number.isInteger(idUsuario) && idUsuario > 0
+              ? { ...userData, idUsuario }
+              : userData),
+          );
 
           // Redireciona para a página principal da gestão
           window.location.href = "dashboard.html";
