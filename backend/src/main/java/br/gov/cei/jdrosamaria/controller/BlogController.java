@@ -16,14 +16,15 @@ import java.util.List;
 @RequestMapping("/api/blogs")
 public class BlogController {
 
-    @GetMapping
-    public List<BlogDTO> listar(@RequestParam(required = false) String status) {
-        return service.listar(status);
-    }
     private final BlogService service;
 
     public BlogController(BlogService service) {
         this.service = service;
+    }
+
+    @GetMapping
+    public List<BlogDTO> listar(@RequestParam(required = false) String status) {
+        return service.listar(status);
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -32,8 +33,6 @@ public class BlogController {
             @RequestParam(value = "imagem", required = false) MultipartFile imagem) throws IOException {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.criar(dto, imagem));
     }
-
-
     @GetMapping("/{id}")
     public BlogDTO buscar(@PathVariable Long id) {
         return service.buscar(id);
