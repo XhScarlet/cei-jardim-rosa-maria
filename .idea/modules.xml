@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CEI-JD-ROSA-MARIA.iml" filepath="$PROJECT_DIR$/.idea/CEI-JD-ROSA-MARIA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/Uploads/Uploads.iml" filepath="$PROJECT_DIR$/backend/Uploads/Uploads.iml" />
     </modules>
   </component>
 </project>
