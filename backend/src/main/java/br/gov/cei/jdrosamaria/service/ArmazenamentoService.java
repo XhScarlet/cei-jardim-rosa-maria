@@ -15,7 +15,7 @@ public class ArmazenamentoService {
 
     private final Path pastaUpload;
 
-    public ArmazenamentoService(@Value("${app.upload.dir}") String dir) throws IOException {
+    public ArmazenamentoService(@Value("${app.upload.dir:uploads/imagens}") String dir) throws IOException {
         this.pastaUpload = Paths.get(dir).toAbsolutePath().normalize();
         Files.createDirectories(pastaUpload);
     }
