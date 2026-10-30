@@ -1369,6 +1369,404 @@ body:has(.dashboard-page) {
   display: none;
 }
 
+.dashboard-matriculas-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  border-radius: calc(90 * var(--u));
+  background: #f7f1f0;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.matriculas-dashboard-header h2 {
+  position: absolute;
+  left: calc(55 * var(--ux));
+  top: calc(19 * var(--uy));
+  margin: 0;
+  color: #224c64;
+  font-size: calc(64 * var(--u));
+  line-height: 1;
+  font-weight: 800;
+}
+
+.matriculas-dashboard-header p {
+  position: absolute;
+  left: calc(55 * var(--ux));
+  top: calc(104 * var(--uy));
+  width: calc(832 * var(--ux));
+  margin: 0;
+  color: #ae5864;
+  font-size: calc(24 * var(--u));
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.matriculas-dashboard-header .documentos-dashboard-heart {
+  left: calc(350 * var(--ux));
+}
+
+.matriculas-dashboard-header .documentos-dashboard-user {
+  right: calc(49 * var(--ux));
+  top: calc(14 * var(--uy));
+}
+
+.matriculas-toolbar {
+  position: absolute;
+  left: calc(28 * var(--ux));
+  top: calc(165 * var(--uy));
+  width: calc(1384 * var(--ux));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(16 * var(--ux));
+}
+
+.matriculas-toolbar .blog-filter-group {
+  flex-wrap: wrap;
+  gap: calc(8 * var(--ux));
+}
+
+.matriculas-toolbar .blog-dashboard-filter {
+  min-width: 0;
+}
+
+.matriculas-toolbar .blog-search-field {
+  width: calc(373 * var(--ux));
+  max-width: calc(373 * var(--ux));
+  flex: 0 1 calc(373 * var(--ux));
+}
+
+.matriculas-cards-grid {
+  position: absolute;
+  left: calc(28 * var(--ux));
+  top: calc(275 * var(--uy));
+  width: calc(1384 * var(--ux));
+  height: calc(700 * var(--uy));
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  align-content: start;
+  gap: calc(20 * var(--u));
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: calc(4 * var(--u));
+}
+
+.dashboard-matriculas-panel .matricula-card-item {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid #f0e4e4;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.matricula-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.matricula-card-header h3 {
+  margin: 0;
+  color: #2b3a4a;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+
+.matricula-subtitle {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.matricula-card-item .blog-status {
+  min-width: 0;
+  min-height: 32px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.matricula-card-item .matricula-status-inactive {
+  background: #f5dfe2;
+}
+
+.matricula-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+  color: #4a5568;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.matricula-card-body p {
+  margin: 0;
+  color: inherit;
+  font: inherit;
+}
+
+.matricula-card-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+.matricula-card-actions > :is(.btn-whatsapp, .btn-status-toggle, .btn-matricula-edit, .btn-matricula-reject) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 42px;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 20px;
+  color: #fff;
+  font: 700 0.85rem / 1.2 "Poppins", Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.btn-whatsapp {
+  flex: 1;
+  background: #25d366;
+}
+
+.btn-whatsapp:hover {
+  background: #1eb857;
+}
+
+.btn-whatsapp[aria-disabled="true"] {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.btn-whatsapp svg {
+  flex: 0 0 auto;
+}
+
+.btn-status-toggle {
+  background: #1e3a5f;
+}
+
+.btn-status-toggle:hover {
+  opacity: 0.9;
+}
+
+.matricula-card-actions > .btn-matricula-edit {
+  background: #d6e5f0;
+  color: #224c64;
+}
+
+.matricula-card-actions > .btn-matricula-reject {
+  background: #f5dfe2;
+  color: #8c0c0c;
+}
+
+.matricula-card-actions > .btn-matricula-reject:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.matricula-status-rejected {
+  background: #f5dfe2;
+  color: #8c0c0c;
+}
+
+.matricula-feedback {
+  position: absolute;
+  left: calc(28 * var(--ux));
+  right: calc(28 * var(--ux));
+  top: calc(220 * var(--uy));
+  width: auto;
+  max-width: calc(100% - calc(56 * var(--ux)));
+  box-sizing: border-box;
+  margin: 0;
+  padding: calc(8 * var(--uy)) calc(14 * var(--ux));
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  background: #d4edda;
+  color: #155724;
+  font-weight: 500;
+}
+
+.matriculas-empty-state {
+  color: #8c0c0c;
+  font-weight: 700;
+}
+
+.matriculas-empty-state {
+  grid-column: 1 / -1;
+}
+
+.matricula-modal[hidden] {
+  display: none;
+}
+
+.matricula-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(25, 45, 60, 0.55);
+}
+
+.matricula-modal-card {
+  width: min(100%, 520px);
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+  border: 1px solid #ae5864;
+  border-radius: 28px;
+  background: #fff7f7;
+  box-shadow: 0 20px 60px rgba(20, 40, 55, 0.24);
+}
+
+.matricula-modal-card h2 {
+  margin: 0;
+  color: #224c64;
+  font-size: 24px;
+}
+
+.matricula-modal-card label {
+  display: grid;
+  gap: 6px;
+  color: #224c64;
+  font-weight: 700;
+}
+
+.matricula-modal-card input {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid #ae5864;
+  border-radius: 14px;
+  background: #fff;
+  color: #224c64;
+  font: inherit;
+}
+
+.matricula-modal-card [data-matricula-modal-feedback] {
+  position: static;
+  width: auto;
+  margin: 0;
+}
+
+.matricula-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.matricula-modal-actions button {
+  min-height: 42px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #224c64;
+  color: #fff;
+  font: 700 14px "Poppins", Arial, sans-serif;
+  cursor: pointer;
+}
+
+.matricula-modal-actions button[type="button"] {
+  background: #d6e5f0;
+  color: #224c64;
+}
+
+@media (max-width: 900px) {
+  .dashboard-matriculas-panel {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    padding: 22px;
+    overflow: visible;
+    border-radius: 36px;
+  }
+
+  .dashboard-matriculas-panel .workspace-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .matriculas-dashboard-header h2,
+  .matriculas-dashboard-header p,
+  .matriculas-dashboard-header .documentos-dashboard-heart,
+  .matriculas-dashboard-header .documentos-dashboard-user,
+  .matriculas-toolbar,
+  .matricula-feedback,
+  .matriculas-cards-grid {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .matriculas-dashboard-header h2 {
+    font-size: 42px;
+    line-height: 1.15;
+  }
+
+  .matriculas-dashboard-header p {
+    margin-top: 8px;
+    font-size: 17px;
+  }
+
+  .matriculas-dashboard-header .documentos-dashboard-heart {
+    display: none;
+  }
+
+  .matriculas-dashboard-header .documentos-dashboard-user {
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+
+  .matriculas-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 20px;
+  }
+
+  .matricula-feedback {
+    margin: -8px 0 16px;
+    padding: 10px 12px;
+  }
+
+  .matriculas-toolbar .blog-search-field {
+    width: 100%;
+    max-width: none;
+    flex: 1 1 auto;
+  }
+
+  .matriculas-cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    overflow: visible;
+  }
+}
+
 .dashboard-workspace {
   position: absolute;
   left: calc(80 * var(--ux));

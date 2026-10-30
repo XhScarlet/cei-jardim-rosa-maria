@@ -31,7 +31,7 @@ public class UsuarioService {
             if ("A".equalsIgnoreCase(user.getStatusUsuario())
                     && Objects.equals(user.getSenhaUsuario(), request.getSenha())) {
                 String initials = gerarIniciais(user.getNomeUsuario());
-                return new LoginResponse(
+                return  new LoginResponse(
                         user.getNomeUsuario(),
                         initials,
                         user.getTipoUsuario(),

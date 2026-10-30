@@ -39,6 +39,7 @@
           <button class="dashboard-menu-item" type="button" data-panel-target="projetos">Projetos</button>
           <button class="dashboard-menu-item" type="button" data-panel-target="documentos">Documentos</button>
           <button class="dashboard-menu-item" type="button" data-panel-target="informacoes-cei">Informações do CEI</button>
+          <button class="dashboard-menu-item" type="button" data-panel-target="matriculas">Matrículas</button>
           <button class="dashboard-menu-item" type="button" data-panel-target="acessos">Acessos</button>
         </nav>
 
@@ -46,22 +47,22 @@
       </aside>
 
       <section class="dashboard-shell">
-        <header class="dashboard-topbar">
-          <h1 data-dashboard-greeting>Olá, Márcia!</h1>
-          <p class="dashboard-welcome">Que bom ter você por aqui!</p>
-          <p class="dashboard-subtitle">Aqui você gerencia o site do CEI de forma simples e rápida.</p>
-          <img class="dashboard-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
-
-          <div class="dashboard-user" aria-label="Usuário logado">
-            <span class="dashboard-user-avatar" aria-hidden="true"></span>
-            <div>
-              <strong data-dashboard-name>Márcia</strong>
-              <span data-dashboard-profile>Diretora</span>
-            </div>
-          </div>
-        </header>
-
         <section class="dashboard-panel dashboard-panel-active" data-panel="visao-geral" aria-label="Visão geral">
+          <header class="dashboard-topbar">
+            <h1 data-dashboard-greeting>Olá, Márcia!</h1>
+            <p class="dashboard-welcome">Que bom ter você por aqui!</p>
+            <p class="dashboard-subtitle">Aqui você gerencia o site do CEI de forma simples e rápida.</p>
+            <img class="dashboard-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
+
+            <div class="dashboard-user" aria-label="Usuário logado">
+              <span class="dashboard-user-avatar" aria-hidden="true"></span>
+              <div>
+                <strong data-dashboard-name>Márcia</strong>
+                <span data-dashboard-profile>Diretora</span>
+              </div>
+            </div>
+          </header>
+
           <div class="dashboard-stats" aria-label="Resumo da direção">
             <article class="dashboard-stat-card">
               <img src="../assets/figma-dashboard/pessoas.png" alt="" aria-hidden="true" />
@@ -997,6 +998,63 @@
             </div>
           </div>
         </section>
+
+        <section class="dashboard-panel dashboard-matriculas-panel" data-panel="matriculas" aria-label="Dashboard de matrículas" hidden>
+          <header class="documentos-dashboard-header matriculas-dashboard-header">
+            <div>
+              <h2>Matrículas</h2>
+              <p>Acompanhe os pedidos recebidos, converse com as famílias e gerencie as matrículas.</p>
+            </div>
+            <img class="documentos-dashboard-heart" src="../assets/figma-dashboard/coracao.png" alt="" aria-hidden="true" />
+            <div class="dashboard-user documentos-dashboard-user" aria-label="Usuário logado">
+              <span class="dashboard-user-avatar" aria-hidden="true"></span>
+              <div>
+                <strong data-dashboard-name>Gabi</strong>
+                <span data-dashboard-profile>Diretora</span>
+              </div>
+            </div>
+          </header>
+
+          <div class="matriculas-toolbar">
+            <div class="blog-filter-group" role="group" aria-label="Filtrar matrículas">
+              <button class="blog-dashboard-filter" type="button" data-matricula-filter="todos" aria-pressed="false">Todos</button>
+              <button class="blog-dashboard-filter blog-dashboard-filter-active" type="button" data-matricula-filter="P" aria-pressed="true">Pendentes</button>
+              <button class="blog-dashboard-filter" type="button" data-matricula-filter="A" aria-pressed="false">Ativos</button>
+              <button class="blog-dashboard-filter" type="button" data-matricula-filter="I" aria-pressed="false">Inativos</button>
+              <button class="blog-dashboard-filter" type="button" data-matricula-filter="R" aria-pressed="false">Rejeitados</button>
+            </div>
+            <label class="blog-search-field">
+              <img src="../assets/figma-dashboard/search.svg" alt="" aria-hidden="true" />
+              <input type="search" data-matricula-search placeholder="Buscar por nome..." aria-label="Buscar responsável" autocomplete="off" />
+            </label>
+          </div>
+
+          <p class="matricula-feedback" data-matricula-feedback role="status" aria-live="polite" hidden></p>
+          <div class="matriculas-cards-grid" data-matriculas-list aria-live="polite"></div>
+
+          <div class="matricula-modal" data-matricula-modal hidden>
+            <form class="matricula-modal-card" data-matricula-edit-form role="dialog" aria-modal="true" aria-labelledby="matricula-modal-title">
+              <h2 id="matricula-modal-title">Editar dados da matrícula</h2>
+              <label>
+                Nome do responsável
+                <input name="responsavel" type="text" maxlength="100" required />
+              </label>
+              <label>
+                Nome da criança
+                <input name="crianca" type="text" maxlength="100" required />
+              </label>
+              <label>
+                Telefone
+                <input name="telefone" type="tel" inputmode="tel" maxlength="20" required />
+              </label>
+              <p class="matricula-feedback" data-matricula-modal-feedback role="alert" hidden></p>
+              <div class="matricula-modal-actions">
+                <button type="button" data-matricula-edit-cancel>Cancelar</button>
+                <button type="submit">Salvar alterações</button>
+              </div>
+            </form>
+          </div>
+        </section>
       </section>
     </main>
 
@@ -1008,6 +1066,7 @@
     <script src="../js/projetos-dashboard.js"></script>
     <script src="../js/documentos-dashboard.js"></script>
     <script src="../js/informacoes-cei-dashboard.js"></script>
+    <script src="../js/matriculas-dashboard.js"></script>
     <script src="../js/microinteractions.js"></script>
   </body>
 </html>

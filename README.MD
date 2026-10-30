@@ -46,6 +46,8 @@ Não é necessário instalar Node.js/npm: o frontend não tem dependências npm.
 
 Faça um backup antes de qualquer alteração. Os arquivos em `database/versions_sql/` são scripts históricos e podem conter criação de tabelas, inserção de dados ou alterações estruturais; **não os execute em sequência nem sobre um banco existente sem revisar o estado atual do banco e o conteúdo de cada script**. A aplicação está configurada com `spring.jpa.hibernate.ddl-auto=update`, que atualiza o mapeamento do Hibernate, mas não substitui backup ou revisão de migrações.
 
+O fluxo de pré-matrícula armazena nome e data de nascimento da criança em colunas opcionais de `TB_RESPONSAVEL`. Para bancos existentes, faça backup antes de iniciar a aplicação atualizada; o Hibernate adicionará essas colunas conforme o mapeamento JPA.
+
 ## Configurar e executar o backend
 
 No PowerShell, a partir da raiz do repositório:

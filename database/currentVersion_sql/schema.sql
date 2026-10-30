@@ -30,6 +30,8 @@ CREATE TABLE TB_RESPONSAVEL (
   Fone_Responsavel VARCHAR(11)  NOT NULL  ,
   Ender_Responsavel VARCHAR(100)  NOT NULL  ,
   Status_Responsavel VARCHAR(1)  NOT NULL    ,
+  Nome_Crianca VARCHAR(100)  NULL  ,
+  Data_Nascimento_Crianca DATE  NULL  ,
 PRIMARY KEY(Id_Responsavel));
 
 
