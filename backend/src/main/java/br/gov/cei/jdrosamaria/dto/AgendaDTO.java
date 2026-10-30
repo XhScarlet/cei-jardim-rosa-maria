@@ -1,7 +1,6 @@
 package br.gov.cei.jdrosamaria.dto;
 
 import java.time.LocalDate;
-
 public class AgendaDTO {
     private Long idAgenda;
     private Long idDirecao;

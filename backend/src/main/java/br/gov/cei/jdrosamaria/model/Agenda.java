@@ -1,8 +1,10 @@
 package br.gov.cei.jdrosamaria.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import lombok.Data;
 
+import java.time.LocalDate;
+@Data
 @Entity
 @Table(name = "TB_AGENDA")
 public class Agenda {
@@ -29,23 +31,4 @@ public class Agenda {
 
     // Constructores
     public Agenda() {}
-
-    // Getters e Setters
-    public Long getIdAgenda() { return idAgenda; }
-    public void setIdAgenda(Long idAgenda) { this.idAgenda = idAgenda; }
-
-    public Long getIdDirecao() { return idDirecao; }
-    public void setIdDirecao(Long idDirecao) { this.idDirecao = idDirecao; }
-
-    public LocalDate getDataAgenda() { return dataAgenda; }
-    public void setDataAgenda(LocalDate dataAgenda) { this.dataAgenda = dataAgenda; }
-
-    public String getRecadoAgenda() { return recadoAgenda; }
-    public void setRecadoAgenda(String recadoAgenda) { this.recadoAgenda = recadoAgenda; }
-
-    public String getTipoAgenda() { return tipoAgenda; }
-    public void setTipoAgenda(String tipoAgenda) { this.tipoAgenda = tipoAgenda; }
-
-    public String getStatusAgenda() { return statusAgenda; }
-    public void setStatusAgenda(String statusAgenda) { this.statusAgenda = statusAgenda; }
 }
