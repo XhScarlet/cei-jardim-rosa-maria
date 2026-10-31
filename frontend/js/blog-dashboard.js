@@ -1,4 +1,4 @@
-const BLOG_API_URL = "http://localhost:8080/api/blogs";
+const BLOG_API_URL = `${window.APP_CONFIG.apiBaseUrl}/api/blogs`;
  
 const blogFilters = document.querySelectorAll("[data-blog-filter]");
 const blogSearch = document.querySelector("[data-blog-search]");
@@ -49,7 +49,7 @@ async function loadBlogPosts() {
   } catch (error) {
     console.error("Erro ao carregar o blog:", error);
     blogPosts = [];
-    renderBlog("Não foi possível carregar as publicações. Verifique se o backend está ativo em localhost:8080.");
+    renderBlog("Não foi possível carregar as publicações. Verifique sua conexão e tente novamente.");
   }
 }
  

@@ -11,19 +11,24 @@ body:has(.sobre-page) {
   overflow: auto;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden; /* Corta qualquer elemento vazando para as laterais */
+}
+
 .sobre-page {
   position: relative;
   inset: auto;
-  width: 100vw;
+  width: 100%;
   min-height: calc(3551 * var(--ux));
   height: auto;
-  overflow: visible;
+  overflow: hidden;
   background: #ffe3e2;
 }
 
 .sobre-canvas {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: calc(3551 * var(--ux));
   min-height: 100vh;
   --s: var(--ux);
@@ -33,7 +38,7 @@ body:has(.sobre-page) {
 .sobre-bg {
   position: absolute;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: calc(1153 * var(--s));
   object-fit: cover;
   opacity: 0.5;

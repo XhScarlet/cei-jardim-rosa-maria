@@ -1,5 +1,5 @@
 // Só publicações com Status_Post = 'A' (a API filtra pelo parâmetro status).
-const BLOG_PUBLIC_API_URL = "http://localhost:8080/api/blogs?status=A";
+const BLOG_PUBLIC_API_URL = `${window.APP_CONFIG.apiBaseUrl}/api/blogs?status=A`;
 
 // data-filter do botão -> categoria gravada no banco
 const FILTER_CATEGORIES = {

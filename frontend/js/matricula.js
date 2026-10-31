@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            const response = await fetch("http://localhost:8080/api/matricula", {
+            const response = await fetch(`${window.APP_CONFIG.apiBaseUrl}/api/matricula`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

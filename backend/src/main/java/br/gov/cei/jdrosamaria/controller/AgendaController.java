@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/agenda")
-@CrossOrigin(origins = "*")
 public class AgendaController {
 
     private final AgendaService agendaService;

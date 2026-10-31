@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/documentos";
+const API_URL = `${window.APP_CONFIG.apiBaseUrl}/api/documentos`;
 let documentosLista = [];
 
 const documentosList = document.querySelector("[data-documentos-list]");
@@ -308,7 +308,7 @@ documentosForm?.addEventListener("submit", async (event) => {
   } catch (error) {
     console.error("Falha no envio do documento:", error);
     const message = error instanceof TypeError && error.message === "Failed to fetch"
-      ? "O navegador não conseguiu conectar ao backend. Verifique se o servidor continua ativo em localhost:8080 e tente novamente."
+      ? "O navegador não conseguiu conectar ao servidor. Tente novamente mais tarde."
       : error.message;
     showDocumentosFeedback(message, true, true);
   } finally {

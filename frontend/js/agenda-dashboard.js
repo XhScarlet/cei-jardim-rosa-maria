@@ -1,4 +1,4 @@
-const AGENDA_API_URL = "http://localhost:8080/api/agenda";
+const AGENDA_API_URL = `${window.APP_CONFIG.apiBaseUrl}/api/agenda`;
 const agendaCalendar = document.querySelector("[data-agenda-calendar]");
 const agendaTitle = document.querySelector("[data-agenda-title]");
 const agendaNextList = document.querySelector("[data-agenda-next-list]");

@@ -89,6 +89,7 @@
       <img class="login-heart-line" src="../assets/linha-de-coraçao.svg" alt="" aria-hidden="true" />
     </main>
 
+    <script src="../js/config.js"></script>
     <script>
       const loginForm = document.querySelector("[data-login-form]");
       const loginStatus = document.querySelector("#login-status");
@@ -103,7 +104,7 @@
         loginStatus.hidden = true;
 
         try {
-          const response = await fetch("http://localhost:8080/api/auth/login", {
+          const response = await fetch(`${window.APP_CONFIG.apiBaseUrl}/api/auth/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json"

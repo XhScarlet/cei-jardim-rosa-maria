@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const API_URL = 'http://localhost:8080/api/informacoes-cei/1';
+  const API_URL = `${window.APP_CONFIG.apiBaseUrl}/api/informacoes-cei/1`;
   let dadosAtuais = {};
 
   // Injetar estilos customizados para o modal de turmas sobressair sobre o CSS da página

@@ -1,4 +1,4 @@
-const BLOG_API_URL = "http://localhost:8080/api/blogs";
+const BLOG_API_URL = `${window.APP_CONFIG.apiBaseUrl}/api/blogs`;
 
 const newPostMock = {
   defaultPreview: {
@@ -196,7 +196,7 @@ async function saveBlogPost(statusLabel) {
     console.error("Erro ao salvar a publicação:", error);
     showFeedback(
       error instanceof TypeError
-        ? "Não foi possível conectar ao backend. Verifique se o servidor está ativo em localhost:8080."
+        ? "Não foi possível conectar ao servidor. Tente novamente mais tarde."
         : error.message,
     );
     setSaving(false);

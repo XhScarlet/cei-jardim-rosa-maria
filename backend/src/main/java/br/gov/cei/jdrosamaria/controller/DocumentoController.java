@@ -17,7 +17,6 @@ import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/documentos")
-@CrossOrigin(origins = "*")
 public class DocumentoController {
 
     private final DocumentoService service;

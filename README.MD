@@ -102,6 +102,81 @@ Também é possível usar a extensão **Live Server** do VS Code e abrir `fronte
 
 O cadastro aceita arquivos PDF, DOC, DOCX, XLS e XLSX de até 20 MB. Os arquivos são guardados localmente em `backend/uploads/documentos/`, enquanto os metadados são salvos no MySQL. Para preservar documentos em backups, copie tanto o banco quanto essa pasta. A pasta de uploads é criada automaticamente no primeiro envio.
 
+## Publicação gratuita para apresentação (Render + Aiven)
+
+O deploy gratuito é adequado para demonstração acadêmica, não para produção. O Render pode suspender o serviço gratuito após inatividade e seu sistema de arquivos é temporário; portanto, imagens e documentos enviados pela aplicação podem desaparecer após uma suspensão ou novo deploy. Use dados fictícios e não envie dados pessoais de crianças.
+
+### 1. Importar o banco no Aiven
+
+1. No Aiven, abra o serviço MySQL `mysql-cei-2a5eec85` e confirme que está como `Running`.
+2. Em **Overview** ou **Quick connect**, anote o host, a porta, o banco, o usuário e a senha. Não publique esses valores no GitHub.
+3. No MySQL Workbench, crie uma conexão com:
+   - **Hostname** e **Port**: valores exibidos pelo Aiven;
+   - **Username** e **Password**: credenciais do serviço;
+   - **Default Schema**: normalmente `defaultdb`;
+   - **SSL**: habilitado, modo `REQUIRED` (ou use o certificado CA fornecido pelo Aiven, se a tela exigir).
+4. Conecte-se, abra `database/currentVersion_sql/schema.sql` em **File > Open SQL Script** e execute o script uma única vez num banco vazio. Ele não é idempotente.
+
+Também é possível usar o cliente `mysql` no terminal:
+
+```text
+mysql --host=SEU_HOST --port=SUA_PORTA --user=SEU_USUARIO --password --ssl-mode=REQUIRED defaultdb
+```
+
+Digite a senha quando solicitado. No prompt do MySQL, importe o script (ajuste o caminho para o local do clone):
+
+```sql
+SOURCE C:/caminho/para/cei-jardim-rosa-maria/database/currentVersion_sql/schema.sql;
+```
+
+O `schema.sql` cria as tabelas, mas não cria um usuário de login. Para uma demonstração isolada, depois da importação execute uma vez:
+
+```sql
+START TRANSACTION;
+
+INSERT INTO TB_DIRECAO
+  (Nome_Direcao, Cargo_Direcao, Fone_Direcao, Email_Direcao, Status_Direcao)
+VALUES
+  ('Direção de demonstração', 'Diretora', '11999990000', 'direcao-demo@exemplo.com', 'A');
+
+SET @id_direcao = LAST_INSERT_ID();
+
+INSERT INTO TB_USUARIO
+  (TB_DIRECAO_Id_Direcao, Nome_Usuario, Email_Usuario, Senha_Usuario, Tipo_Usuario, Status_Usuario)
+VALUES
+  (@id_direcao, 'Usuário de demonstração', 'demo@exemplo.com', 'AcessoTeste2026', 'Diretora', 'A');
+
+COMMIT;
+```
+
+O login de teste será `demo@exemplo.com` / `AcessoTeste2026`. O código atual compara e grava a senha em texto simples e a proteção das rotas administrativas não equivale a uma autenticação de produção; use somente essa conta fictícia para a apresentação e remova-a depois.
+
+### 2. Publicar o backend como Web Service no Render
+
+1. Envie as alterações para o GitHub e, no Render, escolha **New > Web Service** e conecte o repositório e a branch.
+2. Configure **Root Directory** como `backend`, **Language** como `Docker` e **Dockerfile Path** como `Dockerfile`. O arquivo `backend/Dockerfile` compila e inicia a aplicação com Java 17.
+3. Escolha o plano **Free** e crie o serviço. Não é necessário preencher Build Command ou Start Command.
+4. Em **Environment**, cadastre:
+
+   | Chave | Valor |
+   |---|---|
+   | `DB_URL` | `jdbc:mysql://SEU_HOST:SUA_PORTA/defaultdb?sslMode=REQUIRED` |
+   | `DB_USER` | usuário exibido pelo Aiven |
+   | `DB_PASSWORD` | senha exibida pelo Aiven |
+
+   Substitua host e porta pelos dados do Aiven. Após salvar as variáveis, aguarde o deploy e copie o endereço HTTPS do Web Service.
+
+### 3. Publicar o frontend como Static Site no Render
+
+1. Escolha **New > Static Site**, conecte o mesmo repositório e branch.
+2. Deixe **Root Directory** vazio e configure **Publish Directory** como `frontend`.
+3. Deixe **Build Command** vazio.
+4. Crie o site no plano gratuito. A página inicial abrirá em `/` e redirecionará para `/pages/index.html`.
+5. Abra `frontend/js/config.js`, troque `http://localhost:8080` pelo endereço HTTPS do Web Service, salve e envie a alteração ao GitHub. Aguarde o redeploy do Static Site.
+6. Copie a origem exata do Static Site (por exemplo, `https://NOME-DO-SITE.onrender.com`) para `FRONTEND_ORIGIN` no Web Service e faça novo deploy do backend. Use somente a origem, sem `/pages/index.html` e sem barra no fim.
+
+Teste a página inicial, a consulta pública, a matrícula e o login de demonstração. O Web Service gratuito pode levar cerca de um minuto para responder na primeira requisição após ficar inativo; os arquivos enviados ao backend podem ser perdidos ao reiniciar ou suspender o serviço.
+
 ## Principais endpoints
 
 | Método | Endpoint | Descrição |

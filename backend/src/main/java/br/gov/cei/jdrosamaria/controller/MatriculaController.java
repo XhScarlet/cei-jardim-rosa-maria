@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/matricula")
-@CrossOrigin(origins = "*")
 public class MatriculaController {
 
     private final ResponsavelService responsavelService;

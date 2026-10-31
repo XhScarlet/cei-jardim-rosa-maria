@@ -1,5 +1,5 @@
 const locationButton = document.querySelector("[data-location-button]");
-const UNIT_INFO_API_URL = "http://localhost:8080/api/informacoes-cei/1";
+const UNIT_INFO_API_URL = `${window.APP_CONFIG.apiBaseUrl}/api/informacoes-cei/1`;
 
 locationButton?.addEventListener("click", async (event) => {
   event.preventDefault();
