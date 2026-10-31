@@ -1,3 +1,3 @@
 window.APP_CONFIG = Object.freeze({
-  apiBaseUrl: "http://localhost:8080"
+  apiBaseUrl: "https://cei-jdrosamaria-backend.onrender.com"
 });
