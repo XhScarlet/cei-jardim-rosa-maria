@@ -179,7 +179,7 @@ async function saveBlogPost(statusLabel) {
 
   try {
     // Não defina Content-Type: o navegador monta o multipart com o boundary correto.
-    const response = await fetch(editingId ? `${BLOG_API_URL}/${editingId}` : BLOG_API_URL, {
+    const response = await window.apiFetch(editingId ? `${BLOG_API_URL}/${editingId}` : BLOG_API_URL, {
       method: editingId ? "PUT" : "POST",
       body: formData,
     });
@@ -211,7 +211,7 @@ async function loadPostForEdit() {
   if (publishButton) publishButton.textContent = "Salvar alterações";
 
   try {
-    const response = await fetch(`${BLOG_API_URL}/${editingId}`);
+    const response = await window.apiFetch(`${BLOG_API_URL}/${editingId}`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     editingPost = await response.json();
 

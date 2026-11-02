@@ -140,6 +140,43 @@
   width: calc(480 * var(--ux));
 }
 
+.matricula-form .form-intro {
+  margin-bottom: calc(24 * var(--uy));
+}
+
+.matricula-form .field-group {
+  margin-bottom: calc(15 * var(--uy));
+}
+
+.consentimento-lgpd {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(10 * var(--ux));
+  margin: calc(1 * var(--uy)) 0 calc(10 * var(--uy));
+  color: #224c64;
+  font-size: calc(11 * var(--u));
+  line-height: 1.35;
+}
+
+.consentimento-lgpd input {
+  flex: 0 0 auto;
+  width: calc(17 * var(--u));
+  height: calc(17 * var(--u));
+  margin: calc(2 * var(--uy)) 0 0;
+  accent-color: #2b5c7d;
+}
+
+.consentimento-lgpd a {
+  color: #224c64;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
 .form-intro {
   margin: 0 0 calc(41 * var(--uy));
   color: #d48690;

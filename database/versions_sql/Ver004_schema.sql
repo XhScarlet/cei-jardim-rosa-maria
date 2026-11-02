@@ -241,6 +241,13 @@ CREATE TABLE tb_viewer (
     ON UPDATE NO ACTION
 );
 
+-- Execute uma única vez, após backup, em bases que já possuem tb_responsavel.
+ALTER TABLE tb_responsavel
+    ADD COLUMN consentimento_lgpd TINYINT(1) NOT NULL DEFAULT 0,
+    ADD COLUMN data_consentimento_lgpd DATETIME NULL,
+    ADD COLUMN versao_termo_lgpd VARCHAR(20) NULL;
+
+
 -- Inserts nas tabelas minúsculas
 INSERT INTO tb_unidade (id_unidade, nome_unidade, ender_unidade, bairro_unidade, cidade_unidade, estado_unidade, cep_unidade)
 VALUES (1, 'CEI Jardim Rosa Maria', 'R. Adelino Branco de Andrade, 37', 'Jardim Rosa Maria', 'São Paulo', 'SP', '04930-070');
@@ -271,9 +278,3 @@ VALUES
 INSERT INTO tb_direcao (nome_direcao, cargo_direcao, fone_direcao, email_direcao, status_direcao)
 VALUES ('Direção Geral', 'Diretora', '11999998888', 'direcao@ceijrmaria.sp.gov.br', 'A'),
        ('Direção Administrativa', 'Coordenador Administrativo', '11999997777', 'administracao@ceijrmaria.sp.gov.br', 'A');
-
--- 2. Inserir os utilizadores Gabriela e Murilo (vinculados ao id_direcao = 1)
-INSERT INTO tb_usuario (tb_direcao_id_direcao, nome_usuario, email_usuario, senha_usuario, tipo_usuario, status_usuario)
-VALUES 
-    (1, 'Gabriela', 'gabi.demo@exemplo.com', 'teste1234', 'Diretora', 'A'),
-    (2, 'Murilo', 'murilo.demo@exemplo.com', '1234teste', 'Coordenador', 'A');

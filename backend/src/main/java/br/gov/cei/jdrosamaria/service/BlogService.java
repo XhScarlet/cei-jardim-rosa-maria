@@ -32,15 +32,24 @@ public class BlogService {
         return toDTO(repository.save(blog));
     }
 
-    public List<BlogDTO> listar(String status) {
-        List<Blog> blogs = (status == null || status.isBlank())
-                ? repository.findAllByOrderByDataBlogDesc()
-                : repository.findByStatusBlogOrderByDataBlogDesc(status);
+    public List<BlogDTO> listar(String status, boolean administrativo) {
+        List<Blog> blogs;
+        if (!administrativo) {
+            blogs = repository.findByStatusBlogOrderByDataBlogDesc("A");
+        } else if (status == null || status.isBlank()) {
+            blogs = repository.findAllByOrderByDataBlogDesc();
+        } else {
+            blogs = repository.findByStatusBlogOrderByDataBlogDesc(status);
+        }
         return blogs.stream().map(this::toDTO).toList();
     }
 
-    public BlogDTO buscar(Integer id) {
-        return toDTO(buscarEntidade(id));
+    public BlogDTO buscar(Integer id, boolean administrativo) {
+        Blog blog = buscarEntidade(id);
+        if (!administrativo && !"A".equalsIgnoreCase(blog.getStatusBlog())) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Publicação não encontrada.");
+        }
+        return toDTO(blog);
     }
 
     public BlogDTO atualizar(Integer id, BlogDTO dto, MultipartFile imagem) throws IOException {

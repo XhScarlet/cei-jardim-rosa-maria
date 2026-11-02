@@ -1,6 +1,6 @@
 const BLOG_API_URL = `${window.APP_CONFIG.apiBaseUrl}/api/blogs`;
  
-const blogFilters = document.querySelectorAll("[data-blog-filter]");
+const blogDashboardFilters = document.querySelectorAll("[data-blog-filter]");
 const blogSearch = document.querySelector("[data-blog-search]");
 const blogList = document.querySelector("[data-blog-list]");
 const blogEmptyState = document.querySelector("[data-blog-empty]");
@@ -42,7 +42,7 @@ function createElement(tag, className, text) {
  
 async function loadBlogPosts() {
   try {
-    const response = await fetch(BLOG_API_URL);
+    const response = await window.apiFetch(BLOG_API_URL);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     blogPosts = await response.json();
     renderBlog();
@@ -65,7 +65,7 @@ async function updateBlogStatus(post, statusBlog) {
   formData.append("statusBlog", statusBlog);
  
   try {
-    const response = await fetch(`${BLOG_API_URL}/${post.idBlog}`, { method: "PUT", body: formData });
+    const response = await window.apiFetch(`${BLOG_API_URL}/${post.idBlog}`, { method: "PUT", body: formData });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     await loadBlogPosts();
   } catch (error) {
@@ -78,7 +78,7 @@ async function deleteBlogPost(post) {
   if (!window.confirm(`Excluir a publicação "${post.tituloBlog}"? Essa ação não pode ser desfeita.`)) return;
  
   try {
-    const response = await fetch(`${BLOG_API_URL}/${post.idBlog}`, { method: "DELETE" });
+    const response = await window.apiFetch(`${BLOG_API_URL}/${post.idBlog}`, { method: "DELETE" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     await loadBlogPosts();
   } catch (error) {
@@ -248,11 +248,11 @@ document.addEventListener("keydown", (event) => {
  
 // ---------- filtros e busca ----------
  
-blogFilters.forEach((button) => {
+blogDashboardFilters.forEach((button) => {
   button.addEventListener("click", () => {
     activeBlogFilter = button.dataset.blogFilter;
  
-    blogFilters.forEach((filter) => {
+    blogDashboardFilters.forEach((filter) => {
       filter.classList.toggle("blog-dashboard-filter-active", filter === button);
     });
  

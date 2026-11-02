@@ -5,6 +5,8 @@ import br.gov.cei.jdrosamaria.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,8 +24,10 @@ public class BlogController {
     }
 
     @GetMapping
-    public List<BlogDTO> listar(@RequestParam(required = false) String status) {
-        return service.listar(status);
+    public List<BlogDTO> listar(
+            @RequestParam(required = false) String status,
+            Authentication authentication) {
+        return service.listar(status, isAuthenticated(authentication));
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -33,8 +37,8 @@ public class BlogController {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.criar(dto, imagem));
     }
     @GetMapping("/{id}")
-    public BlogDTO buscar(@PathVariable Integer id) {
-        return service.buscar(id);
+    public BlogDTO buscar(@PathVariable Integer id, Authentication authentication) {
+        return service.buscar(id, isAuthenticated(authentication));
     }
 
     @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -49,5 +53,11 @@ public class BlogController {
     public ResponseEntity<Void> deletar(@PathVariable Integer id) {
         service.deletar(id);
         return ResponseEntity.noContent().build();
+    }
+
+    private boolean isAuthenticated(Authentication authentication) {
+        return authentication != null
+                && authentication.isAuthenticated()
+                && !(authentication instanceof AnonymousAuthenticationToken);
     }
 }

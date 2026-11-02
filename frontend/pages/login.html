@@ -66,8 +66,8 @@
               name="senha"
               autocomplete="current-password"
               placeholder="Digite sua senha"
-              requiredn-st
-              aria-describedby="logiatus"
+              required
+              aria-describedby="login-status"
             />
           </label>
           <a class="forgot-password" href="#">Esqueceu sua senha?</a>
@@ -104,7 +104,7 @@
         loginStatus.hidden = true;
 
         try {
-          const response = await fetch(`${window.APP_CONFIG.apiBaseUrl}/api/auth/login`, {
+          const response = await window.apiFetch(`${window.APP_CONFIG.apiBaseUrl}/api/auth/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json"

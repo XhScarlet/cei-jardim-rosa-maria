@@ -20,7 +20,7 @@ public class UsuarioService {
 
     public LoginResponse autenticar(LoginRequest request) {
         if (request == null || request.getEmail() == null || request.getSenha() == null
-                || request.getEmail().isBlank()) {
+                || request.getEmail().isBlank() || request.getSenha().isBlank()) {
             return null;
         }
 
@@ -30,16 +30,30 @@ public class UsuarioService {
 
             if ("A".equalsIgnoreCase(user.getStatusUsuario())
                     && Objects.equals(user.getSenhaUsuario(), request.getSenha())) {
-                String initials = gerarIniciais(user.getNomeUsuario());
-                return  new LoginResponse(
-                        user.getNomeUsuario(),
-                        initials,
-                        user.getTipoUsuario(),
-                        user.getIdDirecao(),
-                        user.getIdUsuario());
+                return criarResposta(user);
             }
         }
         return null;
+    }
+
+    public LoginResponse buscarSessao(String email) {
+        if (email == null || email.isBlank()) {
+            return null;
+        }
+
+        return usuarioRepository.findByEmailUsuarioIgnoreCase(email.trim())
+                .filter(user -> "A".equalsIgnoreCase(user.getStatusUsuario()))
+                .map(this::criarResposta)
+                .orElse(null);
+    }
+
+    private LoginResponse criarResposta(Usuario user) {
+        return new LoginResponse(
+                user.getNomeUsuario(),
+                gerarIniciais(user.getNomeUsuario()),
+                user.getTipoUsuario(),
+                user.getIdDirecao(),
+                user.getIdUsuario());
     }
 
     private String gerarIniciais(String nome) {

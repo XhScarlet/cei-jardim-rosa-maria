@@ -2,6 +2,7 @@ package br.gov.cei.jdrosamaria.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_responsavel")
@@ -39,6 +40,15 @@ public class Responsavel {
     @Column(name = "data_nascimento_crianca")
     private LocalDate dataNascimentoCrianca;
 
+    @Column(name = "consentimento_lgpd", nullable = false)
+    private Boolean consentimentoLgpd = false;
+
+    @Column(name = "data_consentimento_lgpd")
+    private LocalDateTime dataConsentimentoLgpd;
+
+    @Column(name = "versao_termo_lgpd", length = 20)
+    private String versaoTermoLgpd;
+
     public Responsavel() {}
 
     // Getters e Setters
@@ -71,4 +81,13 @@ public class Responsavel {
 
     public LocalDate getDataNascimentoCrianca() { return dataNascimentoCrianca; }
     public void setDataNascimentoCrianca(LocalDate dataNascimentoCrianca) { this.dataNascimentoCrianca = dataNascimentoCrianca; }
+
+    public Boolean getConsentimentoLgpd() { return consentimentoLgpd; }
+    public void setConsentimentoLgpd(Boolean consentimentoLgpd) { this.consentimentoLgpd = consentimentoLgpd; }
+
+    public LocalDateTime getDataConsentimentoLgpd() { return dataConsentimentoLgpd; }
+    public void setDataConsentimentoLgpd(LocalDateTime dataConsentimentoLgpd) { this.dataConsentimentoLgpd = dataConsentimentoLgpd; }
+
+    public String getVersaoTermoLgpd() { return versaoTermoLgpd; }
+    public void setVersaoTermoLgpd(String versaoTermoLgpd) { this.versaoTermoLgpd = versaoTermoLgpd; }
 }

@@ -9,7 +9,41 @@ const siteAccessChartData = {
 
 window.ceiDashboardAccessChartData = siteAccessChartData;
 
-const storedUser = JSON.parse(localStorage.getItem("ceiDashboardUser") || "null");
+let storedUser;
+try {
+  storedUser = JSON.parse(localStorage.getItem("ceiDashboardUser") || "null");
+} catch (error) {
+  localStorage.removeItem("ceiDashboardUser");
+}
+
+if (!storedUser || typeof storedUser !== "object") {
+  window.ceiDashboardAuth = Promise.resolve(false);
+  window.location.replace("login.html");
+} else {
+  window.ceiDashboardAuth = fetch(`${window.APP_CONFIG.apiBaseUrl}/api/auth/session`, {
+    credentials: "include",
+  }).then(async (response) => {
+    if (!response.ok) throw new Error("Sessão administrativa expirada.");
+    const user = await response.json();
+    localStorage.setItem("ceiDashboardUser", JSON.stringify(user));
+    return user;
+  }).then((user) => {
+    document.querySelectorAll("[data-dashboard-name]").forEach((element) => {
+      element.textContent = user.name;
+    });
+    document.querySelectorAll("[data-dashboard-profile]").forEach((element) => {
+      element.textContent = user.profile || "Diretora";
+    });
+    const greeting = document.querySelector("[data-dashboard-greeting]");
+    if (greeting) greeting.textContent = `Olá, ${user.name}!`;
+    return true;
+  }).catch((error) => {
+    console.warn("Sessão administrativa indisponível:", error.message);
+    localStorage.removeItem("ceiDashboardUser");
+    window.location.replace("login.html");
+    return false;
+  });
+}
 
 if (storedUser) {
   document.querySelectorAll("[data-dashboard-name]").forEach((element) => {
@@ -20,6 +54,18 @@ if (storedUser) {
   });
   document.querySelector("[data-dashboard-greeting]").textContent = `Olá, ${storedUser.name}!`;
 }
+
+document.querySelector("[data-dashboard-logout]")?.addEventListener("click", async (event) => {
+  event.preventDefault();
+  try {
+    await window.apiFetch(`${window.APP_CONFIG.apiBaseUrl}/api/auth/logout`, { method: "POST" });
+  } catch (error) {
+    console.error("Não foi possível encerrar a sessão no servidor:", error);
+  } finally {
+    localStorage.removeItem("ceiDashboardUser");
+    window.location.replace("login.html");
+  }
+});
 
 const menuItems = document.querySelectorAll(".dashboard-menu [data-panel-target]");
 const panelJumps = document.querySelectorAll("[data-panel-jump]");

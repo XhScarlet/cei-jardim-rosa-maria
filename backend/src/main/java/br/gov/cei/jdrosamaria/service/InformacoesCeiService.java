@@ -3,8 +3,10 @@ package br.gov.cei.jdrosamaria.service;
 import br.gov.cei.jdrosamaria.dto.InformacoesCeiDTO;
 import br.gov.cei.jdrosamaria.model.*;
 import br.gov.cei.jdrosamaria.repository.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -41,7 +43,7 @@ public class InformacoesCeiService {
 
     public InformacoesCeiDTO buscarInformacoesPorUnidade(Integer idUnidade) {
         Unidade unidade = unidadeRepository.findById(idUnidade)
-                .orElseThrow(() -> new RuntimeException("Unidade não encontrada"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Unidade não encontrada."));
 
         InformacoesCeiDTO dto = new InformacoesCeiDTO();
         dto.setIdUnidade(unidade.getIdUnidade());

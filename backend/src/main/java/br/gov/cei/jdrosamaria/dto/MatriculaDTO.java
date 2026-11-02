@@ -8,6 +8,7 @@ public class MatriculaDTO {
     private String crianca;
     private LocalDate nascimento;
     private String telefone;
+    private Boolean consentimentoLgpd;
 
     public MatriculaDTO() {}
 
@@ -22,4 +23,7 @@ public class MatriculaDTO {
 
     public String getTelefone() { return telefone; }
     public void setTelefone(String telefone) { this.telefone = telefone; }
+
+    public Boolean getConsentimentoLgpd() { return consentimentoLgpd; }
+    public void setConsentimentoLgpd(Boolean consentimentoLgpd) { this.consentimentoLgpd = consentimentoLgpd; }
 }

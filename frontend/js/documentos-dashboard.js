@@ -34,7 +34,7 @@ const documentosIconByType = {
 
 async function carregarDocumentosDoBanco() {
   try {
-    const response = await fetch(API_URL);
+    const response = await window.apiFetch(API_URL);
     if (!response.ok) throw new Error(`Não foi possível carregar os documentos (HTTP ${response.status}).`);
     documentosLista = await response.json();
     renderDocumentos();
@@ -230,7 +230,7 @@ documentosMenu?.addEventListener("click", async (event) => {
   if (action === "excluir") {
     if (!window.confirm(`Excluir o documento "${documento.title}"?`)) return;
     try {
-      const response = await fetch(`${API_URL}/${documento.id}`, { method: "DELETE" });
+      const response = await window.apiFetch(`${API_URL}/${documento.id}`, { method: "DELETE" });
       if (!response.ok) throw new Error(`Não foi possível excluir o documento (HTTP ${response.status}).`);
       documentosLista = documentosLista.filter((entry) => String(entry.id) !== String(documento.id));
       renderDocumentos();
@@ -279,7 +279,7 @@ documentosForm?.addEventListener("submit", async (event) => {
   if (formData instanceof FormData) formData.append("idUsuario", idUsuario);
 
   try {
-    const response = await fetch(editingId ? `${API_URL}/${editingId}` : `${API_URL}/upload`, {
+    const response = await window.apiFetch(editingId ? `${API_URL}/${editingId}` : `${API_URL}/upload`, {
       method: editingId ? "PUT" : "POST",
       ...(editingId
         ? { headers: { "Content-Type": "application/json" }, body: JSON.stringify(formData) }

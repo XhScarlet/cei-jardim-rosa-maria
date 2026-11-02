@@ -5,14 +5,14 @@
   - feedback visual curto para botões que ainda dependem do backend.
 */
 
-const blogFilters = document.querySelectorAll("[data-filter]");
+const publicBlogFilters = document.querySelectorAll("[data-filter]");
 const blogItems = document.querySelectorAll("[data-category]");
 
-blogFilters.forEach((filterButton) => {
+publicBlogFilters.forEach((filterButton) => {
   filterButton.addEventListener("click", () => {
     const filter = filterButton.dataset.filter;
 
-    blogFilters.forEach((button) => {
+    publicBlogFilters.forEach((button) => {
       const isActive = button === filterButton;
       button.classList.toggle("blog-filter-active", isActive);
       button.setAttribute("aria-pressed", isActive ? "true" : "false");
@@ -40,7 +40,7 @@ function showSuccessMessage(container, message) {
   feedback.hidden = false;
 }
 
-document.querySelectorAll(".matricula-form").forEach((form) => {
+document.querySelectorAll(".matricula-form:not([data-api-form])").forEach((form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 

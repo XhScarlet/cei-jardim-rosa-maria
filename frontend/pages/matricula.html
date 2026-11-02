@@ -50,7 +50,7 @@
           </div>
         </div>
 
-        <form class="matricula-form" action="#" method="post">
+        <form class="matricula-form" action="#" method="post" data-api-form>
           <p class="form-intro">
             <span>Preencha o formulário</span> de matrícula
           </p>
@@ -104,6 +104,15 @@
               required
               aria-describedby="matricula-status"
             />
+          </label>
+
+          <label class="consentimento-lgpd">
+            <input id="consentimento-lgpd" type="checkbox" name="consentimentoLgpd" required />
+            <span>
+              Declaro ser responsável legal pela criança e autorizo o tratamento dos dados para análise
+              desta solicitação, conforme o
+              <a href="privacidade.html" target="_blank" rel="noopener noreferrer">Aviso de Privacidade e Termo de Consentimento</a>.
+            </span>
           </label>
 
           <button class="submit-button" type="submit">Enviar</button>

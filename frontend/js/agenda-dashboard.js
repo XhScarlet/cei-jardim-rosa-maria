@@ -73,7 +73,7 @@ function showAgendaFeedback(message, isError = false) {
 async function requestAgenda(url = AGENDA_API_URL, options = {}) {
   let response;
   try {
-    response = await fetch(url, {
+    response = await window.apiFetch(url, {
       ...options,
       headers: {
         ...(options.body ? { "Content-Type": "application/json" } : {}),

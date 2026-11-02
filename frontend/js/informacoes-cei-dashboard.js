@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Buscar informações do Backend
   async function carregarInformacoes() {
     try {
-      const response = await fetch(API_URL);
+      const response = await window.apiFetch(API_URL);
       if (!response.ok) throw new Error('Erro ao buscar informações do CEI.');
       dadosAtuais = await response.json();
       renderizarTela(dadosAtuais);
@@ -200,13 +200,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (contatoFoneEl) {
-      contatoFoneEl.innerHTML = `Telefone: <a href="tel:+55${(data.foneContato || '').replace(/\D/g, '')}">${data.foneContato || ''}</a>`;
+      contatoFoneEl.textContent = "Telefone: ";
+      const telefoneLink = document.createElement("a");
+      telefoneLink.href = `tel:+55${(data.foneContato || "").replace(/\D/g, "")}`;
+      telefoneLink.textContent = data.foneContato || "";
+      contatoFoneEl.appendChild(telefoneLink);
     }
     if (contatoWhatsEl) {
       contatoWhatsEl.textContent = `Whatsapp: ${data.whatsappContato || ''}`;
     }
     if (contatoEmailEl) {
-      contatoEmailEl.innerHTML = `E-mail: <a href="mailto:${data.emailContato || ''}">${data.emailContato || ''}</a>`;
+      const email = data.emailContato || "";
+      contatoEmailEl.textContent = "E-mail: ";
+      const emailLink = document.createElement("a");
+      emailLink.href = `mailto:${encodeURIComponent(email)}`;
+      emailLink.textContent = email;
+      contatoEmailEl.appendChild(emailLink);
     }
   }
 
@@ -424,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       try {
-        const response = await fetch(API_URL, {
+        const response = await window.apiFetch(API_URL, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(dadosAtuais)

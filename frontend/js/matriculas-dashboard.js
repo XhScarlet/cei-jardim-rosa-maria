@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (numero.length === 11) {
       return `(${numero.slice(0, 2)}) ${numero.slice(2, 7)}-${numero.slice(7)}`;
     }
+    if (numero.length === 10) {
+      return `(${numero.slice(0, 2)}) ${numero.slice(2, 6)}-${numero.slice(6)}`;
+    }
     return telefone;
   }
 
@@ -43,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const temCodigoPais = numero.startsWith("55") && numero.length > 11;
     const numeroNacional = temCodigoPais ? numero.slice(2) : numero;
-    if (numeroNacional.length > 11) return "";
-    return `55${numeroNacional.padEnd(11, "0")}`;
+    if (numeroNacional.length !== 10 && numeroNacional.length !== 11) return "";
+    return `55${numeroNacional}`;
   }
 
   function gerarLinkWhatsApp(telefone, nomeResponsavel) {
@@ -181,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function carregarSolicitacoes() {
     setFeedback("Carregando solicitações...");
     try {
-      const response = await fetch(apiUrl);
+      const response = await window.apiFetch(apiUrl);
       if (!response.ok) throw new Error("Não foi possível carregar as solicitações.");
       solicitacoes = await response.json();
       if (!Array.isArray(solicitacoes)) throw new Error("A resposta do servidor está em formato inválido.");
@@ -244,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.disabled = true;
     setFeedback("");
     try {
-      const response = await fetch(`${apiUrl}/${encodeURIComponent(button.dataset.matriculaId || button.dataset.rejectMatricula)}/status`, {
+      const response = await window.apiFetch(`${apiUrl}/${encodeURIComponent(button.dataset.matriculaId || button.dataset.rejectMatricula)}/status`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ statusResponsavel: status }),
@@ -277,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.disabled = true;
     modalFeedback.hidden = true;
     try {
-      const response = await fetch(`${apiUrl}/${encodeURIComponent(editingItem.idResponsavel)}`, {
+      const response = await window.apiFetch(`${apiUrl}/${encodeURIComponent(editingItem.idResponsavel)}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

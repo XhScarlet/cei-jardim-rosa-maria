@@ -9,11 +9,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Locale;
 
 @Service
 public class ResponsavelService {
+
+    private static final String VERSAO_TERMO_LGPD = "2026-11-v1";
+    private static final ZoneId FUSO_HORARIO_CEI = ZoneId.of("America/Sao_Paulo");
 
     private final ResponsavelRepository responsavelRepository;
 
@@ -64,6 +70,9 @@ public class ResponsavelService {
         if (dto.getNascimento() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Informe a data de nascimento da criança.");
         }
+        if (!Boolean.TRUE.equals(dto.getConsentimentoLgpd())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O aceite do termo de privacidade é obrigatório.");
+        }
 
         Responsavel responsavel = new Responsavel();
         responsavel.setNomeResponsavel(dto.getResponsavel().trim());
@@ -71,6 +80,9 @@ public class ResponsavelService {
         responsavel.setDataNascimentoCrianca(dto.getNascimento());
         responsavel.setFoneResponsavel(normalizarTelefone(dto.getTelefone()));
         responsavel.setStatusResponsavel("P");
+        responsavel.setConsentimentoLgpd(true);
+        responsavel.setDataConsentimentoLgpd(LocalDateTime.now(FUSO_HORARIO_CEI));
+        responsavel.setVersaoTermoLgpd(VERSAO_TERMO_LGPD);
         responsavelRepository.save(responsavel);
     }
 
@@ -84,8 +96,11 @@ public class ResponsavelService {
         }
 
         String telefone = dto.getTelefone() == null ? "" : dto.getTelefone().replaceAll("\\D", "");
-        if (telefone.isEmpty() || telefone.length() > 11) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Informe um telefone válido com até 11 dígitos.");
+        if (telefone.length() != 10 && telefone.length() != 11) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Informe um telefone com 10 ou 11 dígitos.");
+        }
+        if (dto.getNascimento() != null && dto.getNascimento().isAfter(LocalDate.now(FUSO_HORARIO_CEI))) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A data de nascimento não pode ser futura.");
         }
     }
 
