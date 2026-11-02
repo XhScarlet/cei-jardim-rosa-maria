@@ -27,7 +27,7 @@ public class MatriculaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<MatriculaSolicitacaoDTO> atualizarMatricula(
-            @PathVariable Long id,
+            @PathVariable Integer id,
             @RequestBody MatriculaDTO dto) {
         return ResponseEntity.ok(responsavelService.atualizarMatricula(id, dto));
     }
@@ -40,7 +40,7 @@ public class MatriculaController {
 
     @PatchMapping("/{id}/status")
     public ResponseEntity<MatriculaSolicitacaoDTO> atualizarStatus(
-            @PathVariable Long id,
+            @PathVariable Integer id,
             @RequestBody StatusMatriculaDTO dto) {
         String status = dto == null ? null : dto.getStatusResponsavel();
         return ResponseEntity.ok(responsavelService.atualizarStatus(id, status));

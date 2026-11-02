@@ -12,10 +12,10 @@ public class Agenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_agenda")
-    private Long idAgenda;
+    private Integer idAgenda;
 
     @Column(name = "tb_direcao_id_direcao", nullable = false)
-    private Long idDirecao;
+    private Integer idDirecao;
 
     @Column(name = "data_agenda", nullable = false)
     private LocalDate dataAgenda;

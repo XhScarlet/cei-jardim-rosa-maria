@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 @Data
 public class BlogDTO {
-    private Long idBlog;
-    private Long idUsuario;
+    private Integer idBlog;
+    private Integer idUsuario;
     private String tituloBlog;
     private String categoriaBlog;
     private String resumoBlog;

@@ -16,13 +16,13 @@ public class InformacoesCeiController {
     }
 
     @GetMapping("/{idUnidade}")
-    public ResponseEntity<InformacoesCeiDTO> buscarInformacoes(@PathVariable Long idUnidade) {
+    public ResponseEntity<InformacoesCeiDTO> buscarInformacoes(@PathVariable Integer idUnidade) {
         return ResponseEntity.ok(service.buscarInformacoesPorUnidade(idUnidade));
     }
 
     @PutMapping("/{idUnidade}")
     public ResponseEntity<InformacoesCeiDTO> atualizarInformacoes(
-            @PathVariable Long idUnidade,
+            @PathVariable Integer idUnidade,
             @RequestBody InformacoesCeiDTO dto) {
         return ResponseEntity.ok(service.salvarOuAtualizarInformacoes(idUnidade, dto));
     }

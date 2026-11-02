@@ -9,7 +9,7 @@ public class Sobre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_sobre")
-    private Long idSobre;
+    private Integer idSobre;
 
     @ManyToOne
     @JoinColumn(name = "tb_unidade_id_unidade", nullable = false)
@@ -28,11 +28,11 @@ public class Sobre {
     public Sobre() {}
 
     // Getters e Setters
-    public Long getIdSobre() {
+    public Integer getIdSobre() {
         return idSobre;
     }
 
-    public void setIdSobre(Long idSobre) {
+    public void setIdSobre(Integer idSobre) {
         this.idSobre = idSobre;
     }
 

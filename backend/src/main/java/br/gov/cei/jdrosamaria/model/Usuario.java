@@ -12,7 +12,7 @@ public class Usuario {
     private Integer idUsuario;
 
     @Column(name = "tb_direcao_id_direcao", nullable = false)
-    private Long idDirecao;
+    private Integer idDirecao;
 
     @Column(name = "nome_usuario", nullable = false, length = 100)
     private String nomeUsuario;
@@ -35,8 +35,8 @@ public class Usuario {
     public Integer getIdUsuario() { return idUsuario; }
     public void setIdUsuario(Integer idUsuario) { this.idUsuario = idUsuario; }
 
-    public Long getIdDirecao() { return idDirecao; }
-    public void setIdDirecao(Long idDirecao) { this.idDirecao = idDirecao; }
+    public Integer getIdDirecao() { return idDirecao; }
+    public void setIdDirecao(Integer idDirecao) { this.idDirecao = idDirecao; }
 
     public String getNomeUsuario() { return nomeUsuario; }
     public void setNomeUsuario(String nomeUsuario) { this.nomeUsuario = nomeUsuario; }

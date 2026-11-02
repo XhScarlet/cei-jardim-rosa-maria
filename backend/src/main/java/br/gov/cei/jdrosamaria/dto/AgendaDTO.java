@@ -2,19 +2,19 @@ package br.gov.cei.jdrosamaria.dto;
 
 import java.time.LocalDate;
 public class AgendaDTO {
-    private Long idAgenda;
-    private Long idDirecao;
+    private Integer idAgenda;
+    private Integer idDirecao;
     private LocalDate dataAgenda;
     private String recadoAgenda;
     private String tipoAgenda;
     private String statusAgenda;
 
     // Getters e Setters
-    public Long getIdAgenda() { return idAgenda; }
-    public void setIdAgenda(Long idAgenda) { this.idAgenda = idAgenda; }
+    public Integer getIdAgenda() { return idAgenda; }
+    public void setIdAgenda(Integer idAgenda) { this.idAgenda = idAgenda; }
 
-    public Long getIdDirecao() { return idDirecao; }
-    public void setIdDirecao(Long idDirecao) { this.idDirecao = idDirecao; }
+    public Integer getIdDirecao() { return idDirecao; }
+    public void setIdDirecao(Integer idDirecao) { this.idDirecao = idDirecao; }
 
     public LocalDate getDataAgenda() { return dataAgenda; }
     public void setDataAgenda(LocalDate dataAgenda) { this.dataAgenda = dataAgenda; }

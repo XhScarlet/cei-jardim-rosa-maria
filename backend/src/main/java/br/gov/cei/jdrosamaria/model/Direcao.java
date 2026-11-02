@@ -11,12 +11,12 @@ public class Direcao {
 
     @Id
     @Column(name = "id_direcao")
-    private Long idDirecao;
+    private Integer idDirecao;
 
     @Column(name = "nome_direcao", nullable = false)
     private String nomeDirecao;
 
-    public Long getIdDirecao() {
+    public Integer getIdDirecao() {
         return idDirecao;
     }
 

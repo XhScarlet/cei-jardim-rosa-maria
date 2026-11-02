@@ -9,7 +9,7 @@ public class Unidade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_unidade")
-    private Long idUnidade;
+    private Integer idUnidade;
 
     @Column(name = "nome_unidade", nullable = false, length = 100)
     private String nomeUnidade;
@@ -33,11 +33,11 @@ public class Unidade {
     public Unidade() {}
 
     // Getters e Setters
-    public Long getIdUnidade() {
+    public Integer getIdUnidade() {
         return idUnidade;
     }
 
-    public void setIdUnidade(Long idUnidade) {
+    public void setIdUnidade(Integer idUnidade) {
         this.idUnidade = idUnidade;
     }
 

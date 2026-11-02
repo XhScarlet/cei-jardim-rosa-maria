@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ResponsavelRepository extends JpaRepository<Responsavel, Long> {
+public interface ResponsavelRepository extends JpaRepository<Responsavel, Integer> {
     List<Responsavel> findAllByOrderByIdResponsavelDesc();
 }

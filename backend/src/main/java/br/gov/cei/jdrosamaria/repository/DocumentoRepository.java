@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DocumentoRepository extends JpaRepository<Documento, Long> {
+public interface DocumentoRepository extends JpaRepository<Documento, Integer> {
     List<Documento> findByStatusDocumento(String status);
 }

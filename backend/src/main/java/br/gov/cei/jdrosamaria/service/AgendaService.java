@@ -39,7 +39,7 @@ public class AgendaService {
         return converterParaDTO(agendaRepository.save(agenda));
     }
 
-    public AgendaDTO atualizar(Long id, AgendaDTO dto) {
+    public AgendaDTO atualizar(Integer id, AgendaDTO dto) {
         validar(dto);
         Agenda agenda = agendaRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Evento não encontrado."));
@@ -55,7 +55,7 @@ public class AgendaService {
         return converterParaDTO(agendaRepository.save(agenda));
     }
 
-    public void deletar(Long id) {
+    public void deletar(Integer id) {
         if (!agendaRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Evento não encontrado.");
         }

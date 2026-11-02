@@ -33,20 +33,20 @@ public class BlogController {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.criar(dto, imagem));
     }
     @GetMapping("/{id}")
-    public BlogDTO buscar(@PathVariable Long id) {
+    public BlogDTO buscar(@PathVariable Integer id) {
         return service.buscar(id);
     }
 
     @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public BlogDTO atualizar(
-            @PathVariable Long id,
+            @PathVariable Integer id,
             @ModelAttribute BlogDTO dto,
             @RequestParam(value = "imagem", required = false) MultipartFile imagem) throws IOException {
         return service.atualizar(id, dto, imagem);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable Integer id) {
         service.deletar(id);
         return ResponseEntity.noContent().build();
     }

@@ -30,7 +30,7 @@ public class ResponsavelService {
     }
 
     @Transactional
-    public MatriculaSolicitacaoDTO atualizarStatus(Long id, String status) {
+    public MatriculaSolicitacaoDTO atualizarStatus(Integer id, String status) {
         String statusNormalizado = status == null ? "" : status.trim().toUpperCase(Locale.ROOT);
         if (!"A".equals(statusNormalizado) && !"I".equals(statusNormalizado)
                 && !"P".equals(statusNormalizado) && !"R".equals(statusNormalizado)) {
@@ -44,7 +44,7 @@ public class ResponsavelService {
     }
 
     @Transactional
-    public MatriculaSolicitacaoDTO atualizarMatricula(Long id, MatriculaDTO dto) {
+    public MatriculaSolicitacaoDTO atualizarMatricula(Integer id, MatriculaDTO dto) {
         validarDadosMatricula(dto);
         Responsavel responsavel = responsavelRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Responsável não encontrado."));

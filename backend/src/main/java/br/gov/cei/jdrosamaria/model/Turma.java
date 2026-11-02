@@ -9,7 +9,7 @@ public class Turma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_turma")
-    private Long idTurma;
+    private Integer idTurma;
 
     @ManyToOne
     @JoinColumn(name = "tb_unidade_id_unidade", nullable = false)
@@ -32,8 +32,8 @@ public class Turma {
 
     public Turma() {}
 
-    public Long getIdTurma() { return idTurma; }
-    public void setIdTurma(Long idTurma) { this.idTurma = idTurma; }
+    public Integer getIdTurma() { return idTurma; }
+    public void setIdTurma(Integer idTurma) { this.idTurma = idTurma; }
 
     public Unidade getUnidade() { return unidade; }
     public void setUnidade(Unidade unidade) { this.unidade = unidade; }

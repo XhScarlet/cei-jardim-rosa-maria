@@ -3,7 +3,7 @@ package br.gov.cei.jdrosamaria.dto;
 import java.time.LocalDateTime;
 
 public class DocumentoDTO {
-    private Long id;
+    private Integer id;
     private String title;
     private String description;
     private String category;
@@ -11,7 +11,7 @@ public class DocumentoDTO {
     private LocalDateTime date;
     private String status;
 
-    public DocumentoDTO(Long id, String title, String description, String category, String fileUrl, LocalDateTime date, String status) {
+    public DocumentoDTO(Integer id, String title, String description, String category, String fileUrl, LocalDateTime date, String status) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -21,7 +21,7 @@ public class DocumentoDTO {
         this.status = status;
     }
 
-    public Long getId() { return id; }
+    public Integer getId() { return id; }
     public String getTitle() { return title; }
     public String getDescription() { return description; }
     public String getCategory() { return category; }

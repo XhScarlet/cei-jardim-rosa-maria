@@ -10,7 +10,7 @@ public class Responsavel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_responsavel")
-    private Long idResponsavel;
+    private Integer idResponsavel;
 
     @Column(name = "nome_responsavel", nullable = false, length = 100)
     private String nomeResponsavel;
@@ -42,8 +42,8 @@ public class Responsavel {
     public Responsavel() {}
 
     // Getters e Setters
-    public Long getIdResponsavel() { return idResponsavel; }
-    public void setIdResponsavel(Long idResponsavel) { this.idResponsavel = idResponsavel; }
+    public Integer getIdResponsavel() { return idResponsavel; }
+    public void setIdResponsavel(Integer idResponsavel) { this.idResponsavel = idResponsavel; }
 
     public String getNomeResponsavel() { return nomeResponsavel; }
     public void setNomeResponsavel(String nomeResponsavel) { this.nomeResponsavel = nomeResponsavel; }

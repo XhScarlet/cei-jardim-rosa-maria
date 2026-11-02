@@ -10,10 +10,10 @@ public class Documento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_documento")
-    private Long idDocumento;
+    private Integer idDocumento;
 
     @Column(name = "tb_usuario_id_usuario", nullable = false)
-    private Long idUsuario;
+    private Integer idUsuario;
 
     @Column(name = "nome_documento", nullable = false, length = 100)
     private String nomeDocumento;
@@ -36,11 +36,11 @@ public class Documento {
     public Documento() {}
 
     // Getters e Setters
-    public Long getIdDocumento() { return idDocumento; }
-    public void setIdDocumento(Long idDocumento) { this.idDocumento = idDocumento; }
+    public Integer getIdDocumento() { return idDocumento; }
+    public void setIdDocumento(Integer idDocumento) { this.idDocumento = idDocumento; }
 
-    public Long getIdUsuario() { return idUsuario; }
-    public void setIdUsuario(Long idUsuario) { this.idUsuario = idUsuario; }
+    public Integer getIdUsuario() { return idUsuario; }
+    public void setIdUsuario(Integer idUsuario) { this.idUsuario = idUsuario; }
 
     public String getNomeDocumento() { return nomeDocumento; }
     public void setNomeDocumento(String nomeDocumento) { this.nomeDocumento = nomeDocumento; }

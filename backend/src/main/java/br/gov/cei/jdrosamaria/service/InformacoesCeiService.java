@@ -39,7 +39,7 @@ public class InformacoesCeiService {
         this.turmaRepository = turmaRepository;
     }
 
-    public InformacoesCeiDTO buscarInformacoesPorUnidade(Long idUnidade) {
+    public InformacoesCeiDTO buscarInformacoesPorUnidade(Integer idUnidade) {
         Unidade unidade = unidadeRepository.findById(idUnidade)
                 .orElseThrow(() -> new RuntimeException("Unidade não encontrada"));
 
@@ -92,7 +92,7 @@ public class InformacoesCeiService {
     }
 
     @Transactional
-    public InformacoesCeiDTO salvarOuAtualizarInformacoes(Long idUnidade, InformacoesCeiDTO dto) {
+    public InformacoesCeiDTO salvarOuAtualizarInformacoes(Integer idUnidade, InformacoesCeiDTO dto) {
         Unidade unidade = unidadeRepository.findById(idUnidade).orElse(new Unidade());
         unidade.setNomeUnidade(dto.getNomeUnidade());
         unidade.setEnderUnidade(dto.getEnderUnidade());

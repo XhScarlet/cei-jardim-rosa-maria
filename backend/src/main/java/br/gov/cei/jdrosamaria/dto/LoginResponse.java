@@ -8,10 +8,10 @@ public class LoginResponse {
     private String name;
     private String initials;
     private String profile;
-    private Long idDirecao;
+    private Integer idDirecao;
     private Integer idUsuario;
 
-    public LoginResponse(String name, String initials, String profile, Long idDirecao, Integer idUsuario) {
+    public LoginResponse(String name, String initials, String profile, Integer idDirecao, Integer idUsuario) {
         this.name = name;
         this.initials = initials;
         this.profile = profile;
@@ -21,7 +21,7 @@ public class LoginResponse {
     public String getName() { return name; }
     public String getInitials() { return initials; }
     public String getProfile() { return profile; }
-    public Long getIdDirecao() { return idDirecao; }
+    public Integer getIdDirecao() { return idDirecao; }
     @JsonProperty("idUsuario")
     public Integer getIdUsuario() { return idUsuario; }
 }

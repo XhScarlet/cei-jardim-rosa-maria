@@ -52,7 +52,7 @@ public class DocumentoService {
             String descricao,
             String tipo,
             String status,
-            Long idUsuario,
+            Integer idUsuario,
             String nomeOriginal,
             MultipartFile arquivo) {
         validar(nome, descricao, tipo, status, idUsuario, nomeOriginal, arquivo);
@@ -92,7 +92,7 @@ public class DocumentoService {
         }
     }
 
-    public ArquivoDocumento buscarArquivo(Long id) {
+    public ArquivoDocumento buscarArquivo(Integer id) {
         Documento documento = repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Documento não encontrado."));
         Path arquivo = uploadDirectory.resolve(documento.getArquivoDocumento()).normalize();
@@ -111,7 +111,7 @@ public class DocumentoService {
         }
     }
 
-    public DocumentoDTO atualizar(Long id, String nome, String descricao, String tipo, String status) {
+    public DocumentoDTO atualizar(Integer id, String nome, String descricao, String tipo, String status) {
         if (nome == null || nome.isBlank() || nome.trim().length() > 100
                 || descricao == null || descricao.isBlank() || descricao.trim().length() > 255
                 || tipo == null || tipo.isBlank() || tipo.trim().length() > 50
@@ -128,7 +128,7 @@ public class DocumentoService {
         return converterParaDTO(repository.save(documento));
     }
 
-    public void deletarDocumento(Long id) {
+    public void deletarDocumento(Integer id) {
         repository.deleteById(id);
     }
 
@@ -137,7 +137,7 @@ public class DocumentoService {
             String descricao,
             String tipo,
             String status,
-            Long idUsuario,
+            Integer idUsuario,
             String nomeOriginal,
             MultipartFile arquivo) {
         if (nome == null || nome.isBlank() || nome.trim().length() > 100

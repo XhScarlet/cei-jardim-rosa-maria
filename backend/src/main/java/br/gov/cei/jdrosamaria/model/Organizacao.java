@@ -9,7 +9,7 @@ public class Organizacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_organizacao")
-    private Long idOrganizacao;
+    private Integer idOrganizacao;
 
     @ManyToOne
     @JoinColumn(name = "tb_unidade_id_unidade", nullable = false)
@@ -28,11 +28,11 @@ public class Organizacao {
     public Organizacao() {}
 
     // Getters e Setters
-    public Long getIdOrganizacao() {
+    public Integer getIdOrganizacao() {
         return idOrganizacao;
     }
 
-    public void setIdOrganizacao(Long idOrganizacao) {
+    public void setIdOrganizacao(Integer idOrganizacao) {
         this.idOrganizacao = idOrganizacao;
     }
 

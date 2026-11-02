@@ -13,10 +13,10 @@ public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_post")
-    private Long idBlog;
+    private Integer idBlog;
 
     @Column(name = "tb_usuario_id_usuario")
-    private Long idUsuario;
+    private Integer idUsuario;
 
     @Column(name = "titulo_post")
     private String tituloBlog;

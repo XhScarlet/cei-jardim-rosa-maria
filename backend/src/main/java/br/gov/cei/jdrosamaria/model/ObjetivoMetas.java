@@ -9,7 +9,7 @@ public class ObjetivoMetas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_objetivo_metas")
-    private Long idObjetivoMetas;
+    private Integer idObjetivoMetas;
 
     @ManyToOne
     @JoinColumn(name = "tb_unidade_id_unidade", nullable = false)
@@ -28,11 +28,11 @@ public class ObjetivoMetas {
     public ObjetivoMetas() {}
 
     // Getters e Setters
-    public Long getIdObjetivoMetas() {
+    public Integer getIdObjetivoMetas() {
         return idObjetivoMetas;
     }
 
-    public void setIdObjetivoMetas(Long idObjetivoMetas) {
+    public void setIdObjetivoMetas(Integer idObjetivoMetas) {
         this.idObjetivoMetas = idObjetivoMetas;
     }
 

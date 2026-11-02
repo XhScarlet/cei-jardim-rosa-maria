@@ -5,7 +5,7 @@ import java.util.List;
 public class InformacoesCeiDTO {
 
     // Unidade (Dados da Unidade)
-    private Long idUnidade;
+    private Integer idUnidade;
     private String nomeUnidade;
     private String enderUnidade;
     private String bairroUnidade;
@@ -61,11 +61,11 @@ public class InformacoesCeiDTO {
     public void setTurmas(List<TurmaItemDTO> turmas) { this.turmas = turmas; }
 
     // Getters e Setters
-    public Long getIdUnidade() {
+    public Integer getIdUnidade() {
         return idUnidade;
     }
 
-    public void setIdUnidade(Long idUnidade) {
+    public void setIdUnidade(Integer idUnidade) {
         this.idUnidade = idUnidade;
     }
 

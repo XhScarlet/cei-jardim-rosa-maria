@@ -5,7 +5,7 @@ import br.gov.cei.jdrosamaria.model.Responsavel;
 import java.time.LocalDate;
 
 public record MatriculaSolicitacaoDTO(
-        Long idResponsavel,
+        Integer idResponsavel,
         String nomeResponsavel,
         String nomeCrianca,
         LocalDate dataNascimentoCrianca,

@@ -29,12 +29,12 @@ public class AgendaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AgendaDTO> atualizarEvento(@PathVariable Long id, @RequestBody AgendaDTO dto) {
+    public ResponseEntity<AgendaDTO> atualizarEvento(@PathVariable Integer id, @RequestBody AgendaDTO dto) {
         return ResponseEntity.ok(agendaService.atualizar(id, dto));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarEvento(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarEvento(@PathVariable Integer id) {
         agendaService.deletar(id);
         return ResponseEntity.noContent().build();
     }

@@ -39,11 +39,11 @@ public class BlogService {
         return blogs.stream().map(this::toDTO).toList();
     }
 
-    public BlogDTO buscar(Long id) {
+    public BlogDTO buscar(Integer id) {
         return toDTO(buscarEntidade(id));
     }
 
-    public BlogDTO atualizar(Long id, BlogDTO dto, MultipartFile imagem) throws IOException {
+    public BlogDTO atualizar(Integer id, BlogDTO dto, MultipartFile imagem) throws IOException {
         Blog blog = buscarEntidade(id);
         copiarCampos(dto, blog);
 
@@ -56,7 +56,7 @@ public class BlogService {
         return toDTO(repository.save(blog));
     }
 
-    public void deletar(Long id) {
+    public void deletar(Integer id) {
         Blog blog = buscarEntidade(id);
         armazenamento.deletar(blog.getImagemBlog());
         repository.delete(blog);
@@ -64,7 +64,7 @@ public class BlogService {
 
     // ---------- auxiliares ----------
 
-    private Blog buscarEntidade(Long id) {
+    private Blog buscarEntidade(Integer id) {
         return repository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Blog não encontrado: " + id));
     }

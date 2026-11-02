@@ -10,7 +10,7 @@ public class Horario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_horario")
-    private Long idHorario;
+    private Integer idHorario;
 
     @ManyToOne
     @JoinColumn(name = "tb_unidade_id_unidade", nullable = false)
@@ -41,11 +41,11 @@ public class Horario {
     public Horario() {}
 
     // Getters e Setters
-    public Long getIdHorario() {
+    public Integer getIdHorario() {
         return idHorario;
     }
 
-    public void setIdHorario(Long idHorario) {
+    public void setIdHorario(Integer idHorario) {
         this.idHorario = idHorario;
     }
 

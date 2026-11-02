@@ -36,7 +36,7 @@ public class DocumentoController {
             @RequestParam("descDocumento") String descDocumento,
             @RequestParam("tipoDocumento") String tipoDocumento,
             @RequestParam("statusDocumento") String statusDocumento,
-            @RequestParam("idUsuario") Long idUsuario,
+            @RequestParam("idUsuario") Integer idUsuario,
             @RequestParam("arquivo") MultipartFile arquivo) {
         String nomeOriginal = StringUtils.cleanPath(arquivo.getOriginalFilename() == null
                 ? ""
@@ -54,7 +54,7 @@ public class DocumentoController {
 
     @GetMapping("/{id}/arquivo")
     public ResponseEntity<Resource> baixarArquivo(
-            @PathVariable Long id,
+            @PathVariable Integer id,
             @RequestParam(defaultValue = "false") boolean visualizar) {
         DocumentoService.ArquivoDocumento arquivo = service.buscarArquivo(id);
         return ResponseEntity.ok()
@@ -66,7 +66,7 @@ public class DocumentoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<DocumentoDTO> atualizarDocumento(
-            @PathVariable Long id,
+            @PathVariable Integer id,
             @RequestBody AtualizarDocumentoRequest request) {
         String status = switch (request.status() == null ? "" : request.status().trim().toUpperCase(Locale.ROOT)) {
             case "A", "PUBLICADO" -> "A";
@@ -82,7 +82,7 @@ public class DocumentoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarDocumento(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarDocumento(@PathVariable Integer id) {
         service.deletarDocumento(id);
         return ResponseEntity.noContent().build();
     }
