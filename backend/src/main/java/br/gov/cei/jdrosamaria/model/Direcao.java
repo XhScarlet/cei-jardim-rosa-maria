@@ -6,14 +6,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TB_DIRECAO")
+@Table(name = "tb_direcao")
 public class Direcao {
 
     @Id
-    @Column(name = "Id_Direcao")
+    @Column(name = "id_direcao")
     private Long idDirecao;
 
-    @Column(name = "Nome_Direcao", nullable = false)
+    @Column(name = "nome_direcao", nullable = false)
     private String nomeDirecao;
 
     public Long getIdDirecao() {

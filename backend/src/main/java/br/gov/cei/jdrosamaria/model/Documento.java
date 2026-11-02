@@ -4,33 +4,33 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "TB_DOCUMENTO")
+@Table(name = "tb_documento")
 public class Documento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Documento")
+    @Column(name = "id_documento")
     private Long idDocumento;
 
-    @Column(name = "TB_USUARIO_Id_Usuario", nullable = false)
+    @Column(name = "tb_usuario_id_usuario", nullable = false)
     private Long idUsuario;
 
-    @Column(name = "Nome_Documento", nullable = false, length = 100)
+    @Column(name = "nome_documento", nullable = false, length = 100)
     private String nomeDocumento;
 
-    @Column(name = "Tipo_Documento", nullable = false, length = 50)
+    @Column(name = "tipo_documento", nullable = false, length = 50)
     private String tipoDocumento;
 
-    @Column(name = "Desc_Documento", nullable = false, length = 255)
+    @Column(name = "desc_documento", nullable = false, length = 255)
     private String descDocumento;
 
-    @Column(name = "Arquivo_Documento", nullable = false, length = 255)
+    @Column(name = "arquivo_documento", nullable = false, length = 255)
     private String arquivoDocumento;
 
-    @Column(name = "Dt_Upload_Documento", nullable = false)
+    @Column(name = "dt_upload_documento", nullable = false)
     private LocalDateTime dtUploadDocumento;
 
-    @Column(name = "Status_Documento", nullable = false, length = 1)
+    @Column(name = "status_documento", nullable = false, length = 1)
     private String statusDocumento;
 
     public Documento() {}

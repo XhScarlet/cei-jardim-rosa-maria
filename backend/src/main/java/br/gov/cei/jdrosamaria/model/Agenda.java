@@ -6,27 +6,27 @@ import lombok.Data;
 import java.time.LocalDate;
 @Data
 @Entity
-@Table(name = "TB_AGENDA")
+@Table(name = "tb_agenda")
 public class Agenda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Agenda")
+    @Column(name = "id_agenda")
     private Long idAgenda;
 
-    @Column(name = "TB_DIRECAO_Id_Direcao", nullable = false)
+    @Column(name = "tb_direcao_id_direcao", nullable = false)
     private Long idDirecao;
 
-    @Column(name = "Data_Agenda", nullable = false)
+    @Column(name = "data_agenda", nullable = false)
     private LocalDate dataAgenda;
 
-    @Column(name = "Recado_Agenda", nullable = false, length = 255)
+    @Column(name = "recado_agenda", nullable = false, length = 255)
     private String recadoAgenda;
 
-    @Column(name = "Tipo_Agenda", nullable = false, length = 50)
+    @Column(name = "tipo_agenda", nullable = false, length = 50)
     private String tipoAgenda;
 
-    @Column(name = "Status_Agenda", nullable = false, length = 30)
+    @Column(name = "status_agenda", nullable = false, length = 30)
     private String statusAgenda;
 
     // Constructores

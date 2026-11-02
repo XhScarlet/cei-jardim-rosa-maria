@@ -3,28 +3,28 @@ package br.gov.cei.jdrosamaria.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TB_CONTATO")
+@Table(name = "tb_contato")
 public class Contato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Contato")
+    @Column(name = "id_contato")
     private Long idContato;
 
     @ManyToOne
-    @JoinColumn(name = "TB_UNIDADE_Id_Unidade", nullable = false)
+    @JoinColumn(name = "tb_unidade_id_unidade", nullable = false)
     private Unidade unidade;
 
-    @Column(name = "Fone_Contato", nullable = false, length = 15)
+    @Column(name = "fone_contato", nullable = false, length = 15)
     private String foneContato;
 
-    @Column(name = "Whatsapp_Contato", nullable = false, length = 15)
+    @Column(name = "whatsapp_contato", nullable = false, length = 15)
     private String whatsappContato;
 
-    @Column(name = "Email_Contato", nullable = false, length = 45)
+    @Column(name = "email_contato", nullable = false, length = 45)
     private String emailContato;
 
-    @Column(name = "Status_Contato", nullable = false, length = 1)
+    @Column(name = "status_contato", nullable = false, length = 1)
     private String statusContato = "A";
 
     // Construtor padrão

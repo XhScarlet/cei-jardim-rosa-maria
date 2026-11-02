@@ -4,37 +4,37 @@ import jakarta.persistence.*;
 import java.sql.Time;
 
 @Entity
-@Table(name = "TB_HORARIO")
+@Table(name = "tb_horario")
 public class Horario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Horario")
+    @Column(name = "id_horario")
     private Long idHorario;
 
     @ManyToOne
-    @JoinColumn(name = "TB_UNIDADE_Id_Unidade", nullable = false)
+    @JoinColumn(name = "tb_unidade_id_unidade", nullable = false)
     private Unidade unidade;
 
-    @Column(name = "Dia_Semana_Horario", nullable = false, length = 30)
+    @Column(name = "dia_semana_horario", nullable = false, length = 30)
     private String diaSemana;
 
-    @Column(name = "Hr_Abertura_Horario", nullable = false)
+    @Column(name = "hr_abertura_horario", nullable = false)
     private Time hrAbertura;
 
-    @Column(name = "Hr_Fechamento_Horario", nullable = false)
+    @Column(name = "hr_fechamento_horario", nullable = false)
     private Time hrFechamento;
 
-    @Column(name = "Atendimento_Inicio_Horario", nullable = false)
+    @Column(name = "atendimento_inicio_horario", nullable = false)
     private Time atendimentoInicio;
 
-    @Column(name = "Atendimento_Fim_Horario", nullable = false)
+    @Column(name = "atendimento_fim_horario", nullable = false)
     private Time atendimentoFim;
 
-    @Column(name = "Desc_Horario", nullable = false, length = 255)
+    @Column(name = "desc_horario", nullable = false, length = 255)
     private String descHorario;
 
-    @Column(name = "Status_Horario", nullable = false, length = 1)
+    @Column(name = "status_horario", nullable = false, length = 1)
     private String statusHorario = "A";
 
     // Construtor padrão

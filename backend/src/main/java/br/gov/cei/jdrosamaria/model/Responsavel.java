@@ -4,39 +4,39 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "TB_RESPONSAVEL")
+@Table(name = "tb_responsavel")
 public class Responsavel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Responsavel")
+    @Column(name = "id_responsavel")
     private Long idResponsavel;
 
-    @Column(name = "Nome_Responsavel", nullable = false, length = 100)
+    @Column(name = "nome_responsavel", nullable = false, length = 100)
     private String nomeResponsavel;
 
-    @Column(name = "Titular_Responsavel", nullable = false)
+    @Column(name = "titular_responsavel", nullable = false)
     private Boolean titularResponsavel = true;
 
-    @Column(name = "Parentesco_Responsavel", nullable = false, length = 10)
+    @Column(name = "parentesco_responsavel", nullable = false, length = 10)
     private String parentescoResponsavel = "Outro";
 
-    @Column(name = "Email_Responsavel", nullable = false, length = 45)
+    @Column(name = "email_responsavel", nullable = false, length = 45)
     private String emailResponsavel = "nao_informado@cei.com";
 
-    @Column(name = "Fone_Responsavel", nullable = false, length = 11)
+    @Column(name = "fone_responsavel", nullable = false, length = 11)
     private String foneResponsavel;
 
-    @Column(name = "Ender_Responsavel", nullable = false, length = 100)
+    @Column(name = "ender_responsavel", nullable = false, length = 100)
     private String enderResponsavel = "Não informado";
 
-    @Column(name = "Status_Responsavel", nullable = false, length = 1)
+    @Column(name = "status_responsavel", nullable = false, length = 1)
     private String statusResponsavel = "A";
 
-    @Column(name = "Nome_Crianca", length = 100)
+    @Column(name = "nome_crianca", length = 100)
     private String nomeCrianca;
 
-    @Column(name = "Data_Nascimento_Crianca")
+    @Column(name = "data_nascimento_crianca")
     private LocalDate dataNascimentoCrianca;
 
     public Responsavel() {}

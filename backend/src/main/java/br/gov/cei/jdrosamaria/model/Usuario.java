@@ -3,30 +3,30 @@ package br.gov.cei.jdrosamaria.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TB_USUARIO")
+@Table(name = "tb_usuario")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Usuario")
+    @Column(name = "id_usuario")
     private Integer idUsuario;
 
-    @Column(name = "TB_DIRECAO_Id_Direcao", nullable = false)
+    @Column(name = "tb_direcao_id_direcao", nullable = false)
     private Long idDirecao;
 
-    @Column(name = "Nome_Usuario", nullable = false, length = 100)
+    @Column(name = "nome_usuario", nullable = false, length = 100)
     private String nomeUsuario;
 
-    @Column(name = "Email_Usuario", nullable = false, length = 45)
+    @Column(name = "email_usuario", nullable = false, length = 45)
     private String emailUsuario;
 
-    @Column(name = "Senha_Usuario", nullable = false, length = 25)
+    @Column(name = "senha_usuario", nullable = false, length = 25)
     private String senhaUsuario;
 
-    @Column(name = "Tipo_Usuario", nullable = false, length = 20)
+    @Column(name = "tipo_usuario", nullable = false, length = 20)
     private String tipoUsuario;
 
-    @Column(name = "Status_Usuario", nullable = false, length = 1)
+    @Column(name = "status_usuario", nullable = false, length = 1)
     private String statusUsuario;
 
     public Usuario() {}

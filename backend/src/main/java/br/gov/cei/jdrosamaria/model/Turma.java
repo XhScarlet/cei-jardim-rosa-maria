@@ -3,31 +3,31 @@ package br.gov.cei.jdrosamaria.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TB_TURMA")
+@Table(name = "tb_turma")
 public class Turma {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Turma")
+    @Column(name = "id_turma")
     private Long idTurma;
 
     @ManyToOne
-    @JoinColumn(name = "TB_UNIDADE_Id_Unidade", nullable = false)
+    @JoinColumn(name = "tb_unidade_id_unidade", nullable = false)
     private Unidade unidade;
 
-    @Column(name = "Nome_Turma", nullable = false, length = 50)
+    @Column(name = "nome_turma", nullable = false, length = 50)
     private String nomeTurma;
 
-    @Column(name = "Faixa_Etaria_Turma", nullable = false, length = 50)
+    @Column(name = "faixa_etaria_turma", nullable = false, length = 50)
     private String faixaEtariaTurma;
 
-    @Column(name = "Idade_Min_Turma", nullable = false)
+    @Column(name = "idade_min_turma", nullable = false)
     private Integer idadeMinTurma = 0;
 
-    @Column(name = "Idade_Max_Turma", nullable = false)
+    @Column(name = "idade_max_turma", nullable = false)
     private Integer idadeMaxTurma = 5;
 
-    @Column(name = "Status_Turma", nullable = false, length = 1)
+    @Column(name = "status_turma", nullable = false, length = 1)
     private String statusTurma = "A";
 
     public Turma() {}

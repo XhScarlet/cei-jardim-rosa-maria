@@ -3,25 +3,25 @@ package br.gov.cei.jdrosamaria.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TB_SOBRE")
+@Table(name = "tb_sobre")
 public class Sobre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Sobre")
+    @Column(name = "id_sobre")
     private Long idSobre;
 
     @ManyToOne
-    @JoinColumn(name = "TB_UNIDADE_Id_Unidade", nullable = false)
+    @JoinColumn(name = "tb_unidade_id_unidade", nullable = false)
     private Unidade unidade;
 
-    @Column(name = "Titulo_Sobre", nullable = false, length = 100)
+    @Column(name = "titulo_sobre", nullable = false, length = 100)
     private String titulo;
 
-    @Column(name = "Desc_Sobre", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "desc_sobre", nullable = false, columnDefinition = "TEXT")
     private String descricao;
 
-    @Column(name = "Status_Sobre", nullable = false, length = 1)
+    @Column(name = "status_sobre", nullable = false, length = 1)
     private String status = "A";
 
     // Construtor padrão

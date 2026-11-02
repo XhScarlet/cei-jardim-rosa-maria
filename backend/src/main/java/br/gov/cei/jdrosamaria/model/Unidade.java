@@ -3,30 +3,30 @@ package br.gov.cei.jdrosamaria.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TB_UNIDADE")
+@Table(name = "tb_unidade")
 public class Unidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Unidade")
+    @Column(name = "id_unidade")
     private Long idUnidade;
 
-    @Column(name = "Nome_Unidade", nullable = false, length = 100)
+    @Column(name = "nome_unidade", nullable = false, length = 100)
     private String nomeUnidade;
 
-    @Column(name = "Ender_Unidade", nullable = false, length = 200)
+    @Column(name = "ender_unidade", nullable = false, length = 200)
     private String enderUnidade;
 
-    @Column(name = "Bairro_Unidade", nullable = false, length = 100)
+    @Column(name = "bairro_unidade", nullable = false, length = 100)
     private String bairroUnidade;
 
-    @Column(name = "Cidade_Unidade", nullable = false, length = 100)
+    @Column(name = "cidade_unidade", nullable = false, length = 100)
     private String cidadeUnidade;
 
-    @Column(name = "Estado_Unidade", nullable = false, length = 2)
+    @Column(name = "estado_unidade", nullable = false, length = 2)
     private String estadoUnidade;
 
-    @Column(name = "Cep_Unidade", nullable = false, length = 9)
+    @Column(name = "cep_unidade", nullable = false, length = 9)
     private String cepUnidade;
 
     // Construtor padrão

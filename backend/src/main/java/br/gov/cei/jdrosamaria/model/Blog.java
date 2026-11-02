@@ -7,35 +7,35 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "TB_POST")
+@Table(name = "tb_post")
 public class Blog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Post")
+    @Column(name = "id_post")
     private Long idBlog;
 
-    @Column(name = "TB_USUARIO_Id_Usuario")
+    @Column(name = "tb_usuario_id_usuario")
     private Long idUsuario;
 
-    @Column(name = "Titulo_Post")
+    @Column(name = "titulo_post")
     private String tituloBlog;
 
-    @Column(name = "Categoria_Post")
+    @Column(name = "categoria_post")
     private String categoriaBlog;
 
-    @Column(name = "Resumo_Post")
+    @Column(name = "resumo_post")
     private String resumoBlog;
 
-    @Column(name = "Conteudo_Post", columnDefinition = "TEXT")
+    @Column(name = "conteudo_post", columnDefinition = "TEXT")
     private String conteudoBlog;
 
-    @Column(name = "Imagem_Post")
+    @Column(name = "imagem_post")
     private String imagemBlog; // só a URL
 
-    @Column(name = "Dt_Post")
+    @Column(name = "dt_post")
     private LocalDateTime dataBlog;
 
-    @Column(name = "Status_Post")
+    @Column(name = "status_post")
     private String statusBlog;
 }
