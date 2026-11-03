@@ -1,2 +1,5 @@
-
 uploads/
+
+# Postman local configuration
+postman/
+.postman/

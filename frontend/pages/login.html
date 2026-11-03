@@ -70,7 +70,7 @@
               aria-describedby="login-status"
             />
           </label>
-          <a class="forgot-password" href="#">Esqueceu sua senha?</a>
+          <a class="forgot-password" href="#recuperar-senha" data-open-reset>Esqueci minha senha</a>
           <button class="login-submit" type="submit">Entrar</button>
           <!-- Mensagem reutilizável para retorno de autenticação inválida. -->
           <p id="login-status" class="form-message form-message-error" role="alert" hidden>
@@ -85,6 +85,28 @@
         <img class="login-blue-flower" src="../assets/rosa-azul.svg" alt="" aria-hidden="true" />
       </section>
 
+      <dialog class="password-reset-dialog" data-reset-dialog aria-labelledby="reset-dialog-title">
+        <button class="password-reset-close" type="button" aria-label="Fechar" data-close-reset>×</button>
+        <h2 id="reset-dialog-title" data-reset-title>Recuperar senha</h2>
+        <p data-reset-description>Informe o e-mail cadastrado. Enviaremos um link para criar uma nova senha.</p>
+        <form data-request-reset-form>
+          <label class="login-field" for="reset-email"><span>E-mail</span>
+            <input id="reset-email" name="email" type="email" autocomplete="email" required placeholder="seuemail@exemplo.com" />
+          </label>
+          <button class="login-submit" type="submit">Enviar link de recuperação</button>
+        </form>
+        <form data-confirm-reset-form hidden>
+          <label class="login-field" for="new-password"><span>Nova senha</span>
+            <input id="new-password" name="senha" type="password" minlength="8" maxlength="25" autocomplete="new-password" required placeholder="Mínimo de 8 caracteres" />
+          </label>
+          <label class="login-field" for="confirm-password"><span>Confirme a nova senha</span>
+            <input id="confirm-password" type="password" minlength="8" maxlength="25" autocomplete="new-password" required placeholder="Digite a senha novamente" />
+          </label>
+          <button class="login-submit" type="submit">Salvar nova senha</button>
+        </form>
+        <p class="form-message" data-reset-status role="status" aria-live="polite" hidden></p>
+      </dialog>
+
       <p class="login-footer-text">cuidado | <span>amor</span> | carinho</p>
       <img class="login-heart-line" src="../assets/linha-de-coraçao.svg" alt="" aria-hidden="true" />
     </main>
@@ -93,6 +115,80 @@
     <script>
       const loginForm = document.querySelector("[data-login-form]");
       const loginStatus = document.querySelector("#login-status");
+      const resetDialog = document.querySelector("[data-reset-dialog]");
+      const resetStatus = document.querySelector("[data-reset-status]");
+      const requestResetForm = document.querySelector("[data-request-reset-form]");
+      const confirmResetForm = document.querySelector("[data-confirm-reset-form]");
+      const resetToken = new URLSearchParams(window.location.search).get("token");
+      const resetEmail = new URLSearchParams(window.location.search).get("email") || "";
+
+      document.querySelector("[data-open-reset]").addEventListener("click", (event) => {
+        event.preventDefault();
+        resetDialog.showModal();
+      });
+      document.querySelector("[data-close-reset]").addEventListener("click", () => resetDialog.close());
+
+      if (resetToken) {
+        requestResetForm.hidden = true;
+        confirmResetForm.hidden = false;
+        document.querySelector("[data-reset-title]").textContent = "Crie uma nova senha";
+        document.querySelector("[data-reset-description]").textContent = "A senha deve ter entre 8 e 25 caracteres.";
+        document.querySelector("[data-confirm-reset-form]").dataset.email = resetEmail;
+        resetDialog.showModal();
+      }
+
+      requestResetForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        await submitReset("/password-reset/request", {
+          email: new FormData(requestResetForm).get("email")
+        }, "Se o e-mail estiver cadastrado, enviaremos um link de recuperação.");
+      });
+
+      confirmResetForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const senha = new FormData(confirmResetForm).get("senha");
+        const confirmacao = document.querySelector("#confirm-password").value;
+        if (senha !== confirmacao) {
+          showResetStatus("As senhas não conferem.", true);
+          return;
+        }
+        const ok = await submitReset("/password-reset/confirm", {
+          email: confirmResetForm.dataset.email,
+          token: resetToken,
+          senha
+        }, "Senha alterada. Você já pode entrar com a nova senha.");
+        if (ok) {
+          window.history.replaceState({}, document.title, window.location.pathname);
+          setTimeout(() => resetDialog.close(), 1800);
+        }
+      });
+
+      async function submitReset(path, payload, successMessage) {
+        resetStatus.hidden = true;
+        try {
+          const response = await window.apiFetch(`${window.APP_CONFIG.apiBaseUrl}/api/auth${path}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            showResetStatus(result.message || "Não foi possível concluir. Solicite um novo link.", true);
+            return false;
+          }
+          showResetStatus(successMessage, false);
+          return true;
+        } catch (error) {
+          showResetStatus("Erro ao conectar com o servidor. Tente novamente mais tarde.", true);
+          return false;
+        }
+      }
+
+      function showResetStatus(message, isError) {
+        resetStatus.textContent = message;
+        resetStatus.classList.toggle("form-message-error", isError);
+        resetStatus.hidden = false;
+      }
 
       loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();

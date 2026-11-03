@@ -297,3 +297,17 @@ INSERT INTO tb_usuario (tb_direcao_id_direcao, nome_usuario, email_usuario, senh
 VALUES 
     (1, 'Gabriela', 'gabi.demo@exemplo.com', 'teste1234', 'Diretora', 'A'),
     (2, 'Murilo', 'murilo.demo@exemplo.com', '1234teste', 'Coordenador', 'A');
+
+CREATE TABLE TB_PASSWORD_RESET_TOKEN (
+    Id_Token BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    Token_Hash VARCHAR(64) NOT NULL,
+    TB_USUARIO_Id_Usuario INTEGER UNSIGNED NOT NULL,
+    Expira_Em TIMESTAMP(6) NOT NULL,
+    PRIMARY KEY (Id_Token),
+    UNIQUE KEY UK_PASSWORD_RESET_TOKEN_HASH (Token_Hash),
+    KEY IX_PASSWORD_RESET_TOKEN_USUARIO (TB_USUARIO_Id_Usuario),
+    CONSTRAINT FK_PASSWORD_RESET_TOKEN_USUARIO
+        FOREIGN KEY (TB_USUARIO_Id_Usuario)
+        REFERENCES TB_USUARIO (Id_Usuario)
+        ON DELETE CASCADE
+);
