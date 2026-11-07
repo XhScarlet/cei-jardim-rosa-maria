@@ -6,21 +6,21 @@ import lombok.Data;
 import java.time.Instant;
 @Data
 @Entity
-@Table(name = "TB_PASSWORD_RESET_TOKEN")
+@Table(name = "tb_password_reset_token")
 public class PasswordResetToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Token")
+    @Column(name = "id_token")
     private Long id;
 
-    @Column(name = "Token_Hash", nullable = false, unique = true, length = 64)
+    @Column(name = "token_hash", nullable = false, unique = true, length = 64)
     private String tokenHash;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "TB_USUARIO_Id_Usuario", nullable = false)
+    @JoinColumn(name = "tb_usuario_id_usuario", nullable = false)
     private Usuario usuario;
 
-    @Column(name = "Expira_Em", nullable = false)
+    @Column(name = "expira_em", nullable = false)
     private Instant expiresAt;
 
 }

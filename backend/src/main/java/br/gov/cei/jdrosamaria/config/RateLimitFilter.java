@@ -11,10 +11,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Stream;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 20)
@@ -23,11 +25,14 @@ public class RateLimitFilter extends OncePerRequestFilter {
     private static final int MAX_TRACKED_KEYS = 10_000;
     private final Map<String, Window> windows = new ConcurrentHashMap<>();
     private final AtomicLong requestCount = new AtomicLong();
-    private final String allowedOrigin;
+    private final List<String> allowedOrigins;
 
     public RateLimitFilter(
             @Value("${app.cors.allowed-origin:http://localhost:5500}") String allowedOrigin) {
-        this.allowedOrigin = allowedOrigin;
+        this.allowedOrigins = Stream.of(allowedOrigin.split(","))
+                .map(String::trim)
+                .filter(value -> !value.isEmpty())
+                .toList();
     }
 
     @Override
@@ -53,9 +58,10 @@ public class RateLimitFilter extends OncePerRequestFilter {
 
         if (!permit(key, now, limit, duration)) {
             String origin = request.getHeader("Origin");
-            if (allowedOrigin.equals(origin)) {
+            if (origin != null && allowedOrigins.contains(origin)) {
                 response.setHeader("Access-Control-Allow-Origin", origin);
                 response.setHeader("Access-Control-Allow-Credentials", "true");
+                response.setHeader("Access-Control-Expose-Headers", "Retry-After");
                 response.setHeader("Vary", "Origin");
             }
             response.setStatus(429);

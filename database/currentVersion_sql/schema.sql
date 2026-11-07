@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS tb_direcao;
 CREATE TABLE tb_direcao (
   id_direcao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   nome_direcao VARCHAR(100) NOT NULL,
-  cargo_direcao VARCHAR(20) NOT NULL,
+  cargo_direcao VARCHAR(50) NOT NULL,
   fone_direcao VARCHAR(11) NOT NULL,
   email_direcao VARCHAR(45) NOT NULL,
   status_direcao VARCHAR(1) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE tb_unidade (
   ender_unidade VARCHAR(200) NOT NULL,
   bairro_unidade VARCHAR(100) NOT NULL,
   cidade_unidade VARCHAR(100) NOT NULL,
-  estado_unidade CHAR(2) NOT NULL,
+  estado_unidade VARCHAR(2) NOT NULL,
   cep_unidade VARCHAR(9) NOT NULL,
   PRIMARY KEY(id_unidade)
 );
@@ -46,6 +46,9 @@ CREATE TABLE tb_responsavel (
   status_responsavel VARCHAR(1) NOT NULL,
   nome_crianca VARCHAR(100) NULL,
   data_nascimento_crianca DATE NULL,
+  consentimento_lgpd TINYINT(1) NOT NULL DEFAULT 0,
+  data_consentimento_lgpd DATETIME NULL,
+  versao_termo_lgpd VARCHAR(20) NULL,
   PRIMARY KEY(id_responsavel)
 );
 
@@ -298,16 +301,16 @@ VALUES
     (1, 'Gabriela', 'gabi.demo@exemplo.com', 'teste1234', 'Diretora', 'A'),
     (2, 'Murilo', 'murilo.demo@exemplo.com', '1234teste', 'Coordenador', 'A');
 
-CREATE TABLE TB_PASSWORD_RESET_TOKEN (
-    Id_Token BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Token_Hash VARCHAR(64) NOT NULL,
-    TB_USUARIO_Id_Usuario INTEGER UNSIGNED NOT NULL,
-    Expira_Em TIMESTAMP(6) NOT NULL,
-    PRIMARY KEY (Id_Token),
-    UNIQUE KEY UK_PASSWORD_RESET_TOKEN_HASH (Token_Hash),
-    KEY IX_PASSWORD_RESET_TOKEN_USUARIO (TB_USUARIO_Id_Usuario),
-    CONSTRAINT FK_PASSWORD_RESET_TOKEN_USUARIO
-        FOREIGN KEY (TB_USUARIO_Id_Usuario)
-        REFERENCES TB_USUARIO (Id_Usuario)
+CREATE TABLE IF NOT EXISTS tb_password_reset_token (
+    id_token BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    token_hash VARCHAR(64) NOT NULL,
+    tb_usuario_id_usuario INTEGER UNSIGNED NOT NULL,
+    expira_em TIMESTAMP(6) NOT NULL,
+    PRIMARY KEY (id_token),
+    UNIQUE KEY uk_password_reset_token_hash (token_hash),
+    KEY ix_password_reset_token_usuario (tb_usuario_id_usuario),
+    CONSTRAINT fk_password_reset_token_usuario
+        FOREIGN KEY (tb_usuario_id_usuario)
+        REFERENCES tb_usuario (id_usuario)
         ON DELETE CASCADE
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
