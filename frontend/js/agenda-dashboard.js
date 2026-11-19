@@ -12,12 +12,18 @@ const agendaAltView = document.querySelector("[data-agenda-alt-view]");
 const agendaViewButtons = document.querySelectorAll("[data-agenda-view]");
 const agendaFeedback = document.querySelector("[data-agenda-feedback]");
 const agendaEvents = [];
-const loggedAgendaUser = JSON.parse(localStorage.getItem("ceiDashboardUser") || "null");
-const hasAgendaUserIds = Number.isInteger(Number(loggedAgendaUser?.idDirecao))
+let loggedAgendaUser = JSON.parse(localStorage.getItem("ceiDashboardUser") || "null");
+let hasAgendaUserIds = Number.isInteger(Number(loggedAgendaUser?.idDirecao))
   && Number(loggedAgendaUser.idDirecao) > 0;
 let currentAgendaMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 let selectedAgendaEventId = null;
 let menuAgendaEventId = null;
+
+window.ceiDashboardAuth?.then((session) => {
+  if (!session || typeof session !== "object") return;
+  loggedAgendaUser = session;
+  hasAgendaUserIds = Number.isInteger(Number(session.idDirecao)) && Number(session.idDirecao) > 0;
+});
 
 const agendaCategoryClass = {
   reuniao: "agenda-event-reuniao",
@@ -314,6 +320,8 @@ function openAgendaModal(eventToEdit = null) {
   agendaModalTitle.textContent = eventToEdit ? "Editar evento" : "Novo evento";
   agendaForm.elements.recadoAgenda.value = eventToEdit?.recadoAgenda ?? "";
   agendaForm.elements.dataAgenda.value = eventToEdit?.dataAgenda ?? getLocalDateValue();
+  agendaForm.elements.horaAgenda.value = eventToEdit?.horaAgenda ?? "";
+  agendaForm.elements.localAgenda.value = eventToEdit?.localAgenda ?? "CEI Jardim Rosa Maria";
   agendaForm.elements.tipoAgenda.value = eventToEdit?.tipoAgenda ?? "Outros";
   agendaForm.elements.statusAgenda.value = eventToEdit?.statusAgenda ?? "Ativo";
   agendaForm.elements.idDirecao.value = loggedAgendaUser?.idDirecao ?? "";
@@ -416,6 +424,8 @@ agendaForm?.addEventListener("submit", async (event) => {
   const payload = {
     recadoAgenda: agendaForm.elements.recadoAgenda.value.trim(),
     dataAgenda: agendaForm.elements.dataAgenda.value,
+    horaAgenda: agendaForm.elements.horaAgenda.value || null,
+    localAgenda: agendaForm.elements.localAgenda.value.trim(),
     tipoAgenda: agendaForm.elements.tipoAgenda.value,
     idDirecao: Number(loggedAgendaUser.idDirecao),
     statusAgenda: agendaForm.elements.statusAgenda.value,

@@ -6,11 +6,6 @@
 /* Dashboard                                                                  */
 /* -------------------------------------------------------------------------- */
 
-/*
-  Protótipo da área restrita.
-  O backend deve trocar os dados mockados por permissões reais da direção,
-  mantendo esta estrutura visual.
-*/
 body:has(.dashboard-page) {
   overflow: auto;
 }
@@ -891,6 +886,10 @@ body:has(.dashboard-page) {
   transform: rotate(-90deg);
 }
 
+.dashboard-stat-card:first-child em[data-trend="down"] {
+  color: #ae5864;
+}
+
 .dashboard-stats small {
   position: absolute;
   left: calc(111 * var(--ux));
@@ -963,7 +962,7 @@ body:has(.dashboard-page) {
   top: calc(33 * var(--uy));
 }
 
-.dashboard-publications > a {
+.dashboard-publications > :is(a, button) {
   position: absolute;
   right: calc(36 * var(--ux));
   top: calc(32 * var(--uy));
@@ -973,7 +972,7 @@ body:has(.dashboard-page) {
   font-size: calc(18 * var(--u));
 }
 
-.dashboard-publications > a img {
+.dashboard-publications > :is(a, button) img {
   width: calc(18 * var(--u));
   height: calc(18 * var(--u));
 }
@@ -1077,6 +1076,15 @@ body:has(.dashboard-page) {
   height: calc(24 * var(--u));
 }
 
+.publication-more-button {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
 .dashboard-dates {
   left: calc(645 * var(--ux));
   top: calc(344 * var(--uy));
@@ -1107,12 +1115,12 @@ body:has(.dashboard-page) {
   height: calc(18 * var(--u));
 }
 
-.dashboard-publications > a,
+.dashboard-publications > :is(a, button),
 .dashboard-dates > button[data-panel-jump] {
   font-size: calc(18 * var(--u));
 }
 
-.dashboard-publications > a img,
+.dashboard-publications > :is(a, button) img,
 .dashboard-dates > button[data-panel-jump] img {
   width: calc(18 * var(--u));
   height: calc(18 * var(--u));
@@ -1310,14 +1318,14 @@ body:has(.dashboard-page) {
   display: inline-block;
 }
 
-.dashboard-pages > a {
+.dashboard-pages > :is(a, button) {
   float: right;
   margin-top: calc(5 * var(--uy));
   gap: calc(10 * var(--ux));
   font-size: calc(12 * var(--u));
 }
 
-.dashboard-pages > a img {
+.dashboard-pages > :is(a, button) img {
   width: calc(12 * var(--u));
   height: calc(12 * var(--u));
 }
@@ -1345,6 +1353,12 @@ body:has(.dashboard-page) {
 .dashboard-pages-list strong {
   text-align: right;
   font-weight: 600;
+}
+
+.dashboard-summary-feedback {
+  margin: 12px 0 0;
+  color: #8c0c0c;
+  font-weight: 700;
 }
 
 .dashboard-sun {
@@ -5869,12 +5883,12 @@ body:has(.dashboard-page) {
 }
 
 .dashboard-overview-card h2,
-.dashboard-publications > a,
+.dashboard-publications > :is(a, button),
 .dashboard-dates > button[data-panel-jump] {
   font-size: calc(18 * var(--u));
 }
 
-.dashboard-publications > a img,
+.dashboard-publications > :is(a, button) img,
 .dashboard-dates > button[data-panel-jump] img {
   width: calc(18 * var(--u));
   height: calc(18 * var(--u));

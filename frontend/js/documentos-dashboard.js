@@ -13,7 +13,11 @@ const documentosForm = document.querySelector("[data-documentos-form]");
 const documentosModalFeedback = document.querySelector("[data-documentos-modal-feedback]");
 const documentosFeedback = document.querySelector("[data-documentos-feedback]");
 const documentosSubmitButton = document.querySelector("[data-documentos-submit]");
-const documentosUser = JSON.parse(localStorage.getItem("ceiDashboardUser") || "null");
+let documentosUser = JSON.parse(localStorage.getItem("ceiDashboardUser") || "null");
+
+window.ceiDashboardAuth?.then((session) => {
+  if (session && typeof session === "object") documentosUser = session;
+});
 
 const documentosCategoryClass = {
   Institucional: "documentos-dot-institucional",

@@ -262,4 +262,10 @@ blogDashboardFilters.forEach((button) => {
  
 blogSearch?.addEventListener("input", () => renderBlog());
  
-loadBlogPosts();
+window.ceiBlogDashboardReady = loadBlogPosts();
+window.ceiOpenBlogActions = async function (postId) {
+  await window.ceiBlogDashboardReady;
+  const row = [...(blogList?.querySelectorAll("[data-blog-row]") || [])]
+    .find((item) => item.dataset.id === String(postId));
+  row?.querySelector("[data-blog-actions]")?.click();
+};

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 @Data
 @Entity
 @Table(name = "tb_agenda")
@@ -19,6 +20,12 @@ public class Agenda {
 
     @Column(name = "data_agenda", nullable = false)
     private LocalDate dataAgenda;
+
+    @Column(name = "hora_agenda")
+    private LocalTime horaAgenda;
+
+    @Column(name = "local_agenda", length = 100)
+    private String localAgenda;
 
     @Column(name = "recado_agenda", nullable = false, length = 255)
     private String recadoAgenda;

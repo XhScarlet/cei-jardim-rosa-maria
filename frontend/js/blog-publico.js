@@ -225,6 +225,7 @@ function getReader() {
 
 function openReader(post) {
   const dialog = getReader();
+  window.registrarAcessoCei?.("Blog", post.idBlog);
 
   const closeButton = createElement("button", "", "Fechar");
   closeButton.type = "button";

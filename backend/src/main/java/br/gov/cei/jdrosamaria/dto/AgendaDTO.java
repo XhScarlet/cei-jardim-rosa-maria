@@ -1,10 +1,13 @@
 package br.gov.cei.jdrosamaria.dto;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 public class AgendaDTO {
     private Integer idAgenda;
     private Integer idDirecao;
     private LocalDate dataAgenda;
+    private LocalTime horaAgenda;
+    private String localAgenda;
     private String recadoAgenda;
     private String tipoAgenda;
     private String statusAgenda;
@@ -18,6 +21,12 @@ public class AgendaDTO {
 
     public LocalDate getDataAgenda() { return dataAgenda; }
     public void setDataAgenda(LocalDate dataAgenda) { this.dataAgenda = dataAgenda; }
+
+    public LocalTime getHoraAgenda() { return horaAgenda; }
+    public void setHoraAgenda(LocalTime horaAgenda) { this.horaAgenda = horaAgenda; }
+
+    public String getLocalAgenda() { return localAgenda; }
+    public void setLocalAgenda(String localAgenda) { this.localAgenda = localAgenda; }
 
     public String getRecadoAgenda() { return recadoAgenda; }
     public void setRecadoAgenda(String recadoAgenda) { this.recadoAgenda = recadoAgenda; }

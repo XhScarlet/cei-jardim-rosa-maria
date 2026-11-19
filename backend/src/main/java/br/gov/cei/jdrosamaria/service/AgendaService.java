@@ -45,6 +45,8 @@ public class AgendaService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Evento não encontrado."));
 
         agenda.setDataAgenda(dto.getDataAgenda());
+        agenda.setHoraAgenda(dto.getHoraAgenda());
+        agenda.setLocalAgenda(dto.getLocalAgenda() == null ? null : dto.getLocalAgenda().trim());
         agenda.setRecadoAgenda(dto.getRecadoAgenda().trim());
         agenda.setTipoAgenda(dto.getTipoAgenda().trim());
         agenda.setStatusAgenda(dto.getStatusAgenda() == null || dto.getStatusAgenda().isBlank()
@@ -71,6 +73,7 @@ public class AgendaService {
                 || dto.getTipoAgenda() == null
                 || dto.getTipoAgenda().isBlank()
                 || dto.getTipoAgenda().trim().length() > 50
+                || (dto.getLocalAgenda() != null && dto.getLocalAgenda().trim().length() > 100)
                 || (dto.getStatusAgenda() != null
                 && dto.getStatusAgenda().trim().length() > 30)
                 || dto.getIdDirecao() == null) {
@@ -86,6 +89,8 @@ public class AgendaService {
         dto.setIdAgenda(entity.getIdAgenda());
         dto.setIdDirecao(entity.getIdDirecao());
         dto.setDataAgenda(entity.getDataAgenda());
+        dto.setHoraAgenda(entity.getHoraAgenda());
+        dto.setLocalAgenda(entity.getLocalAgenda());
         dto.setRecadoAgenda(entity.getRecadoAgenda());
         dto.setTipoAgenda(entity.getTipoAgenda());
         dto.setStatusAgenda(entity.getStatusAgenda());
@@ -96,6 +101,8 @@ public class AgendaService {
         Agenda entity = new Agenda();
         entity.setIdDirecao(dto.getIdDirecao());
         entity.setDataAgenda(dto.getDataAgenda());
+        entity.setHoraAgenda(dto.getHoraAgenda());
+        entity.setLocalAgenda(dto.getLocalAgenda() == null ? null : dto.getLocalAgenda().trim());
         entity.setRecadoAgenda(Objects.requireNonNull(dto.getRecadoAgenda()).trim());
         entity.setTipoAgenda(Objects.requireNonNull(dto.getTipoAgenda()).trim());
         entity.setStatusAgenda(dto.getStatusAgenda() == null ? null : dto.getStatusAgenda().trim());

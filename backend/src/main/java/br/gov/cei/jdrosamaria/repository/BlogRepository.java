@@ -7,4 +7,6 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
 
     List<Blog> findAllByOrderByDataBlogDesc();
     List<Blog> findByStatusBlogOrderByDataBlogDesc(String statusBlog);
+    long countByStatusBlogIgnoreCase(String statusBlog);
+    List<Blog> findTop3ByStatusBlogIgnoreCaseOrderByDataBlogDesc(String statusBlog);
 }

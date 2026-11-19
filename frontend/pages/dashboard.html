@@ -66,26 +66,26 @@
           <div class="dashboard-stats" aria-label="Resumo da direção">
             <article class="dashboard-stat-card">
               <img src="../assets/figma-dashboard/pessoas.png" alt="" aria-hidden="true" />
-              <strong>342</strong>
+              <strong id="dashboard-access-week" data-dashboard-metric="access-week">0</strong>
               <span>Acessos essa semana</span>
-              <em><img class="dashboard-stat-trend-icon" src="../assets/figma-dashboard/arrow-4.svg" alt="" aria-hidden="true" />18%</em>
+              <em id="dashboard-access-variation" data-dashboard-access-variation>0%</em>
               <small>em relação à semana anterior</small>
             </article>
             <article class="dashboard-stat-card dashboard-stat-card-soft">
               <img src="../assets/figma-dashboard/image-60.png" alt="" aria-hidden="true" />
-              <strong>5</strong>
+              <strong id="dashboard-posts-count" data-dashboard-metric="posts">0</strong>
               <span>Publicações do blog</span>
               <small>Ativas</small>
             </article>
             <article class="dashboard-stat-card">
               <img src="../assets/figma-dashboard/image-55.png" alt="" aria-hidden="true" />
-              <strong>3</strong>
+              <strong id="dashboard-events-count" data-dashboard-metric="events">0</strong>
               <span>Próximos eventos</span>
               <small>No calendário</small>
             </article>
             <article class="dashboard-stat-card dashboard-stat-card-soft">
               <img src="../assets/figma-dashboard/image-59.png" alt="" aria-hidden="true" />
-              <strong>4</strong>
+              <strong id="dashboard-documents-count" data-dashboard-metric="documents">0</strong>
               <span>Documentos</span>
               <small>Disponíveis.</small>
             </article>
@@ -95,37 +95,9 @@
             <article class="dashboard-overview-card dashboard-publications">
               <img class="dashboard-card-icon dashboard-card-icon-large" src="../assets/figma-dashboard/image-60.png" alt="" aria-hidden="true" />
               <h2>Publicações recentes</h2>
-              <a href="blog.html">Ver todas <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></a>
+              <button type="button" data-panel-jump="blog">Ver todas <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></button>
 
-              <div class="publication-list">
-                <div class="publication-item">
-                  <img src="../assets/figma-dashboard/calendario-ii.png" alt="" aria-hidden="true" />
-                  <div>
-                    <h3>Reunião com as famílias</h3>
-                    <span>Comunicados</span>
-                    <p>Publicado em 07/09/2026  -    87 visualizações</p>
-                  </div>
-                  <img class="publication-more" src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
-                </div>
-                <div class="publication-item">
-                  <img src="../assets/figma-dashboard/image-62.png" alt="" aria-hidden="true" />
-                  <div>
-                    <h3>Projeto horta no CEI</h3>
-                    <span>Projeto</span>
-                    <p>Publicado em 07/09/2026  -    64 visualizações</p>
-                  </div>
-                  <img class="publication-more" src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
-                </div>
-                <div class="publication-item">
-                  <img src="../assets/figma-dashboard/image-58.png" alt="" aria-hidden="true" />
-                  <div>
-                    <h3>Indicador de qualidade</h3>
-                    <span>Comunicados</span>
-                    <p>Publicado em 07/09/2026  -    52 visualizações</p>
-                  </div>
-                  <img class="publication-more" src="../assets/figma-dashboard/more-vertical.svg" alt="" aria-hidden="true" />
-                </div>
-              </div>
+              <div id="dashboard-recent-posts" class="publication-list" data-dashboard-publications aria-live="polite"></div>
             </article>
 
             <article class="dashboard-overview-card dashboard-dates">
@@ -133,39 +105,16 @@
               <h2>Próximas datas</h2>
               <button type="button" data-panel-jump="agenda">Ver calendário <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></button>
 
-              <div class="date-item date-item-soft">
-                <time><strong>15</strong><span>SET</span></time>
-                <div>
-                  <h3>Reunião com as famílias</h3>
-                  <p><img src="../assets/figma-dashboard/alarm.svg" alt="" aria-hidden="true" />8h00</p>
-                  <p><img src="../assets/figma-dashboard/location-pin.svg" alt="" aria-hidden="true" />CEI</p>
-                </div>
-              </div>
-              <div class="date-item">
-                <time><strong>20</strong><span>SET</span></time>
-                <div>
-                  <h3>Projeto horta</h3>
-                  <p><img src="../assets/figma-dashboard/alarm.svg" alt="" aria-hidden="true" />15h30</p>
-                  <p><img src="../assets/figma-dashboard/location-pin.svg" alt="" aria-hidden="true" />CEI</p>
-                </div>
-              </div>
-              <div class="date-item date-item-soft">
-                <time><strong>25</strong><span>SET</span></time>
-                <div>
-                  <h3>Reunião pedagógica</h3>
-                  <p><img src="../assets/figma-dashboard/alarm.svg" alt="" aria-hidden="true" />12h30</p>
-                  <p><img src="../assets/figma-dashboard/location-pin.svg" alt="" aria-hidden="true" />CEI</p>
-                </div>
-              </div>
+              <div id="dashboard-upcoming-events" data-dashboard-events aria-live="polite"></div>
             </article>
 
             <article class="dashboard-overview-card dashboard-actions">
               <span class="dashboard-action-bolt" aria-hidden="true"></span>
               <h2>Ações rápidas</h2>
-              <button type="button">Nova publicação no blog</button>
-              <button type="button">Adicionar evento</button>
-              <button type="button">Adicionar documento</button>
-              <button type="button">Editar informações do CEI</button>
+              <button type="button" data-dashboard-action="blog">Nova publicação no blog</button>
+              <button type="button" data-dashboard-action="agenda">Adicionar evento</button>
+              <button type="button" data-dashboard-action="documento">Adicionar documento</button>
+              <button type="button" data-dashboard-action="informacoes">Editar informações do CEI</button>
             </article>
 
             <article class="dashboard-overview-card dashboard-blank" aria-label="Acessos ao site">
@@ -176,27 +125,22 @@
                 </div>
               </div>
               <div class="dashboard-access-summary" aria-label="Resumo de acessos">
-                <p><strong>342</strong><span>acessos esta semana</span></p>
-                <p><strong>72</strong><span>hoje</span></p>
-                <p><strong>1.284</strong><span>este mês</span></p>
+                <p><strong id="dashboard-week-total" data-dashboard-access-summary="week">0</strong><span>acessos esta semana</span></p>
+                <p><strong id="dashboard-today-total" data-dashboard-access-summary="today">0</strong><span>hoje</span></p>
+                <p><strong id="dashboard-month-total" data-dashboard-access-summary="month">0</strong><span>este mês</span></p>
               </div>
             </article>
 
             <article class="dashboard-overview-card dashboard-pages">
               <h2>Páginas mais acessadas</h2>
-              <a href="#">Ver relatório completo <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></a>
-              <div class="dashboard-pages-list">
-                <p><span>1. Agenda</span><strong>126</strong></p>
-                <p><span>2. Blog</span><strong>96</strong></p>
-                <p><span>3. Início</span><strong>78</strong></p>
-                <p><span>4. Documentos</span><strong>31</strong></p>
-                <p><span>5. Sobre o CEI</span><strong>15</strong></p>
-              </div>
+              <button type="button" data-panel-jump="acessos">Ver relatório completo <img src="../assets/figma-dashboard/arrow-right.svg" alt="" aria-hidden="true" /></button>
+              <div id="dashboard-top-pages" class="dashboard-pages-list" data-dashboard-top-pages aria-live="polite"></div>
             </article>
 
             <img class="dashboard-sun" src="../assets/figma-dashboard/image-63.png" alt="" aria-hidden="true" />
             <img class="dashboard-plant" src="../assets/figma-dashboard/image-64.png" alt="" aria-hidden="true" />
           </div>
+          <p class="dashboard-summary-feedback" data-dashboard-feedback role="status" aria-live="polite" hidden></p>
         </section>
 
         <section class="dashboard-panel dashboard-workspace" data-panel="turmas" aria-label="Dashboard de turmas" hidden>
@@ -646,6 +590,14 @@
               <label>
                 <span>Data</span>
                 <input name="dataAgenda" type="date" required />
+              </label>
+              <label>
+                <span>Horário (opcional)</span>
+                <input name="horaAgenda" type="time" />
+              </label>
+              <label>
+                <span>Local</span>
+                <input name="localAgenda" type="text" maxlength="100" value="CEI Jardim Rosa Maria" />
               </label>
               <label>
                 <span>Categoria</span>
